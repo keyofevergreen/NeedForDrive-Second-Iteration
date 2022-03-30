@@ -1,0 +1,62 @@
+@import "~bootstrap/scss/bootstrap";
+
+@font-face {
+  font-weight: 300;
+  font-family: "Roboto";
+  src: url(../fonts/Roboto-Light.ttf) format("truetype");
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "Roboto";
+  src: url(../fonts/Roboto-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-weight: 500;
+  font-family: "Roboto";
+  src: url(../fonts/Roboto-Medium.ttf) format("truetype");
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: "Roboto";
+  src: url(../fonts/Roboto-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "Helvetica";
+  src: url(../fonts/Helvetica-Regular.otf) format("opentype");
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: "Helvetica";
+  src: url(../fonts/Helvetica-Bold.otf) format("opentype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  --bg: #f5f6f8;
+  --gray-light: #eee;
+  --gray: #999;
+  --black: #121212;
+  --blue: #007bff;
+  --green: #0ec261;
+}
+
+body {
+  font-family: "Helvetica", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
+}
+
+a {
+  text-decoration: none;
+}
