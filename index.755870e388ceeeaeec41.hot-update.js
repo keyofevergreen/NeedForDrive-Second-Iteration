@@ -1,0 +1,65 @@
+/*!
+ * banner:
+ * NeedForDrive-Second-Iteration: 1.0.0
+ * ISC
+ */
+"use strict";
+self["webpackHotUpdateNeedForDrive_Second_Iteration"]("index",{
+
+/***/ "./src/index.tsx":
+/*!***********************!*\
+  !*** ./src/index.tsx ***!
+  \***********************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _types_global__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./types/global */ "./src/types/global.ts");
+/* harmony import */ var _types_global__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_types_global__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! history */ "./node_modules/history/index.js");
+/* harmony import */ var _components_Router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Router */ "./src/components/Router/index.tsx");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App */ "./src/App.tsx");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store */ "./src/store.ts");
+/* harmony import */ var _utils_services_services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/services/services */ "./src/utils/services/services.ts");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* eslint-disable import/no-import-module-exports */
+
+
+
+
+
+
+
+
+
+const history = (0,history__WEBPACK_IMPORTED_MODULE_8__.createBrowserHistory)({});
+const store = (0,_store__WEBPACK_IMPORTED_MODULE_5__["default"])({
+  history,
+  services: (0,_utils_services_services__WEBPACK_IMPORTED_MODULE_6__["default"])(fetch)
+});
+(0,react_dom__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
+  store: store,
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_Router__WEBPACK_IMPORTED_MODULE_3__.Router, {
+    history: history,
+    basename:  false ? 0 : '/',
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_App__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+  })
+}), document.getElementById('root'));
+
+if (true) {
+  module.hot.accept();
+}
+
+/***/ })
+
+},
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ /* webpack/runtime/getFullHash */
+/******/ (() => {
+/******/ 	__webpack_require__.h = () => ("63efd381d4989a22555b")
+/******/ })();
+/******/ 
+/******/ }
+);
+//# sourceMappingURL=index.755870e388ceeeaeec41.hot-update.js.map
