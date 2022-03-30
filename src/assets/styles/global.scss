@@ -45,12 +45,14 @@
   --bg: #f5f6f8;
   --gray-light: #eee;
   --gray: #999;
+  --dark-blue: #3d5170;
   --black: #121212;
   --blue: #007bff;
   --green: #0ec261;
 }
 
 body {
+  min-width: 320px;
   font-family: "Helvetica", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -59,4 +61,16 @@ body {
 
 a {
   text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--dark-blue);
+}
+
+@media (max-width: 767.98px) {
+  body {
+    background-color: #fff;
+  }
 }
