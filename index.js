@@ -2306,12 +2306,12 @@ __webpack_require__.r(__webpack_exports__);
 
 const App = () => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Routes, {
   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
-    index: true,
+    path: "/NeedForDrive-Second-Iteration",
     element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_pages_Auth_Auth__WEBPACK_IMPORTED_MODULE_1__["default"], {})
   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
     path: "*",
     element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Navigate, {
-      to: "/"
+      to: "/NeedForDrive-Second-Iteration"
     })
   })]
 });
@@ -52304,7 +52304,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("a2f7e8cb05b20f0e7d9e")
+/******/ 		__webpack_require__.h = () => ("e9e412782a8b7040a9c7")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
