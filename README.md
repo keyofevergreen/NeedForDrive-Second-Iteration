@@ -4,6 +4,7 @@
 
 - Typescript 4.5+
 - React 17+
+- Bootstrap 5.1.3
 - @reduxjs/toolkit
 - react-router 6+
 - react-helmet

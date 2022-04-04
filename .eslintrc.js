@@ -10,4 +10,5 @@ module.exports = rockConfig({
   'no-return-await': 'off',
   'quote-props': 'off',
   'max-len': 'off',
+  '@typescript-eslint/dot-notation': 'off',
 });

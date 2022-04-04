@@ -3,7 +3,7 @@ import {
   requestImageSuccess,
   requestImageError,
 } from './actions';
-import { ThunkResult } from '../../../../untitled/src/types/thunk';
+import { ThunkResult } from '../../types/thunk';
 
 // eslint-disable-next-line import/prefer-default-export,max-len
 export const fetchImage = (): ThunkResult => async (dispatch, getState, { services }) => {

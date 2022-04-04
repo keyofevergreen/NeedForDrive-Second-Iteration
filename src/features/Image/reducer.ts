@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { requestImage, requestImageSuccess, requestImageError } from './actions';
-import { ImageState } from '../../../../untitled/src/types/Image';
+import { ImageState } from '../../types/Image';
 
 const imageReducer = createReducer<ImageState>({
   url: '',
