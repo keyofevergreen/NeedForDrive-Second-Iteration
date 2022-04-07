@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -15,13 +15,7 @@ const Auth = (): React.ReactElement => {
   } = useForm<AuthForm>();
   //eslint-disable-next-line
   const [form, setForm] = useState<AuthForm | null>(null);
-  const [loading, serverError, token] = useAuth(form);
-
-  useEffect(() => {
-    if (token && !serverError) {
-      localStorage.setItem('token', JSON.stringify(token));
-    }
-  }, [token]);
+  const [loading, serverError] = useAuth(form);
 
   return (
     <>
@@ -50,12 +44,12 @@ const Auth = (): React.ReactElement => {
                   {...register('username', {
                     required: 'Это поле не должно быть пустым'
                   })}
-                  isInvalid={!!(errors.username || serverError === '401')}
+                  isInvalid={!!(errors.username || serverError)}
                   type="email"
                   placeholder="Введите почту"
                   aria-describedby="username"
                 />
-                {(errors.username?.message || serverError === '401') && (
+                {(errors.username?.message || serverError) && (
                   <Form.Text
                     className="input-message"
                     id="username"
@@ -74,7 +68,7 @@ const Auth = (): React.ReactElement => {
                   {...register('password', {
                     required: 'Это поле не должно быть пустым'
                   })}
-                  isInvalid={!!(errors.username || serverError === '401')}
+                  isInvalid={!!(errors.password || serverError)}
                   type="password"
                   placeholder="Введите пароль"
                   aria-describedby="password"

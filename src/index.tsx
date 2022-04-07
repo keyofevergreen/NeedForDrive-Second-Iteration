@@ -20,7 +20,7 @@ declare global {
 
 const store = createStore({
   history,
-  services: createServices(fetch),
+  services: createServices(),
 });
 
 render(

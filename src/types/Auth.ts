@@ -1,7 +1,8 @@
 export interface AuthState {
-  token: AuthForm | null,
+  token: Token | null,
   loading: boolean,
   error: string | null,
+  isAuth: boolean,
 }
 
 export interface AuthForm {
