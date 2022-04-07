@@ -4,6 +4,8 @@ declare namespace StylesModuleScssNamespace {
     "auth-wrap": string;
     auth__form: string;
     "btn-wrap": string;
+    "input-message": string;
+    "input-wrap": string;
     "request-access-btn": string;
   }
 }
