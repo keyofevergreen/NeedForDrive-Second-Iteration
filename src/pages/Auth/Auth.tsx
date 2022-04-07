@@ -18,7 +18,9 @@ const Auth = (): React.ReactElement => {
   const [loading, serverError, token] = useAuth(form);
 
   useEffect(() => {
-    console.log(token);
+    if (token && !serverError) {
+      localStorage.setItem('token', JSON.stringify(token));
+    }
   }, [token]);
 
   return (
