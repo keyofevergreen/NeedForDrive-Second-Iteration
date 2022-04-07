@@ -45,18 +45,19 @@ const Auth = (): React.ReactElement => {
           >
             <Form.Group className="mb-3" controlId="username">
               <Form.Label>Почта</Form.Label>
-              <div className={styles['input-wrap']}>
+              <div className="input-wrap">
                 <Form.Control
                   {...register('username', {
                     required: 'Это поле не должно быть пустым'
                   })}
+                  isInvalid={!!(errors.username || serverError === '401')}
                   type="email"
                   placeholder="Введите почту"
                   aria-describedby="username"
                 />
                 {(errors.username?.message || serverError === '401') && (
                   <Form.Text
-                    className={styles['input-message']}
+                    className="input-message"
                     id="username"
                     muted
                   >
@@ -68,18 +69,19 @@ const Auth = (): React.ReactElement => {
 
             <Form.Group className="mb-3" controlId="password">
               <Form.Label>Пароль</Form.Label>
-              <div className={styles['input-wrap']}>
+              <div className="input-wrap">
                 <Form.Control
                   {...register('password', {
                     required: 'Это поле не должно быть пустым'
                   })}
+                  isInvalid={!!(errors.username || serverError === '401')}
                   type="password"
                   placeholder="Введите пароль"
                   aria-describedby="password"
                 />
                 {(errors.password?.message) && (
                   <Form.Text
-                    className={styles['input-message']}
+                    className="input-message"
                     id="password"
                     muted
                   >
