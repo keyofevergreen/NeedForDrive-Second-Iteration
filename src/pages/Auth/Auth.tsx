@@ -7,13 +7,12 @@ import { AuthForm } from '../../types/Auth';
 import Logo from '../../assets/logo.component.svg';
 import styles from './styles.module.scss';
 
-const Auth = (): React.ReactElement => {
+const Auth: React.FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm<AuthForm>();
-  //eslint-disable-next-line
   const [form, setForm] = useState<AuthForm | null>(null);
   const [loading, serverError] = useAuth(form);
 
@@ -51,9 +50,8 @@ const Auth = (): React.ReactElement => {
                 />
                 {(errors.username?.message || serverError) && (
                   <Form.Text
-                    className="input-message"
                     id="username"
-                    muted
+                    bsPrefix="input-message"
                   >
                     {errors.username?.message || 'Неверно указана почта или пароль'}
                   </Form.Text>
@@ -75,9 +73,8 @@ const Auth = (): React.ReactElement => {
                 />
                 {(errors.password?.message) && (
                   <Form.Text
-                    className="input-message"
+                    bsPrefix="input-message"
                     id="password"
-                    muted
                   >
                     {errors.password?.message}
                   </Form.Text>
