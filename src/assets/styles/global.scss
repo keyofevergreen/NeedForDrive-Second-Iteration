@@ -39,11 +39,13 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 :root {
   --bg: #f5f6f8;
   --gray-light: #eee;
+  --gray-light2: #fbfbfb;
   --gray: #999;
   --dark-blue: #3d5170;
   --black: #121212;
@@ -83,7 +85,7 @@ h3 {
     position: absolute;
     bottom: -18px;
     left: 11px;
-    color: var(--red) !important;
+    color: var(--red);
     font-size: 10px;
   }
 }

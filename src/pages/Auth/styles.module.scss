@@ -5,6 +5,20 @@
   margin-top: 167px;
 }
 
+.logo {
+  display: flex;
+  gap: 11.5px;
+  align-items: center;
+  height: 44.5px;
+  color: var(--dark-blue);
+  font-size: 24px;
+
+  svg {
+    width: 44.5px;
+    height: 44.5px;
+  }
+}
+
 .auth {
   display: flex;
   flex-direction: column;

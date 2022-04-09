@@ -1,6 +1,4 @@
-.wrapper {
-  min-width: 500px;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 25px;
+.index-wrapper {
+  display: flex;
+  height: calc(var(--vh, 1vh) * 100);
 }

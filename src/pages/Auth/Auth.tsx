@@ -25,7 +25,10 @@ const Auth = (): React.ReactElement => {
         <meta name="description" content="Home page" />
       </Helmet>
       <div className={styles['auth-wrap']}>
-        <Logo />
+        <div className={styles['logo']}>
+          <Logo />
+          Need for car
+        </div>
         <div className={styles['auth']}>
           <h1>
             Вход
@@ -51,9 +54,8 @@ const Auth = (): React.ReactElement => {
                 />
                 {(errors.username?.message || serverError) && (
                   <Form.Text
-                    className="input-message"
                     id="username"
-                    muted
+                    bsPrefix="input-message"
                   >
                     {errors.username?.message || 'Неверно указана почта или пароль'}
                   </Form.Text>
@@ -75,9 +77,8 @@ const Auth = (): React.ReactElement => {
                 />
                 {(errors.password?.message) && (
                   <Form.Text
-                    className="input-message"
                     id="password"
-                    muted
+                    bsPrefix="input-message"
                   >
                     {errors.password?.message}
                   </Form.Text>
