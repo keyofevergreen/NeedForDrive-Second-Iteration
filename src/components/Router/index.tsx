@@ -8,7 +8,6 @@ interface RouterProps {
   history: History;
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export const Router = ({
   basename,
   children,
