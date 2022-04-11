@@ -1,5 +1,6 @@
 .navigation {
-  width: 285px;
+  z-index: 1;
+  min-width: 285px;
   height: 100%;
   background-color: #fff;
   box-shadow: 0 3.5px 17.5px 0 rgb(165 182 201 / 10%), 0 7.5px 11px 0 rgb(90 97 105 / 10%),
@@ -10,7 +11,7 @@
   display: flex;
   gap: 7px;
   align-items: center;
-  height: 67.5px;
+  height: 69px;
   color: var(--dark-blue);
   font-size: 16px;
   box-shadow: inset 0 -1px 0 #e1e5eb;
@@ -53,5 +54,11 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1400px) {
+  .navigation__logo {
+    height: 45px;
   }
 }

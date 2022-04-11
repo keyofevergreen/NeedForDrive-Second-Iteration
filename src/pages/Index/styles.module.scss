@@ -1,4 +1,22 @@
 .index-wrapper {
   display: flex;
+  width: 100%;
   height: calc(var(--vh, 1vh) * 100);
+}
+
+.index {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.index__content {
+  flex: 1 1 auto;
+  padding: 28px 27px;
+}
+
+@media (max-width: 1400px) {
+  .index__nav-xxl {
+    display: none;
+  }
 }

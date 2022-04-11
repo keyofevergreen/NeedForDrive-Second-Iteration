@@ -36,35 +36,42 @@ const navItems: NavItem[] = [
   }
 ];
 
-const Navigation = (): React.ReactElement => {
-  return (
-    <div className={styles['navigation']}>
-      <div className={styles['navigation__logo']}>
-        <Logo />
-        Need for car
-      </div>
-      <nav className={styles['navigation__menu']}>
-        <ul>
-          {
-            navItems.map((item) => (
-              <li
-                className={cx(
-                  'nav-item',
-                  {
-                    'nav-item-selected': item.href === '/123'
-                  }
-                )}
-                key={item.id}
-              >
-                {item.icon}
-                <p>{item.name}</p>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
+interface Props {
+  className?: string;
+}
+
+const Navigation = ({ className }: Props): React.ReactElement => (
+  <div
+    className={cx(
+      'navigation',
+      className,
+    )}
+  >
+    <div className={styles['navigation__logo']}>
+      <Logo />
+      Need for car
     </div>
-  );
-};
+    <nav className={styles['navigation__menu']}>
+      <ul>
+        {
+          navItems.map((item) => (
+            <li
+              className={cx(
+                'nav-item',
+                {
+                  'nav-item-selected': item.href === '/123'
+                }
+              )}
+              key={item.id}
+            >
+              {item.icon}
+              <p>{item.name}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+);
 
 export default Navigation;
