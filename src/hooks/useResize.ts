@@ -1,20 +1,16 @@
 import { useState, useEffect } from 'react';
 
-type Window = {
-  width: number,
-  height: number,
-};
-
-function getWindowDimensions(): Window {
-  return { width: window.innerWidth, height: window.innerHeight };
+function getWindowWidth(): number {
+  return window.innerWidth;
 }
 
-export default function useResize(): Window {
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+export default function useResize(min: number, max: number): boolean {
+  const [windowDimensions, setWindowDimensions] = useState(getWindowWidth() > min && getWindowWidth() < max);
 
   useEffect(() => {
     function handleResize(): void {
-      setWindowDimensions(getWindowDimensions());
+      const width = getWindowWidth();
+      setWindowDimensions(width > min && width < max);
     }
 
     window.addEventListener('resize', handleResize);
