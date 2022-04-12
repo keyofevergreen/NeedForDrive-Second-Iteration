@@ -7,17 +7,23 @@ import styles from './styles.module.scss';
 import useResize from '../../hooks/useResize';
 
 const ActionButtonGroup: React.FC = () => {
-  const [vertical, setVertical] = useState<boolean>(false);
   const windowSize = useResize();
+  const [isVertical, setVertical] = useState<boolean>(windowSize.width < 1024 && windowSize.width > 768);
 
   useEffect(() => {
-    setVertical(windowSize.width < 1024 && windowSize.width > 768);
+    const prevIsVertical = isVertical;
+    const curVertical = windowSize.width < 1024 && windowSize.width > 768;
+    if (curVertical && !prevIsVertical) {
+      setVertical(true);
+    } else if (!curVertical && prevIsVertical) {
+      setVertical(false);
+    }
   }, [windowSize]);
 
-  console.log('render');
+  console.log('rerender');
 
   return (
-    <ButtonGroup className={styles['action-group-btn']} vertical={vertical}>
+    <ButtonGroup className={styles['action-group-btn']} vertical={isVertical}>
       <Button
         variant="outline-primary"
         size="sm"
