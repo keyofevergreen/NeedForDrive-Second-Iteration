@@ -40,7 +40,7 @@ interface Props {
   className?: string;
 }
 
-const Navigation = ({ className }: Props): React.ReactElement => (
+const Sidebar = ({ className }: Props): React.ReactElement => (
   <div
     className={cx(
       'navigation',
@@ -74,4 +74,4 @@ const Navigation = ({ className }: Props): React.ReactElement => (
   </div>
 );
 
-export default Navigation;
+export default Sidebar;

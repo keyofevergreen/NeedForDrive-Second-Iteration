@@ -31,7 +31,7 @@
       display: flex;
       gap: 11px;
       align-items: center;
-      height: 57.5px;
+      height: 58px;
       padding-left: 26.5px;
       color: var(--dark-blue);
       font-size: 15px;
@@ -60,5 +60,13 @@
 @media (max-width: 1400px) {
   .navigation__logo {
     height: 45px;
+  }
+
+  .navigation__menu {
+    ul {
+      .nav-item {
+        height: 48px;
+      }
+    }
   }
 }

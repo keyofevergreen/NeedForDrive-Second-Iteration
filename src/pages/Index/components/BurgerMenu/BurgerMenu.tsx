@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Offcanvas } from 'react-bootstrap';
 import classNames from 'classnames/bind';
-import Navigation from '../Navigation/Navigation';
+import Sidebar from '../Sidebar/Sidebar';
 import styles from './styles.module.scss';
 
 const cx = classNames.bind(styles);
@@ -33,7 +33,7 @@ const BurgerMenu = ({ className }: Props): React.ReactElement => {
         show={show}
         onHide={handleClose}
       >
-        <Navigation />
+        <Sidebar />
       </Offcanvas>
     </>
   );

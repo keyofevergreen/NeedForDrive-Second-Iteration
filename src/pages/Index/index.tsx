@@ -1,16 +1,16 @@
 import React from 'react';
-import Navigation from './components/Navigation/Navigation';
+import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import styles from './styles.module.scss';
 
-const Index = (): React.ReactElement => (
+const Index: React.FC = ({ children }) => (
   <div className={styles['index-wrapper']}>
-    <Navigation className={styles['index__nav-xxl']} />
+    <Sidebar className={styles['index__nav-xxl']} />
     <div className={styles['index']}>
       <Header />
       <main className={styles['index__content']}>
-        Кто прочетает тот лох
+        {children}
       </main>
       <Footer />
     </div>

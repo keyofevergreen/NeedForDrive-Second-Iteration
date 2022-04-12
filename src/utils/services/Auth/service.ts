@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
-import $api from '../../../http';
+import instance from '../../../http';
+import getBasicToken from '../../helpers/getBasicToken';
 import { AuthForm, Token } from '../../../types/Auth';
 
 export interface AuthServiceInterface {
@@ -9,7 +10,14 @@ export interface AuthServiceInterface {
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const authService = (): AuthServiceInterface => ({
   login: async (loginData: AuthForm): Promise<AxiosResponse<Token>> => {
-    return $api.post<Token>('/auth/login', loginData);
+    const basicToken = getBasicToken();
+    localStorage.setItem('basicToken', basicToken);
+
+    return instance.post<Token>('/auth/login', loginData, {
+      headers: {
+        'Authorization': `Basic ${basicToken}`,
+      }
+    });
   }
 });
 

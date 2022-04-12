@@ -1,0 +1,33 @@
+.content-wrap {
+  margin: 28px 27px;
+}
+
+.content-title {
+  margin-bottom: 30px;
+  font-size: 29px;
+}
+
+.content {
+  width: 100%;
+  min-height: 386px;
+  background-color: #fff;
+  border-radius: 9px;
+  box-shadow: 0 7px 70px 0 rgb(90 97 105 / 10%), 0 10px 10px 0 rgb(90 97 105 / 6%), 0 4px 8px 0 rgb(90 97 105 / 12%),
+    0 2px 0 0 rgb(90 97 105 / 11%);
+}
+
+@media (max-width: 767.98px) {
+  .content-wrap {
+    margin: 28px 0;
+  }
+
+  .content-title {
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+
+  .content {
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
