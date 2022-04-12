@@ -114,8 +114,28 @@ h3 {
 }
 
 .form-check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  .form-check-input {
+    float: none;
+    width: 13px;
+    height: 13px;
+    margin-top: 0;
+  }
+
+  .form-check-input:checked {
+    background-image: url(../CheckboxIcon.svg);
+    background-size: 8px 6px;
+  }
+
   .form-check-input:disabled:not(:checked) {
     background-color: var(--gray-light3);
+  }
+
+  .form-check-label {
+    font-size: 10px;
   }
 }
 
