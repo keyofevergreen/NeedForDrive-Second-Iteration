@@ -11,4 +11,5 @@ module.exports = rockConfig({
   'quote-props': 'off',
   'max-len': 'off',
   '@typescript-eslint/dot-notation': 'off',
+  'arrow-body-style': 'off',
 });

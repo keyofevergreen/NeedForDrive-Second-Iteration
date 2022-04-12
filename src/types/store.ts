@@ -2,7 +2,7 @@ import { History } from 'history';
 import { Action } from 'redux';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { ServicesInterface } from '../utils/services/services';
-import { ImageState } from './Image';
+import { AuthState } from './Auth';
 
 export type Dispatcher = ThunkDispatch<RootState, ThunkExtras, Action>;
 
@@ -19,5 +19,5 @@ export interface StoreProps extends ThunkExtras {
 }
 
 export interface RootState {
-  image: ImageState;
+  auth: AuthState;
 }

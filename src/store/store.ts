@@ -1,7 +1,7 @@
 import { configureStore, Store } from '@reduxjs/toolkit';
-import { imageReducer } from './features/Image';
-import { isDevelopment } from './utils/environments';
-import { RootState, StoreProps } from './types/store';
+import { isDevelopment } from '../utils/environments';
+import { RootState, StoreProps } from '../types/store';
+import authReducer from './Auth/reducer';
 
 const createStore = ({
   services,
@@ -10,7 +10,7 @@ const createStore = ({
 }: StoreProps): Store<RootState> => (
   configureStore({
     reducer: {
-      image: imageReducer,
+      auth: authReducer,
     },
     devTools: isDevelopment(),
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({

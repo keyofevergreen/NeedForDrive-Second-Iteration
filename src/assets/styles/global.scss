@@ -49,6 +49,7 @@
   --black: #121212;
   --blue: #007bff;
   --green: #0ec261;
+  --red: #c4183c;
 }
 
 body {
@@ -67,6 +68,24 @@ h1,
 h2,
 h3 {
   color: var(--dark-blue);
+}
+
+.input-wrap {
+  position: relative;
+
+  input {
+    padding: 8px 11px;
+    color: var(--dark-blue);
+    font-size: 11px;
+  }
+
+  .input-message {
+    position: absolute;
+    bottom: -18px;
+    left: 11px;
+    color: var(--red);
+    font-size: 10px;
+  }
 }
 
 @media (max-width: 767.98px) {
