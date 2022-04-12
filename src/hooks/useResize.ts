@@ -6,11 +6,7 @@ type Window = {
 };
 
 function getWindowDimensions(): Window {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
+  return { width: window.innerWidth, height: window.innerHeight };
 }
 
 export default function useResize(): Window {

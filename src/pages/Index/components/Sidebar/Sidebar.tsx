@@ -36,11 +36,11 @@ const navItems: NavItem[] = [
   }
 ];
 
-interface Props {
+interface ISidebarProps {
   className?: string;
 }
 
-const Sidebar = ({ className }: Props): React.ReactElement => (
+const Sidebar = ({ className }: ISidebarProps): React.ReactElement => (
   <div
     className={cx(
       'navigation',

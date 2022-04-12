@@ -6,11 +6,11 @@ import styles from './styles.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface Props {
+interface IBurgerMenuProps {
   className?: string;
 }
 
-const BurgerMenu = ({ className }: Props): React.ReactElement => {
+const BurgerMenu = ({ className }: IBurgerMenuProps): React.ReactElement => {
   const [show, setShow] = useState<boolean>(false);
 
   const handleClose = (): void => setShow(false);

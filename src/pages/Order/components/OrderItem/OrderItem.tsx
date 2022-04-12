@@ -9,7 +9,7 @@ type Options = {
   rightWheel: boolean,
 };
 
-interface Props {
+interface IOrderItemProps {
   img: string,
   carName: string,
   city: string,
@@ -20,7 +20,7 @@ interface Props {
   options: Options,
 }
 
-const OrderItem = (props: Props): React.ReactElement => {
+const OrderItem = (props: IOrderItemProps): React.ReactElement => {
   const { img, carName, city, address, dateRange, color, price, options } = props;
 
   return (

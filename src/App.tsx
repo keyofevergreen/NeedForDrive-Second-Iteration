@@ -20,29 +20,30 @@ const App: React.FC = (): React.ReactElement => {
     dispatch(setAuth(!!localStorage.getItem('token')));
   }, [token]);
 
-  return (
-    isAuth ?
-      (
-        <Index>
-          <Routes>
-            <Route index element={<Order />} />
-            <Route
-              path="*"
-              element={<Navigate to="/" />}
-            />
-          </Routes>
-        </Index>
-      ) :
-      (
+  if (isAuth) {
+    return (
+      <Index>
         <Routes>
-          <Route index element={<Auth />} />
+          <Route index element={<Order />} />
           <Route
             path="*"
             element={<Navigate to="/" />}
           />
         </Routes>
-      )
-  );
+      </Index>
+    );
+  }
+  if (!isAuth) {
+    return (
+      <Routes>
+        <Route index element={<Auth />} />
+        <Route
+          path="*"
+          element={<Navigate to="/" />}
+        />
+      </Routes>
+    );
+  }
 };
 
 export default App;

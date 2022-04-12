@@ -1,8 +1,8 @@
 import React from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import NotiIcon from '../../../../assets/Notifications.component.svg';
-import styles from './styles.module.scss';
 import AccountDropdown from './AccountDropdown/AccountDropdown';
+import styles from './styles.module.scss';
 
 const Header: React.FC = () => {
   return (
