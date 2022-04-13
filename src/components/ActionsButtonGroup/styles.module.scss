@@ -24,3 +24,15 @@
     }
   }
 }
+
+@media (max-width: 767.98px) {
+  .action-group-btn {
+    :global {
+      .btn-sm,
+      .btn-group-sm > .btn {
+        width: 100%;
+        min-width: 50px;
+      }
+    }
+  }
+}

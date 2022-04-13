@@ -56,7 +56,7 @@ const Order: React.FC = () => {
             </Button>
           </div>
         </div>
-        <div>
+        <div className={styles['order-list']}>
           <OrderItem
             img={carImg}
             carName="Elantra"

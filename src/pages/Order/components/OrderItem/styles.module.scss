@@ -1,14 +1,11 @@
 .order-item {
-  padding: 14px 22px;
-  font-family: "Roboto", sans-serif;
-}
-
-.order-item__info {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   max-width: 1024px;
+  padding: 14px 22px;
+  font-family: "Roboto", sans-serif;
 }
 
 .order-item__details {
@@ -44,14 +41,38 @@
 }
 
 @media (max-width: 767.98px) {
-  .order-item:not(:first-child) {
-    box-shadow: 0 -0.5px 0 0 rgb(224 226 232 / 100%);
-  }
-
-  .order-item__info {
+  .order-item {
+    display: flex;
     flex-direction: column;
     gap: 16px;
     align-items: flex-start;
-    max-width: 672px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .order-item__details {
+    align-items: center;
+    width: 100%;
+
+    div {
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  .order-item__options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .order-item__price {
+    margin: 0 auto;
+  }
+
+  .order-item__actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 }

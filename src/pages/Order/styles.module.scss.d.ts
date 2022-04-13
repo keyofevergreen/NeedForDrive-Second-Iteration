@@ -4,6 +4,7 @@ declare namespace StylesModuleScssNamespace {
     "order-header": string;
     "order-header__buttons": string;
     "order-header__options": string;
+    "order-list": string;
   }
 }
 

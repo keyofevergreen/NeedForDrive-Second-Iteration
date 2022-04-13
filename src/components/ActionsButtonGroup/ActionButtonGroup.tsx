@@ -1,18 +1,29 @@
 import React from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
+import classNames from 'classnames/bind';
 import CheckMark from '../../assets/CheckMark.component.svg';
 import CancelIcon from '../../assets/CancelIcon.component.svg';
 import SettingsIcon from '../../assets/SettingsIcon.component.svg';
 import styles from './styles.module.scss';
 import useResize from '../../hooks/useResize';
 
-const ActionButtonGroup: React.FC = () => {
+const cx = classNames.bind(styles);
+
+interface IActionButtonGroupProps {
+  className?: string;
+}
+
+const ActionButtonGroup = ({ className }: IActionButtonGroupProps): React.ReactElement => {
   const isVertical = useResize(768, 1024);
 
-  console.log('rerender');
-
   return (
-    <ButtonGroup className={styles['action-group-btn']} vertical={isVertical}>
+    <ButtonGroup
+      className={cx(
+        'action-group-btn',
+        className
+      )}
+      vertical={isVertical}
+    >
       <Button
         variant="outline-primary"
         size="sm"
