@@ -29,7 +29,7 @@ const authReducer = createReducer<AuthState>({
   [setAuth.type]: (state, { payload }) => ({
     ...state,
     isAuth: payload,
-  })
+  }),
 });
 
 export default authReducer;

@@ -1,9 +1,8 @@
 declare namespace StylesModuleScssNamespace {
   export interface IStylesModuleScss {
-    index: string;
-    "index-wrapper": string;
-    index__content: string;
-    "index__nav-xxl": string;
+    footer: string;
+    footer__copyright: string;
+    footer__menu: string;
   }
 }
 

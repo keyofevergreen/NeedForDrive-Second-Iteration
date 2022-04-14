@@ -7,7 +7,7 @@ import { AuthForm } from '../../types/Auth';
 import Logo from '../../assets/logo.component.svg';
 import styles from './styles.module.scss';
 
-const Auth: React.FC = () => {
+const Auth = (): React.ReactElement => {
   const {
     register,
     handleSubmit,
@@ -24,7 +24,10 @@ const Auth: React.FC = () => {
         <meta name="description" content="Home page" />
       </Helmet>
       <div className={styles['auth-wrap']}>
-        <Logo />
+        <div className={styles['logo']}>
+          <Logo />
+          Need for car
+        </div>
         <div className={styles['auth']}>
           <h1>
             Вход
@@ -73,8 +76,8 @@ const Auth: React.FC = () => {
                 />
                 {(errors.password?.message) && (
                   <Form.Text
-                    bsPrefix="input-message"
                     id="password"
+                    bsPrefix="input-message"
                   >
                     {errors.password?.message}
                   </Form.Text>

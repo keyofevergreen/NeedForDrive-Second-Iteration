@@ -1,6 +1,6 @@
 declare namespace StylesModuleScssNamespace {
   export interface IStylesModuleScss {
-    "nav-holder": string;
+    "menu-btn": string;
   }
 }
 

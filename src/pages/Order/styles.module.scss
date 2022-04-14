@@ -1,0 +1,85 @@
+.order-container {
+  width: 100%;
+  min-height: 386px;
+  background-color: #fff;
+  border-radius: 9px;
+  box-shadow: 0 7px 70px 0 rgb(90 97 105 / 10%), 0 10px 10px 0 rgb(90 97 105 / 6%), 0 4px 8px 0 rgb(90 97 105 / 12%),
+    0 2px 0 0 rgb(90 97 105 / 11%);
+}
+
+.order-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  box-shadow: 0 0.5px 0 0 rgb(224 226 232 / 100%), 0 -0.5px 0 0 rgb(224 226 232 / 100%);
+}
+
+.order-header__options {
+  display: flex;
+  gap: 15px;
+
+  :global {
+    .form-select {
+      width: auto;
+      min-width: 110px;
+      max-width: 220px;
+    }
+  }
+}
+
+.order-header__buttons {
+  display: flex;
+  gap: 15px;
+}
+
+@media (max-width: 1023.98px) {
+  .order-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .order-header__buttons {
+    flex-direction: row-reverse;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .order-header {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .order-header__options {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+
+    :global {
+      .form-select {
+        width: 100%;
+        min-width: 110px;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .order-header__buttons {
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .order-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(276px, 320px));
+    gap: 32px;
+    padding: 14px 22px;
+  }
+}
