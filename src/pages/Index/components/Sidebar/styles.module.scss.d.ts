@@ -1,7 +1,6 @@
 declare namespace StylesModuleScssNamespace {
   export interface IStylesModuleScss {
     "nav-item": string;
-    "nav-item-selected": string;
     navigation: string;
     navigation__logo: string;
     navigation__menu: string;

@@ -25,10 +25,7 @@ const store = createStore({
 
 render(
   <Provider store={store}>
-    <Router
-      history={history}
-      basename={process.env.NODE_ENV === 'production' ? '/NeedForDrive-Second-Iteration' : '/'}
-    >
+    <Router>
       <App />
     </Router>
   </Provider>,

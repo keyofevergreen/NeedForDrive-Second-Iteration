@@ -15,8 +15,8 @@ const Order: React.FC = () => {
         <meta name="description" content="Home page" />
       </Helmet>
       <ContentContainer title="Заказы">
-        <div className={styles['order-header']}>
-          <div className={styles['order-header__options']}>
+        <div className="entity-header">
+          <div className="entity-header__options">
             <Form.Select size="sm">
               <option>За день</option>
               <option>За неделю</option>
@@ -39,7 +39,7 @@ const Order: React.FC = () => {
             </Form.Select>
           </div>
 
-          <div className={styles['order-header__buttons']}>
+          <div className="entity-header__buttons">
             <Button
               variant="danger"
               size="sm"

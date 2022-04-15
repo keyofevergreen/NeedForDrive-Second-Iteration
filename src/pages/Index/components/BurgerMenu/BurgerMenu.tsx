@@ -33,7 +33,7 @@ const BurgerMenu = ({ className }: IBurgerMenuProps): React.ReactElement => {
         show={show}
         onHide={handleClose}
       >
-        <Sidebar />
+        <Sidebar onLinkClick={handleClose} />
       </Offcanvas>
     </>
   );

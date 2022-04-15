@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import Logo from '../../../../assets/logo.component.svg';
 import NavIcon1 from '../../../../assets/NavBadge-1.component.svg';
@@ -18,29 +19,36 @@ type NavItem = {
 const navItems: NavItem[] = [
   {
     name: 'Карточка автомобиля',
-    href: '/123',
+    href: '/fuck',
     id: 1,
     icon: <NavIcon1 />,
   },
   {
+    name: 'Заказы',
+    href: '/',
+    id: 3,
+    icon: <NavIcon3 />,
+  },
+  {
     name: 'Список авто',
-    href: '/222',
+    href: '/cars',
     id: 2,
     icon: <NavIcon2 />,
   },
   {
-    name: 'Заказы',
-    href: '/666',
-    id: 3,
-    icon: <NavIcon3 />,
-  }
+    name: 'Города и пункты выдачи',
+    href: '/city',
+    id: 2,
+    icon: <NavIcon2 />,
+  },
 ];
 
 interface ISidebarProps {
   className?: string;
+  onLinkClick?: React.MouseEventHandler;
 }
 
-const Sidebar = ({ className }: ISidebarProps): React.ReactElement => (
+const Sidebar = ({ className, onLinkClick }: ISidebarProps): React.ReactElement => (
   <div
     className={cx(
       'navigation',
@@ -52,24 +60,17 @@ const Sidebar = ({ className }: ISidebarProps): React.ReactElement => (
       Need for car
     </div>
     <nav className={styles['navigation__menu']}>
-      <ul>
-        {
-          navItems.map((item) => (
-            <li
-              className={cx(
-                'nav-item',
-                {
-                  'nav-item-selected': item.href === '/123'
-                }
-              )}
-              key={item.id}
-            >
-              {item.icon}
-              <p>{item.name}</p>
-            </li>
-          ))
-        }
-      </ul>
+      {navItems.map((item) => (
+        <NavLink
+          className={cx('nav-item')}
+          key={item.id}
+          to={item.href}
+          onClick={onLinkClick}
+        >
+          {item.icon}
+          <p>{item.name}</p>
+        </NavLink>
+      ))}
     </nav>
   </div>
 );

@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { Routes, Navigate, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { setAuth } from './store/Auth/actions';
 import { AuthState } from './types/Auth';
+import { Dispatcher } from './types/store';
 import Auth from './pages/Auth/Auth';
 import Index from './pages/Index';
 import Order from './pages/Order/Order';
+import CarsList from './pages/CarsList/CarsList';
 import './assets/styles/global.scss';
-import { Dispatcher } from './types/store';
-import { setAuth } from './store/Auth/actions';
+import PointsAndCitiesList from './pages/PointsAndCitiesList/PointsAndCitiesList';
 
 const App: React.FC = (): React.ReactElement => {
   const dispatch = useDispatch<Dispatcher>();
@@ -25,6 +27,8 @@ const App: React.FC = (): React.ReactElement => {
       <Index>
         <Routes>
           <Route index element={<Order />} />
+          <Route path="cars" element={<CarsList />} />
+          <Route path="city" element={<PointsAndCitiesList />} />
           <Route
             path="*"
             element={<Navigate to="/" />}
@@ -34,15 +38,7 @@ const App: React.FC = (): React.ReactElement => {
     );
   }
   if (!isAuth) {
-    return (
-      <Routes>
-        <Route index element={<Auth />} />
-        <Route
-          path="*"
-          element={<Navigate to="/" />}
-        />
-      </Routes>
-    );
+    return <Auth />;
   }
 };
 
