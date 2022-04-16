@@ -38,7 +38,6 @@ const Order: React.FC = () => {
               <option>Закрытые</option>
             </Form.Select>
           </div>
-
           <div className="entity-header__buttons">
             <Button
               variant="danger"

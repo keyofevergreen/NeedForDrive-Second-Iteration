@@ -1,6 +1,6 @@
 declare namespace StylesModuleScssNamespace {
   export interface IStylesModuleScss {
-    colors: string;
+    "setting-btn": string;
   }
 }
 

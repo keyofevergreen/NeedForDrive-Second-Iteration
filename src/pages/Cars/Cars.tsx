@@ -28,7 +28,7 @@ const cars: Car[] = [
   }
 ];
 
-const CarsList = (): React.ReactElement => {
+const Cars = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
 
   return (
@@ -57,7 +57,6 @@ const CarsList = (): React.ReactElement => {
             <option>Синие</option>
           </Form.Select>
         </div>
-
         <div className="entity-header__buttons">
           <Button
             variant="danger"
@@ -89,6 +88,7 @@ const CarsList = (): React.ReactElement => {
               <th>Стоимость аренды, ₽</th>
               <th>Топливо</th>
               <th>Номер</th>
+              <th />
             </tr>
           </thead>
           <tbody>
@@ -111,4 +111,4 @@ const CarsList = (): React.ReactElement => {
   );
 };
 
-export default CarsList;
+export default Cars;

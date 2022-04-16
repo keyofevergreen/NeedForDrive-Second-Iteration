@@ -1,5 +1,6 @@
 import React from 'react';
 import { Car } from '../../../../types/CarsList';
+import SettingButton from '../../../../components/SettingButton/SettingButton';
 
 const CarItem = ({ name, category, colors, priceMin, priceMax, tank, number }: Car): React.ReactElement => {
   return (
@@ -10,6 +11,9 @@ const CarItem = ({ name, category, colors, priceMin, priceMax, tank, number }: C
       <td>{`от ${priceMin} до ${priceMax}`}</td>
       <td>{`${tank}%`}</td>
       <td>{number}</td>
+      <td>
+        <SettingButton />
+      </td>
     </tr>
   );
 };

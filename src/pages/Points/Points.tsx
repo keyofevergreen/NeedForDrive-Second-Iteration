@@ -2,8 +2,8 @@ import React from 'react';
 import { Button, Form, Table } from 'react-bootstrap';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
-import PointItem from './components/CityItem/PointItem';
-import { Point } from '../../types/PointsAndCitiesList';
+import TableItem from '../../components/TableItem/TableItem';
+import { Point } from '../../types/Points';
 
 const points: Point[] = [
   {
@@ -26,11 +26,11 @@ const points: Point[] = [
   }
 ];
 
-const PointsAndCitiesList = (): React.ReactElement => {
+const Points = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
 
   return (
-    <ContentContainer title="Список городов">
+    <ContentContainer title="Пункты выдачи">
       <div className="entity-header">
         <div className="entity-header__options">
           <Form.Select size="sm">
@@ -39,7 +39,6 @@ const PointsAndCitiesList = (): React.ReactElement => {
             <option>Ульяновск</option>
           </Form.Select>
         </div>
-
         <div className="entity-header__buttons">
           <Button
             variant="danger"
@@ -68,15 +67,18 @@ const PointsAndCitiesList = (): React.ReactElement => {
               <th>Пункт выдачи</th>
               <th>Адрес</th>
               <th>Город</th>
+              <th />
             </tr>
           </thead>
           <tbody>
             {points.map((point) => (
-              <PointItem
+              <TableItem
+                columns={[
+                  point.name,
+                  point.address,
+                  point.city,
+                ]}
                 key={point.id}
-                city={point.city}
-                name={point.name}
-                address={point.address}
               />
             ))}
           </tbody>
@@ -86,4 +88,4 @@ const PointsAndCitiesList = (): React.ReactElement => {
   );
 };
 
-export default PointsAndCitiesList;
+export default Points;
