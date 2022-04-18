@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Form, Table } from 'react-bootstrap';
+import { Form, Table } from 'react-bootstrap';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
+import TableSorting from '../../components/TableSorting/TableSorting';
 import TableItem from '../../components/TableItem/TableItem';
 import { Point } from '../../types/Points';
 
@@ -31,31 +32,13 @@ const Points = (): React.ReactElement => {
 
   return (
     <ContentContainer title="Пункты выдачи">
-      <div className="entity-header">
-        <div className="entity-header__options">
-          <Form.Select size="sm">
-            <option>Все города</option>
-            <option>Санкт-Петербург</option>
-            <option>Ульяновск</option>
-          </Form.Select>
-        </div>
-        <div className="entity-header__buttons">
-          <Button
-            variant="danger"
-            size="sm"
-            type="button"
-          >
-            Сбросить
-          </Button>
-          <Button
-            variant="primary"
-            size="sm"
-            type="button"
-          >
-            Применить
-          </Button>
-        </div>
-      </div>
+      <TableSorting>
+        <Form.Select size="sm">
+          <option>Все города</option>
+          <option>Санкт-Петербург</option>
+          <option>Ульяновск</option>
+        </Form.Select>
+      </TableSorting>
       <div className="table-container">
         <Table
           hover

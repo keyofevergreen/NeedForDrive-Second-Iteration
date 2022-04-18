@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, Form, Table } from 'react-bootstrap';
+import { Form, Table } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
 import { Car } from '../../types/CarsList';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import CarItem from './components/CarItem/CarItem';
 import useResize from '../../hooks/useResize';
+import TableSorting from '../../components/TableSorting/TableSorting';
 
 const cars: Car[] = [
   {
@@ -32,9 +34,14 @@ const Cars = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
 
   return (
-    <ContentContainer title="Автопарк">
-      <div className="entity-header">
-        <div className="entity-header__options">
+    <>
+      <Helmet>
+        <title>Need For Drive - Список авто</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Home page" />
+      </Helmet>
+      <ContentContainer title="Список авто">
+        <TableSorting>
           <Form.Select size="sm">
             <option>Все машины</option>
             <option>Ford</option>
@@ -56,58 +63,42 @@ const Cars = (): React.ReactElement => {
             <option>Красные</option>
             <option>Синие</option>
           </Form.Select>
-        </div>
-        <div className="entity-header__buttons">
-          <Button
-            variant="danger"
-            size="sm"
-            type="button"
+        </TableSorting>
+        <div className="table-container">
+          <Table
+            hover
+            borderless
+            responsive={isResponsive}
           >
-            Сбросить
-          </Button>
-          <Button
-            variant="primary"
-            size="sm"
-            type="button"
-          >
-            Применить
-          </Button>
+            <thead>
+              <tr>
+                <th>Модель</th>
+                <th>Категория</th>
+                <th>Цвета</th>
+                <th>Стоимость аренды, ₽</th>
+                <th>Топливо</th>
+                <th>Номер</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>
+              {cars.map((car) => (
+                <CarItem
+                  key={car.id}
+                  name={car.name}
+                  category={car.category}
+                  colors={car.colors}
+                  priceMin={car.priceMin}
+                  priceMax={car.priceMax}
+                  tank={car.tank}
+                  number={car.number}
+                />
+              ))}
+            </tbody>
+          </Table>
         </div>
-      </div>
-      <div className="table-container">
-        <Table
-          hover
-          borderless
-          responsive={isResponsive}
-        >
-          <thead>
-            <tr>
-              <th>Модель</th>
-              <th>Категория</th>
-              <th>Цвета</th>
-              <th>Стоимость аренды, ₽</th>
-              <th>Топливо</th>
-              <th>Номер</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {cars.map((car) => (
-              <CarItem
-                key={car.id}
-                name={car.name}
-                category={car.category}
-                colors={car.colors}
-                priceMin={car.priceMin}
-                priceMax={car.priceMax}
-                tank={car.tank}
-                number={car.number}
-              />
-            ))}
-          </tbody>
-        </Table>
-      </div>
-    </ContentContainer>
+      </ContentContainer>
+    </>
   );
 };
 

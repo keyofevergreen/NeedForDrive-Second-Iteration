@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import OrderItem from './components/OrderItem/OrderItem';
+import TableSorting from '../../components/TableSorting/TableSorting';
 import carImg from '../../assets/carMock.png';
 import styles from './styles.module.scss';
 
@@ -15,46 +16,28 @@ const Order: React.FC = () => {
         <meta name="description" content="Home page" />
       </Helmet>
       <ContentContainer title="Заказы">
-        <div className="entity-header">
-          <div className="entity-header__options">
-            <Form.Select size="sm">
-              <option>За день</option>
-              <option>За неделю</option>
-              <option>За месяц</option>
-            </Form.Select>
-            <Form.Select size="sm">
-              <option>Elantra</option>
-              <option>Ford</option>
-              <option>Porsche</option>
-            </Form.Select>
-            <Form.Select size="sm">
-              <option>Ульяновск</option>
-              <option>Санкт-Петербург</option>
-              <option>Тольятти</option>
-            </Form.Select>
-            <Form.Select size="sm">
-              <option>В процессе</option>
-              <option>Временные</option>
-              <option>Закрытые</option>
-            </Form.Select>
-          </div>
-          <div className="entity-header__buttons">
-            <Button
-              variant="danger"
-              size="sm"
-              type="button"
-            >
-              Сбросить
-            </Button>
-            <Button
-              variant="primary"
-              size="sm"
-              type="button"
-            >
-              Применить
-            </Button>
-          </div>
-        </div>
+        <TableSorting>
+          <Form.Select size="sm">
+            <option>За день</option>
+            <option>За неделю</option>
+            <option>За месяц</option>
+          </Form.Select>
+          <Form.Select size="sm">
+            <option>Elantra</option>
+            <option>Ford</option>
+            <option>Porsche</option>
+          </Form.Select>
+          <Form.Select size="sm">
+            <option>Ульяновск</option>
+            <option>Санкт-Петербург</option>
+            <option>Тольятти</option>
+          </Form.Select>
+          <Form.Select size="sm">
+            <option>В процессе</option>
+            <option>Временные</option>
+            <option>Закрытые</option>
+          </Form.Select>
+        </TableSorting>
         <div className={styles['order-list']}>
           <OrderItem
             img={carImg}

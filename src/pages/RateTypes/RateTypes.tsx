@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Form, Table } from 'react-bootstrap';
+import { Form, Table } from 'react-bootstrap';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
+import TableSorting from '../../components/TableSorting/TableSorting';
 import TableItem from '../../components/TableItem/TableItem';
 import { Rate } from '../../types/Rates';
 
@@ -28,38 +29,20 @@ const RateTypes = (): React.ReactElement => {
 
   return (
     <ContentContainer title="Типы тарифов">
-      <div className="entity-header">
-        <div className="entity-header__options">
-          <Form.Select size="sm">
-            <option>Все тарифы</option>
-            <option>Месячный</option>
-            <option>Недельный</option>
-            <option>Поминутно</option>
-          </Form.Select>
-          <Form.Select size="sm">
-            <option>Все Е.В.</option>
-            <option>30 дней</option>
-            <option>7 дней</option>
-            <option>Минута</option>
-          </Form.Select>
-        </div>
-        <div className="entity-header__buttons">
-          <Button
-            variant="danger"
-            size="sm"
-            type="button"
-          >
-            Сбросить
-          </Button>
-          <Button
-            variant="primary"
-            size="sm"
-            type="button"
-          >
-            Применить
-          </Button>
-        </div>
-      </div>
+      <TableSorting>
+        <Form.Select size="sm">
+          <option>Все тарифы</option>
+          <option>Месячный</option>
+          <option>Недельный</option>
+          <option>Поминутно</option>
+        </Form.Select>
+        <Form.Select size="sm">
+          <option>Все Е.В.</option>
+          <option>30 дней</option>
+          <option>7 дней</option>
+          <option>Минута</option>
+        </Form.Select>
+      </TableSorting>
       <div className="table-container">
         <Table
           hover

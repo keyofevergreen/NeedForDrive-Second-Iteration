@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Form, Table } from 'react-bootstrap';
+import { Form, Table } from 'react-bootstrap';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
+import TableSorting from '../../components/TableSorting/TableSorting';
 import TableItem from '../../components/TableItem/TableItem';
 import { Category } from '../../types/Category';
 
@@ -21,31 +22,13 @@ const Categories = (): React.ReactElement => {
 
   return (
     <ContentContainer title="Категории">
-      <div className="entity-header">
-        <div className="entity-header__options">
-          <Form.Select size="sm">
-            <option>Все категории</option>
-            <option>Эконом</option>
-            <option>Эконом+</option>
-          </Form.Select>
-        </div>
-        <div className="entity-header__buttons">
-          <Button
-            variant="danger"
-            size="sm"
-            type="button"
-          >
-            Сбросить
-          </Button>
-          <Button
-            variant="primary"
-            size="sm"
-            type="button"
-          >
-            Применить
-          </Button>
-        </div>
-      </div>
+      <TableSorting>
+        <Form.Select size="sm">
+          <option>Все категории</option>
+          <option>Эконом</option>
+          <option>Эконом+</option>
+        </Form.Select>
+      </TableSorting>
       <div className="table-container">
         <Table
           hover
