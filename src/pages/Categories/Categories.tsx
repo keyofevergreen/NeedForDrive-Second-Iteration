@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Table } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import TableSorting from '../../components/TableSorting/TableSorting';
@@ -21,38 +22,45 @@ const Categories = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
 
   return (
-    <ContentContainer title="Категории">
-      <TableSorting>
-        <Form.Select size="sm">
-          <option>Все категории</option>
-          <option>Эконом</option>
-          <option>Эконом+</option>
-        </Form.Select>
-      </TableSorting>
-      <div className="table-container">
-        <Table
-          hover
-          borderless
-          responsive={isResponsive}
-        >
-          <thead>
-            <tr>
-              <th>Категория</th>
-              <th>Описание</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {categories.map((category) => (
-              <TableItem
-                key={category.id}
-                columns={[category.name, category.description]}
-              />
-            ))}
-          </tbody>
-        </Table>
-      </div>
-    </ContentContainer>
+    <>
+      <Helmet>
+        <title>Need For Drive - Категории</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Home page" />
+      </Helmet>
+      <ContentContainer title="Категории">
+        <TableSorting>
+          <Form.Select size="sm">
+            <option>Все категории</option>
+            <option>Эконом</option>
+            <option>Эконом+</option>
+          </Form.Select>
+        </TableSorting>
+        <div className="table-container">
+          <Table
+            hover
+            borderless
+            responsive={isResponsive}
+          >
+            <thead>
+              <tr>
+                <th>Категория</th>
+                <th>Описание</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>
+              {categories.map((category) => (
+                <TableItem
+                  key={category.id}
+                  columns={[category.name, category.description]}
+                />
+              ))}
+            </tbody>
+          </Table>
+        </div>
+      </ContentContainer>
+    </>
   );
 };
 
