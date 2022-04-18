@@ -6,6 +6,7 @@
   padding: 0 27px;
   background-color: #fff;
   box-shadow: 0 2.5px 9.5px 0 rgb(90 97 105 / 12%);
+  z-index: 10;
 }
 
 .header__search {
@@ -127,6 +128,10 @@
 
         .dropdown-item {
           color: var(--dark-blue);
+
+          &:active {
+            color: #fff;
+          }
         }
 
         .dropdown-divider {

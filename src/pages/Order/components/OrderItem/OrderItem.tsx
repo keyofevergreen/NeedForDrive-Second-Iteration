@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
-import ActionButtonGroup from '../../../../components/ActionsButtonGroup/ActionButtonGroup';
+import SettingButton from '../../../../components/SettingButton/SettingButton';
 import styles from './styles.module.scss';
 
 type Options = {
@@ -75,7 +75,7 @@ const OrderItem = (props: IOrderItemProps): React.ReactElement => {
       <span className={styles['order-item__price']}>
         {`${price} ₽`}
       </span>
-      <ActionButtonGroup className={styles['order-item__actions']} />
+      <SettingButton className={styles['order-item__actions']} />
     </div>
   );
 };

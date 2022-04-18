@@ -1,6 +1,8 @@
 declare namespace StylesModuleScssNamespace {
   export interface IStylesModuleScss {
-    "order-list": string;
+    "table-header": string;
+    "table-header__buttons": string;
+    "table-header__sort": string;
   }
 }
 

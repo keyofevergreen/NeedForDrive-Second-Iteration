@@ -139,6 +139,72 @@ h3 {
   }
 }
 
+.table-container {
+  font-size: 12px;
+  padding: 14px 22px;
+}
+
+.table {
+  margin-bottom: 22px;
+  min-width: 768px;
+  max-width: 1600px;
+}
+
+.table-hover > tbody > tr:hover > * {
+  --bs-table-accent-bg: var(--gray-light2);
+}
+
+.setting-btn {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: #5a6169;
+  line-height: 1;
+  border-color: #becad6;
+  border-radius: 4px;
+  background-color: #fff;
+
+  &:hover {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+
+    svg {
+      path {
+        fill: #fff;
+      }
+    }
+  }
+}
+
+.pagination-sm {
+  gap: 2px;
+  margin-bottom: 0;
+
+  .page-item {
+    .page-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 40px;
+      border: none;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+    }
+  }
+
+  .page-item:last-child .page-link {
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+  }
+
+  .page-item:first-child .page-link {
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+  }
+}
+
 @media (max-width: 767.98px) {
   body {
     background-color: #fff;

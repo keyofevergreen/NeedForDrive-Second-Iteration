@@ -1,8 +1,10 @@
 declare namespace StylesModuleScssNamespace {
   export interface IStylesModuleScss {
+    container: string;
     content: string;
     "content-title": string;
     "content-wrap": string;
+    "content__pagination-line": string;
   }
 }
 

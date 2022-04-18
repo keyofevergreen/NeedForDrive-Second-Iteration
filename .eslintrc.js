@@ -12,4 +12,5 @@ module.exports = rockConfig({
   'max-len': 'off',
   '@typescript-eslint/dot-notation': 'off',
   'arrow-body-style': 'off',
+  'no-confusing-arrow': 'off',
 });
