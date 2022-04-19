@@ -205,6 +205,14 @@ h3 {
   }
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
 @media (max-width: 767.98px) {
   body {
     background-color: #fff;

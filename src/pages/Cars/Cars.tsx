@@ -1,36 +1,14 @@
 import React from 'react';
 import { Form, Table } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import { Car } from '../../types/CarsList';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import CarItem from './components/CarItem/CarItem';
 import useResize from '../../hooks/useResize';
 import TableSorting from '../../components/TableSorting/TableSorting';
-
-const cars: Car[] = [
-  {
-    name: 'Ford Focus',
-    category: 'Спорт',
-    colors: ['Белый', 'Синий', 'Черный'],
-    priceMin: 3000,
-    priceMax: 12000,
-    tank: 100,
-    number: 'RUS215ER',
-    id: 1,
-  },
-  {
-    name: 'Ford Mustang',
-    category: 'Спорт',
-    colors: ['Белый', 'Желтый', 'Зеленый'],
-    priceMin: 8000,
-    priceMax: 43000,
-    tank: 80,
-    number: 'RUS777UR',
-    id: 2,
-  }
-];
+import { useCars } from '../../store/Cars/hooks';
 
 const Cars = (): React.ReactElement => {
+  const [cars, carsLoading, carsError] = useCars();
   const isResponsive = useResize(1, 1024);
 
   return (
@@ -82,11 +60,11 @@ const Cars = (): React.ReactElement => {
               </tr>
             </thead>
             <tbody>
-              {cars.map((car) => (
+              {cars && cars.data.map((car) => (
                 <CarItem
                   key={car.id}
                   name={car.name}
-                  category={car.category}
+                  category={car.categoryId.name}
                   colors={car.colors}
                   priceMin={car.priceMin}
                   priceMax={car.priceMax}

@@ -4,10 +4,12 @@ import { Helmet } from 'react-helmet';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import OrderItem from './components/OrderItem/OrderItem';
 import TableSorting from '../../components/TableSorting/TableSorting';
-import carImg from '../../assets/carMock.png';
 import styles from './styles.module.scss';
+import { useOrder } from '../../store/Order/hooks';
 
 const Order: React.FC = () => {
+  const [orders, loading, error] = useOrder({ page: 1 });
+
   return (
     <>
       <Helmet>
@@ -39,38 +41,21 @@ const Order: React.FC = () => {
           </Form.Select>
         </TableSorting>
         <div className={styles['order-list']}>
-          <OrderItem
-            img={carImg}
-            carName="Elantra"
-            city="Ульяновск"
-            address="Нариманова 42"
-            dateRange="12.06.2019 12:00 — 13.06.2019 12:00"
-            color="Голубой"
-            price="4300"
-            options={
-              {
-                fullTank: true,
-                childSeat: false,
-                rightWheel: false,
-              }
-            }
-          />
-          <OrderItem
-            img={carImg}
-            carName="Elantra"
-            city="Ульяновск"
-            address="Нариманова 42"
-            dateRange="12.06.2019 12:00 — 13.06.2019 12:00"
-            color="Голубой"
-            price="4300"
-            options={
-              {
-                fullTank: true,
-                childSeat: false,
-                rightWheel: false,
-              }
-            }
-          />
+          {orders && orders.data.map((order) => (
+            <OrderItem
+              key={order.id}
+              img={order.carId.thumbnail.path}
+              carName={order.carId.name}
+              city={order.cityId.name}
+              address={order.pointId.address}
+              dateRange={`${order.dateFrom} - ${order.dateTo}`}
+              color={order.color}
+              price={order.price}
+              isFullTank={order.isFullTank}
+              isNeedChildChair={order.isNeedChildChair}
+              isRightWheel={order.isRightWheel}
+            />
+          ))}
         </div>
       </ContentContainer>
     </>

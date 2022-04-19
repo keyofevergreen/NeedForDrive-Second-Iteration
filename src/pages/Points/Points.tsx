@@ -1,35 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Form, Table } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import TableSorting from '../../components/TableSorting/TableSorting';
 import TableItem from '../../components/TableItem/TableItem';
-import { Point } from '../../types/Points';
-
-const points: Point[] = [
-  {
-    name: 'Торговый центр Джуниор',
-    address: 'Улица Пушкина 24',
-    city: 'Санкт-Петербург',
-    id: 1,
-  },
-  {
-    name: 'Академия №666',
-    address: 'Проспект Сеньоров-разработчиков 67',
-    city: 'Ульяновск',
-    id: 2,
-  },
-  {
-    name: 'Симбирсофтово',
-    address: 'поселок Симбирсофтово',
-    city: 'Нижне-Симбирсофтово',
-    id: 3,
-  }
-];
+import { PointsState } from '../../types/Points';
 
 const Points = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
+
+  const { points, error, loading } = useSelector<{
+    points: PointsState;
+  }, PointsState>((state) => state.points);
 
   return (
     <>
@@ -61,12 +45,12 @@ const Points = (): React.ReactElement => {
               </tr>
             </thead>
             <tbody>
-              {points.map((point) => (
+              {points && points.data.map((point) => (
                 <TableItem
                   columns={[
                     point.name,
                     point.address,
-                    point.city,
+                    point.cityId?.name || 'Не указан',
                   ]}
                   key={point.id}
                 />

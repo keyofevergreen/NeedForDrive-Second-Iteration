@@ -1,6 +1,15 @@
+import { RateType } from './RateTypes';
+
+export interface RateState {
+  rates: Rate[] | null,
+  loading: boolean,
+  error: string | null,
+}
+
 export type Rate = {
-  name: string,
-  unit: string,
-  price?: number,
-  id?: number,
+  price: number,
+  id: string,
+  updatedAt?: number,
+  createdAt?: number,
+  rateTypeId: RateType | null,
 };

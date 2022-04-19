@@ -5,20 +5,10 @@ import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import TableSorting from '../../components/TableSorting/TableSorting';
 import TableItem from '../../components/TableItem/TableItem';
-import { Category } from '../../types/Category';
-
-const categories: Category[] = [
-  {
-    name: 'Эконом',
-    description: 'Экономные машины',
-  },
-  {
-    name: 'Эконом+',
-    description: 'Комфортные машины среднего класса',
-  }
-];
+import { useCategory } from '../../store/Category/hooks';
 
 const Categories = (): React.ReactElement => {
+  const [categories, loading, error] = useCategory();
   const isResponsive = useResize(1, 1024);
 
   return (
@@ -50,7 +40,7 @@ const Categories = (): React.ReactElement => {
               </tr>
             </thead>
             <tbody>
-              {categories.map((category) => (
+              {categories && categories.map((category) => (
                 <TableItem
                   key={category.id}
                   columns={[category.name, category.description]}

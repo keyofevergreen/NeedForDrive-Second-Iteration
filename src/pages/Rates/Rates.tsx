@@ -1,35 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Form, Table } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import TableSorting from '../../components/TableSorting/TableSorting';
 import TableItem from '../../components/TableItem/TableItem';
-import { Rate } from '../../types/Rates';
-
-const rates: Rate[] = [
-  {
-    name: 'Месячный',
-    unit: '30 дней',
-    price: 24000,
-    id: 1,
-  },
-  {
-    name: 'Недельный',
-    unit: '7 дней',
-    price: 5000,
-    id: 2,
-  },
-  {
-    name: 'Поминутно',
-    unit: 'минута',
-    price: 15,
-    id: 3,
-  }
-];
+import { RateState } from '../../types/Rates';
 
 const Rates = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
+
+  const { rates, error, loading } = useSelector<{
+    rates: RateState;
+  }, RateState>((state) => state.rates);
 
   return (
     <>
@@ -68,10 +52,10 @@ const Rates = (): React.ReactElement => {
               </tr>
             </thead>
             <tbody>
-              {rates.map((rate) => (
+              {rates && rates.map((rate) => (
                 <TableItem
                   key={rate.id}
-                  columns={[rate.name, rate.unit, rate.price]}
+                  columns={[rate.rateTypeId?.name, rate.rateTypeId?.unit, rate.price]}
                 />
               ))}
             </tbody>

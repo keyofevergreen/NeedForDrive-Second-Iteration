@@ -2,12 +2,7 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import SettingButton from '../../../../components/SettingButton/SettingButton';
 import styles from './styles.module.scss';
-
-type Options = {
-  fullTank: boolean
-  childSeat: boolean,
-  rightWheel: boolean,
-};
+import { imageOnErrorHandler } from '../../../../utils/helpers/imageOnErrorHandler';
 
 interface IOrderItemProps {
   img: string,
@@ -16,17 +11,25 @@ interface IOrderItemProps {
   address: string,
   dateRange: string,
   color: string,
-  price: string,
-  options: Options,
+  price: number,
+  isFullTank: boolean,
+  isNeedChildChair: boolean,
+  isRightWheel: boolean,
 }
 
 const OrderItem = (props: IOrderItemProps): React.ReactElement => {
-  const { img, carName, city, address, dateRange, color, price, options } = props;
+  const { img, carName, city, address, dateRange, color, price, isFullTank, isNeedChildChair, isRightWheel } = props;
 
   return (
     <div className={styles['order-item']}>
       <div className={styles['order-item__details']}>
-        <img src={img} alt={carName} />
+        <img
+          src={img}
+          alt={carName}
+          onError={imageOnErrorHandler}
+          crossOrigin="anonymous"
+          referrerPolicy="origin"
+        />
         <div>
           <span>
             <strong>
@@ -54,21 +57,21 @@ const OrderItem = (props: IOrderItemProps): React.ReactElement => {
           type="checkbox"
           id="checkbox-1"
           label="Полный бак"
-          defaultChecked={options.fullTank}
+          defaultChecked={isFullTank}
           disabled
         />
         <Form.Check
           type="checkbox"
           id="checkbox-1"
           label="Детское кресло"
-          defaultChecked={options.childSeat}
+          defaultChecked={isNeedChildChair}
           disabled
         />
         <Form.Check
           type="checkbox"
           id="checkbox-1"
           label="Правый руль"
-          defaultChecked={options.rightWheel}
+          defaultChecked={isRightWheel}
           disabled
         />
       </div>
