@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatcher } from '../../types/store';
 import { AuthForm, AuthState } from '../../types/Auth';
-import { fetchAuthToken } from './thunks';
-import { setAuth } from './actions';
+import { fetchAuthToken } from '../../store/Auth/thunks';
+import { setAuth } from '../../store/Auth/actions';
 
 export const useAuth = (form: AuthForm | null): [boolean, string | null] => {
   const dispatch = useDispatch<Dispatcher>();

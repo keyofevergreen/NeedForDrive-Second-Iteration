@@ -10,10 +10,6 @@ export interface OrderState {
   error: string | null,
 }
 
-export interface IFetchOrderProps {
-  page: number,
-}
-
 export type Order = {
   updatedAt?: number,
   createdAt?: number,
@@ -36,4 +32,23 @@ export type OrderResponse = {
   fields: object,
   count: number,
   data: Order[] | null,
+};
+
+export type OrderAxiosConfig = {
+  params?: OrderParams,
+};
+
+export type OrderParams = {
+  page?: number,
+  limit?: number,
+  tank?: string,
+};
+
+export type OrderSort = {
+  cityId?: string,
+  date?: string | number,
+  isFullTank?: boolean,
+  isNeedChildChair?: boolean,
+  isRightWheel?: boolean,
+  orderStatusId?: string | null,
 };

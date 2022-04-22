@@ -10,6 +10,7 @@ import rateTypesReducer from './RateTypes/reducer';
 import pointsReducer from './Points/reducer';
 import categoryReducer from './Category/reducer';
 import rateReducer from './Rates/reducer';
+import searchReducer from './Search/reducer';
 
 const createStore = ({
   services,
@@ -27,6 +28,7 @@ const createStore = ({
       rateTypes: rateTypesReducer,
       orderStatus: orderStatusReducer,
       category: categoryReducer,
+      search: searchReducer,
     },
     devTools: isDevelopment(),
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({

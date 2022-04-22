@@ -4,7 +4,7 @@ import { requestCities, requestCitiesError, requestCitiesSuccess } from './actio
 export const fetchCities = (): ThunkResult => async (dispatch, getState, { services }) => {
   try {
     dispatch(requestCities());
-    const { data } = await services.table.getCities();
+    const { data } = await services.cities.getCities();
     dispatch(requestCitiesSuccess(data.data));
   } catch (error) {
     dispatch(requestCitiesError(error.message));

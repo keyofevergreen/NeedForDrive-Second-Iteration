@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchOrder } from './thunks';
+import { fetchOrder } from '../../store/Order/thunks';
 import { Dispatcher } from '../../types/store';
-import { IFetchOrderProps, OrderResponse, OrderState } from '../../types/Order';
+import { OrderResponse, OrderSort, OrderState } from '../../types/Order';
 
-export const useOrder = ({ page }: IFetchOrderProps): [OrderResponse, boolean, string | null] => {
+export const useOrder = (sorts: OrderSort, page: number): [OrderResponse, boolean, string | null] => {
   const dispatch = useDispatch<Dispatcher>();
   const { orders, error, loading } = useSelector<{
     order: OrderState;
   }, OrderState>((state) => state.order);
 
   useEffect(() => {
-    dispatch(fetchOrder({ page }));
-  }, []);
+    dispatch(fetchOrder(sorts, page));
+  }, [sorts, page]);
 
   return [orders, loading, error];
 };

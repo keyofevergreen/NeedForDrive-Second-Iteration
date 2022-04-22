@@ -18,3 +18,13 @@ export type PointResponse = {
   count: number,
   data: Point[],
 };
+
+export type PointsAxiosConfig = {
+  params?: PointsParams,
+};
+
+export type PointsParams = {
+  tank?:string,
+  page?: number,
+  limit?: number,
+};

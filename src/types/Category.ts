@@ -6,7 +6,7 @@ export interface CategoryState {
 
 export type Category = {
   name: string,
-  description: string,
+  description?: string,
   id: number,
   updatedAt?: number,
   createdAt?: number,

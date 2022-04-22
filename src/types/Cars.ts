@@ -33,3 +33,20 @@ export type Thumbnail = {
   originalname: string,
   mimetype: string,
 };
+
+export type CarsAxiosConfig = {
+  params?: CarsParams,
+};
+
+export type CarsParams = {
+  page?: number,
+  limit?: number,
+  tank?: string,
+};
+
+export type CarSort = {
+  categoryId: string,
+  tank: string,
+  lowerPrice: number,
+  higherPrice: number,
+};

@@ -8,8 +8,8 @@ interface ITableItem {
 const TableItem = ({ columns }: ITableItem): React.ReactElement => {
   return (
     <tr>
-      {columns.map((columnData => (
-        <td key={columnData}>
+      {columns.map(((columnData, index) => (
+        <td key={`${columnData}-${index}`}>
           {columnData}
         </td>
       )))}

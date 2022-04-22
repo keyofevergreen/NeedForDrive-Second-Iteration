@@ -1,15 +1,18 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
+import { format, toDate } from 'date-fns';
+import { imageOnErrorHandler } from '../../../../utils/helpers/imageOnErrorHandler';
 import SettingButton from '../../../../components/SettingButton/SettingButton';
 import styles from './styles.module.scss';
-import { imageOnErrorHandler } from '../../../../utils/helpers/imageOnErrorHandler';
 
 interface IOrderItemProps {
   img: string,
   carName: string,
   city: string,
   address: string,
-  dateRange: string,
+  dateFrom: number,
+  dateTo: number,
+  orderStatusId: string,
   color: string,
   price: number,
   isFullTank: boolean,
@@ -18,22 +21,25 @@ interface IOrderItemProps {
 }
 
 const OrderItem = (props: IOrderItemProps): React.ReactElement => {
-  const { img, carName, city, address, dateRange, color, price, isFullTank, isNeedChildChair, isRightWheel } = props;
+  const { img, carName, city, address, dateFrom, dateTo, color, price, isFullTank, isNeedChildChair, isRightWheel, orderStatusId } = props;
 
   return (
-    <div className={styles['order-item']}>
-      <div className={styles['order-item__details']}>
+    <tr>
+      <td>
         <img
+          className={styles['order-item__img']}
           src={img}
           alt={carName}
           onError={imageOnErrorHandler}
           crossOrigin="anonymous"
           referrerPolicy="origin"
         />
-        <div>
+      </td>
+      <td>
+        <div className={styles['order-item__details']}>
           <span>
             <strong>
-              {`${carName.toUpperCase()} `}
+              {`${carName ? carName.toUpperCase() : 'Машина не указана'} `}
             </strong>
             в
             <strong>
@@ -42,44 +48,57 @@ const OrderItem = (props: IOrderItemProps): React.ReactElement => {
             {` ${address}`}
           </span>
           <span>
-            {dateRange}
+            {
+              `${dateFrom ? format(toDate(dateFrom), 'dd.MM.yyyy HH:mm') : 'Не указано'}
+              —
+              ${dateTo ? format(toDate(dateTo), 'dd.MM.yyyy HH:mm') : 'Не указано'}`
+            }
           </span>
-          <span>
+          <span className={styles['order-item__colors']}>
             Цвет:
             <strong>
               {` ${color}`}
             </strong>
           </span>
         </div>
-      </div>
-      <div className={styles['order-item__options']}>
-        <Form.Check
-          type="checkbox"
-          id="checkbox-1"
-          label="Полный бак"
-          defaultChecked={isFullTank}
-          disabled
-        />
-        <Form.Check
-          type="checkbox"
-          id="checkbox-1"
-          label="Детское кресло"
-          defaultChecked={isNeedChildChair}
-          disabled
-        />
-        <Form.Check
-          type="checkbox"
-          id="checkbox-1"
-          label="Правый руль"
-          defaultChecked={isRightWheel}
-          disabled
-        />
-      </div>
-      <span className={styles['order-item__price']}>
-        {`${price} ₽`}
-      </span>
-      <SettingButton className={styles['order-item__actions']} />
-    </div>
+      </td>
+      <td>
+        <div className={styles['order-item__options']}>
+          <Form.Check
+            type="checkbox"
+            id="checkbox-1"
+            label="Полный бак"
+            defaultChecked={isFullTank}
+            disabled
+          />
+          <Form.Check
+            type="checkbox"
+            id="checkbox-1"
+            label="Детское кресло"
+            defaultChecked={isNeedChildChair}
+            disabled
+          />
+          <Form.Check
+            type="checkbox"
+            id="checkbox-1"
+            label="Правый руль"
+            defaultChecked={isRightWheel}
+            disabled
+          />
+        </div>
+      </td>
+      <td>
+        <span className={styles['order-item__price']}>
+          {`${price} ₽`}
+        </span>
+      </td>
+      <td>
+        {orderStatusId}
+      </td>
+      <td>
+        <SettingButton className={styles['order-item__actions']} />
+      </td>
+    </tr>
   );
 };
 

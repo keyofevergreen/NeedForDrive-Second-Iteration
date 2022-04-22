@@ -1,7 +1,8 @@
 import React from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
-import NotiIcon from '../../../../assets/Notifications.component.svg';
 import AccountDropdown from './AccountDropdown/AccountDropdown';
+import Search from './Search/Search';
+import NotiIcon from '../../../../assets/Notifications.component.svg';
 import styles from './styles.module.scss';
 
 const Header: React.FC = () => {
@@ -9,10 +10,7 @@ const Header: React.FC = () => {
     <div className={styles['header']}>
       <BurgerMenu className={styles['header__menu-btn']} />
       <div className={styles['header__search']}>
-        <input
-          type="text"
-          placeholder="Поиск..."
-        />
+        <Search />
       </div>
       <button
         type="button"

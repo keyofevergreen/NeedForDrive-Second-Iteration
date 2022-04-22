@@ -4,7 +4,7 @@ import { requestCategory, requestCategoryError, requestCategorySuccess } from '.
 export const fetchCategory = (): ThunkResult => async (dispatch, getState, { services }) => {
   try {
     dispatch(requestCategory());
-    const { data } = await services.table.getCategory();
+    const { data } = await services.category.getCategory();
     dispatch(requestCategorySuccess(data.data));
   } catch (error) {
     dispatch(requestCategoryError(error.message));

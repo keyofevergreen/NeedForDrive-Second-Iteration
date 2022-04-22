@@ -1,5 +1,6 @@
 declare namespace StylesModuleScssNamespace {
   export interface IStylesModuleScss {
+    "close-btn": string;
     header: string;
     header__account: string;
     "header__menu-btn": string;

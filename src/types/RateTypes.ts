@@ -13,5 +13,18 @@ export type RateType = {
 export type RateTypeResponse = {
   fields: object,
   count: number,
-  data: RateType[],
+  data: RateType[] | null,
+};
+
+export type RateTypesAxiosConfig = {
+  params?: RateTypesParams,
+};
+
+export type RateTypesParams = {
+  name?:string,
+  page?: number,
+  limit?: number,
+  isFullTank?: boolean,
+  isNeedChildChair?: boolean,
+  isRightWheel?: boolean,
 };

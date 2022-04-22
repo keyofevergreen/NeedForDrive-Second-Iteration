@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import SettingButton from '../../../../components/SettingButton/SettingButton';
 
 interface ICarProps {
@@ -28,7 +29,11 @@ const CarItem = ({ name, category, colors, priceMin, priceMax, tank, number }: I
         </div>
       </td>
       <td>{tank ? `${tank}%` : 'Неизвестно'}</td>
-      <td className="uppercase">{number}</td>
+      <td
+        className={classNames(number ? 'uppercase' : '')}
+      >
+        {number ? `${number}` : 'Не указан'}
+      </td>
       <td>
         <SettingButton />
       </td>

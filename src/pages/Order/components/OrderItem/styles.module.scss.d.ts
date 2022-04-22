@@ -1,9 +1,9 @@
 declare namespace StylesModuleScssNamespace {
   export interface IStylesModuleScss {
     "order-item": string;
-    "order-item__actions": string;
+    "order-item__colors": string;
     "order-item__details": string;
-    "order-item__options": string;
+    "order-item__img": string;
     "order-item__price": string;
   }
 }
