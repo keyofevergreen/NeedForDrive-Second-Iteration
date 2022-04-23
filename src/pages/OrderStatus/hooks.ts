@@ -24,7 +24,13 @@ export const useSortedOrderStatus = (orderStatuses: OrderStatus[]): OrderStatus[
   }, SearchState>((state) => state.search);
 
   if (orderStatuses) {
-    return orderStatuses.filter((orderStatus) => orderStatus.name.includes(searchSort));
+    return orderStatuses.filter((orderStatus) => {
+      return orderStatus.name
+        .toLowerCase()
+        .includes(
+          searchSort.toLowerCase()
+        );
+    });
   }
   return [];
 };

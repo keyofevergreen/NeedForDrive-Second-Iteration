@@ -24,7 +24,13 @@ export const useSearchSortedCities = (cities: City[]): City[] => {
   }, SearchState>((state) => state.search);
 
   if (cities) {
-    return cities.filter((city) => city.name.includes(searchSort));
+    return cities.filter((city) => {
+      return city.name
+        .toLowerCase()
+        .includes(
+          searchSort.toLowerCase()
+        );
+    });
   }
   return [];
 };

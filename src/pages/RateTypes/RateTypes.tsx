@@ -12,7 +12,7 @@ const RateTypes = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
   const [nameSort, setNameSort] = useState<string | null>('Все тарифы');
   const [page, setPage] = useState<number>(0);
-  const [sorts, setSorts] = useState<string | null>(null);
+  const [sorts, setSorts] = useState<string | null>(nameSort);
   const [rateTypes, loading, error] = useRateTypes(sorts, page);
 
   const submitSort = (): void => {
@@ -20,7 +20,7 @@ const RateTypes = (): React.ReactElement => {
   };
 
   const resetSort = (): void => {
-    setSorts(null);
+    setSorts('Все тарифы');
     setNameSort('Все тарифы');
     setPage(0);
   };

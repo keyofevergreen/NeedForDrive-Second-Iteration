@@ -24,7 +24,13 @@ export const useSearchSortedCategory = (categories: Category[]): Category[] => {
   }, SearchState>((state) => state.search);
 
   if (categories) {
-    return categories.filter((category) => category.name.includes(searchSort));
+    return categories.filter((category) => {
+      return category.name
+        .toLowerCase()
+        .includes(
+          searchSort.toLowerCase()
+        );
+    });
   }
   return [];
 };
