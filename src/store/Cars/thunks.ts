@@ -8,6 +8,6 @@ export const fetchCars = (config: CarsAxiosConfig): ThunkResult => async (dispat
     const { data } = await services.table.getEntities('car', config);
     dispatch(requestCarsSuccess(data));
   } catch (error) {
-    dispatch(requestCarsError(error.message));
+    dispatch(requestCarsError(error.response.status));
   }
 };

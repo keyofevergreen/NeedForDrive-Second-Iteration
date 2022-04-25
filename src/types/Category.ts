@@ -1,7 +1,7 @@
 export interface CategoryState {
   category: Category[] | null,
   loading: boolean,
-  error: string | null,
+  error: number | null,
 }
 
 export type Category = {

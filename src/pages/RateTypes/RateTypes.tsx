@@ -7,6 +7,7 @@ import TableSorting from '../../components/TableSorting/TableSorting';
 import TableItem from '../../components/TableItem/TableItem';
 import Spin from '../../components/Spin/Spin';
 import { useRateTypes } from './hooks';
+import ErrorProvider from '../../components/ErrorProvider/ErrorProvider';
 
 const filterOptions: string[] = [
   'Все тарифы',
@@ -24,7 +25,7 @@ const RateTypes = (): React.ReactElement => {
   const [nameFilter, setNameFilter] = useState<string | null>('Все тарифы');
   const [page, setPage] = useState<number>(0);
   const [filters, setFilters] = useState<string | null>(nameFilter);
-  const [rateTypes, loading, error] = useRateTypes(filters, page);
+  const [rateTypes, loading, rateTypesError] = useRateTypes(filters, page);
 
   const submitFilter = (): void => {
     setFilters(nameFilter);
@@ -43,61 +44,63 @@ const RateTypes = (): React.ReactElement => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Home page" />
       </Helmet>
-      <ContentContainer
-        title="Типы тарифов"
-        page={page}
-        itemCount={rateTypes?.count}
-        onSetPage={setPage}
-      >
-        <TableSorting
-          onSubmitFilter={submitFilter}
-          onResetFilter={resetFilter}
-          isFiltered={filters !== 'Все тарифы'}
+      <ErrorProvider errorStatus={[rateTypesError]}>
+        <ContentContainer
+          title="Типы тарифов"
+          page={page}
+          itemCount={rateTypes?.count}
+          onSetPage={setPage}
         >
-          <Form.Select
-            size="sm"
-            value={nameFilter}
-            onChange={(e) => setNameFilter(e.target.value)}
+          <TableSorting
+            onSubmitFilter={submitFilter}
+            onResetFilter={resetFilter}
+            isFiltered={filters !== 'Все тарифы'}
           >
-            {filterOptions.map((option) => (
-              <option value={option} key={option}>{option}</option>
-            ))}
-          </Form.Select>
-        </TableSorting>
-        <div className="table-container">
-          {rateTypes && !loading && !error && (
-            <Table
-              hover
-              borderless
-              responsive={isResponsive}
+            <Form.Select
+              size="sm"
+              value={nameFilter}
+              onChange={(e) => setNameFilter(e.target.value)}
             >
-              <thead>
-                <tr>
-                  <th>Название</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rateTypes && rateTypes.data.map((rate) => (
-                  <TableItem
-                    key={rate.id}
-                    columns={[rate.name, rate.unit]}
-                  />
-                ))}
-                {rateTypes && rateTypes.data.length === 0 && (
+              {filterOptions.map((option) => (
+                <option value={option} key={option}>{option}</option>
+              ))}
+            </Form.Select>
+          </TableSorting>
+          <div className="table-container">
+            {rateTypes && !loading && (
+              <Table
+                hover
+                borderless
+                responsive={isResponsive}
+              >
+                <thead>
                   <tr>
-                    <td>
-                      По вашему запросу ничего не найдено
-                    </td>
+                    <th>Название</th>
                   </tr>
-                )}
-              </tbody>
-            </Table>
-          )}
-          {loading && (
-            <Spin />
-          )}
-        </div>
-      </ContentContainer>
+                </thead>
+                <tbody>
+                  {rateTypes && rateTypes.data.map((rate) => (
+                    <TableItem
+                      key={rate.id}
+                      columns={[rate.name, rate.unit]}
+                    />
+                  ))}
+                  {rateTypes && rateTypes.data.length === 0 && (
+                    <tr>
+                      <td>
+                        По вашему запросу ничего не найдено
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </Table>
+            )}
+            {loading && (
+              <Spin />
+            )}
+          </div>
+        </ContentContainer>
+      </ErrorProvider>
     </>
   );
 };

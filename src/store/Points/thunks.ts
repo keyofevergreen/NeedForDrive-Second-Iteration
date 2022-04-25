@@ -7,6 +7,6 @@ export const fetchPoints = (config): ThunkResult => async (dispatch, getState, {
     const { data } = await services.table.getEntities('point', config);
     dispatch(requestPointsSuccess(data));
   } catch (error) {
-    dispatch(requestPointsError(error.message));
+    dispatch(requestPointsError(error.response.status));
   }
 };

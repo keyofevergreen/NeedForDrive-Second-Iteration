@@ -3,7 +3,7 @@ import { RateType } from './RateTypes';
 export interface RateState {
   rates: RateResponse | null,
   loading: boolean,
-  error: string | null,
+  error: number | null,
 }
 
 export type Rate = {

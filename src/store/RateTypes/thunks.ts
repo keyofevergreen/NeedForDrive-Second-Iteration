@@ -7,6 +7,6 @@ export const fetchRateTypes = (config: object): ThunkResult => async (dispatch, 
     const { data } = await services.table.getEntities('rateType', config);
     dispatch(requestRateTypesSuccess(data));
   } catch (error) {
-    dispatch(requestRateTypesError(error.message));
+    dispatch(requestRateTypesError(error.response.status));
   }
 };

@@ -4,7 +4,7 @@ import { Dispatcher } from '../../types/store';
 import { PointResponse, PointsAxiosConfig, PointsState } from '../../types/Points';
 import { fetchPoints } from '../../store/Points/thunks';
 
-export const usePoints = (cityId: string | null, page: number): [PointResponse, boolean, string | null] => {
+export const usePoints = (cityId: string | null, page: number): [PointResponse, boolean, number | null] => {
   const dispatch = useDispatch<Dispatcher>();
   const { points, error, loading } = useSelector<{
     points: PointsState;

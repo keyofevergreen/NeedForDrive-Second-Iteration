@@ -4,4 +4,4 @@ export const requestPoints = createAction('Points is fetching...');
 
 export const requestPointsSuccess = createAction<object>('Points has already fetched');
 
-export const requestPointsError = createAction<string>('Points fetched with error');
+export const requestPointsError = createAction<number>('Points fetched with error');

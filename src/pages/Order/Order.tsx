@@ -3,6 +3,7 @@ import { Table } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { useOrder } from './hooks';
 import { OrderSort } from '../../types/Order';
+import ErrorProvider from '../../components/ErrorProvider/ErrorProvider';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import OrderItem from './components/OrderItem/OrderItem';
 import TableSorting from '../../components/TableSorting/TableSorting';
@@ -27,7 +28,7 @@ const Order: React.FC = () => {
     isNeedChildChair: isNeedChildChairFilter,
     isRightWheel: isRightWheelFilter,
   });
-  const [orders, loading, error] = useOrder(filters, page);
+  const [orders, ordersLoading, ordersError] = useOrder(filters, page);
 
   const submitFilter = (): void => {
     setFilters({
@@ -66,69 +67,71 @@ const Order: React.FC = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Home page" />
       </Helmet>
-      <ContentContainer
-        title="Заказы"
-        page={page}
-        itemCount={orders?.count}
-        onSetPage={setPage}
-      >
-        <TableSorting
-          onSubmitFilter={submitFilter}
-          onResetFilter={resetFilter}
-          isFiltered={
-            filters.cityId !== 'Все города' ||
-            filters.orderStatusId !== 'Все заказы' ||
-            filters.date !== 'За все время' ||
-            filters.isFullTank !== false ||
-            filters.isNeedChildChair !== false ||
-            filters.isRightWheel !== false
-          }
+      <ErrorProvider errorStatus={[ordersError]}>
+        <ContentContainer
+          title="Заказы"
+          page={page}
+          itemCount={orders?.count}
+          onSetPage={setPage}
         >
-          <OrderFilters
-            dateFilter={dateFilter}
-            setDateFilter={setDateFilter}
-            cityFilter={cityFilter}
-            setCityFilter={setCityFilter}
-            orderStatusFilter={orderStatusFilter}
-            setOrderStatusFilter={setOrderStatusFilter}
-            setFullTankFilter={setFullTankFilter}
-            isFullTankFilter={isFullTankFilter}
-            setNeedChildChairFilter={setNeedChildChairFilter}
-            isNeedChildChairFilter={isNeedChildChairFilter}
-            setRightWheelFilter={setRightWheelFilter}
-            isRightWheelFilter={isRightWheelFilter}
-          />
-        </TableSorting>
-        <div className="table-container">
-          {orders && !loading && !error && (
-            <Table
-              hover
-              borderless
-              responsive={isResponsive}
-              style={{ tableLayout: 'fixed' }}
-            >
-              <tbody>
-                {orders && orders.data.map((order) => (
-                  <OrderItem
-                    key={order.id}
-                    order={order}
-                  />
-                ))}
-                {orders && orders.data.length === 0 && (
-                  <tr>
-                    <td>
-                      По вашему запросу ничего не найдено
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </Table>
-          )}
-          {loading && (
-            <Spin />
-          )}
-        </div>
-      </ContentContainer>
+          <TableSorting
+            onSubmitFilter={submitFilter}
+            onResetFilter={resetFilter}
+            isFiltered={
+              filters.cityId !== 'Все города' ||
+              filters.orderStatusId !== 'Все заказы' ||
+              filters.date !== 'За все время' ||
+              filters.isFullTank !== false ||
+              filters.isNeedChildChair !== false ||
+              filters.isRightWheel !== false
+            }
+          >
+            <OrderFilters
+              dateFilter={dateFilter}
+              setDateFilter={setDateFilter}
+              cityFilter={cityFilter}
+              setCityFilter={setCityFilter}
+              orderStatusFilter={orderStatusFilter}
+              setOrderStatusFilter={setOrderStatusFilter}
+              setFullTankFilter={setFullTankFilter}
+              isFullTankFilter={isFullTankFilter}
+              setNeedChildChairFilter={setNeedChildChairFilter}
+              isNeedChildChairFilter={isNeedChildChairFilter}
+              setRightWheelFilter={setRightWheelFilter}
+              isRightWheelFilter={isRightWheelFilter}
+            />
+          </TableSorting>
+          <div className="table-container">
+            {orders && !ordersLoading && (
+              <Table
+                hover
+                borderless
+                responsive={isResponsive}
+                style={{ tableLayout: 'fixed' }}
+              >
+                <tbody>
+                  {orders && orders.data.map((order) => (
+                    <OrderItem
+                      key={order.id}
+                      order={order}
+                    />
+                  ))}
+                  {orders && orders.data.length === 0 && (
+                    <tr>
+                      <td>
+                        По вашему запросу ничего не найдено
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </Table>
+            )}
+            {ordersLoading && (
+              <Spin />
+            )}
+          </div>
+        </ContentContainer>
+      </ErrorProvider>
     </>
   );
 };
