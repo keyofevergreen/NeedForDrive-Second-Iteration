@@ -4,7 +4,7 @@ import { fetchRateTypes } from '../../store/RateTypes/thunks';
 import { Dispatcher } from '../../types/store';
 import { RateTypeResponse, RateTypesState } from '../../types/RateTypes';
 
-export const useRateTypes = (name?: string | null, page?: number): [RateTypeResponse, boolean, string | null] => {
+export const useRateTypes = (name?: string | null, page?: number): [RateTypeResponse, boolean, number | null] => {
   const dispatch = useDispatch<Dispatcher>();
   const { rateTypes, loading, error } = useSelector<{
     rateTypes: RateTypesState;

@@ -5,7 +5,7 @@ import { Dispatcher } from '../../types/store';
 import { Category, CategoryState } from '../../types/Category';
 import { SearchState } from '../../types/Search';
 
-export const useCategory = (): [Category[], boolean, string | null] => {
+export const useCategory = (): [Category[], boolean, number | null] => {
   const dispatch = useDispatch<Dispatcher>();
   const { category, loading, error } = useSelector<{
     category: CategoryState;

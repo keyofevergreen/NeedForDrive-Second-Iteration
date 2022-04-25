@@ -3,7 +3,7 @@ import { City } from './Cities';
 export interface PointsState {
   points: PointResponse | null,
   loading: boolean,
-  error: string | null,
+  error: number | null,
 }
 
 export type Point = {

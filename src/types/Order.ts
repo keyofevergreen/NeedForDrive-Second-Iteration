@@ -7,7 +7,7 @@ import { Rate } from './Rates';
 export interface OrderState {
   orders: OrderResponse | null,
   loading: boolean,
-  error: string | null,
+  error: number | null,
 }
 
 export type Order = {

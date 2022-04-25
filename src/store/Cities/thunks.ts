@@ -7,6 +7,6 @@ export const fetchCities = (): ThunkResult => async (dispatch, getState, { servi
     const { data } = await services.cities.getCities();
     dispatch(requestCitiesSuccess(data.data));
   } catch (error) {
-    dispatch(requestCitiesError(error.message));
+    dispatch(requestCitiesError(error.response.status));
   }
 };

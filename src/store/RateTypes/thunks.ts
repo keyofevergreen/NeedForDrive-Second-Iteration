@@ -7,6 +7,6 @@ export const fetchRateTypes = (name?: string | null, page?: number): ThunkResult
     const { data } = await services.rateTypes.getRateTypes(name, page);
     dispatch(requestRateTypesSuccess(data));
   } catch (error) {
-    dispatch(requestRateTypesError(error.message));
+    dispatch(requestRateTypesError(error.response.status));
   }
 };

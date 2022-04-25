@@ -7,6 +7,6 @@ export const fetchRates = (priceRange?: number[] | null, page?: number): ThunkRe
     const { data } = await services.rates.getRates(priceRange, page);
     dispatch(requestRateSuccess(data));
   } catch (error) {
-    dispatch(requestRateError(error.message));
+    dispatch(requestRateError(error.response.status));
   }
 };

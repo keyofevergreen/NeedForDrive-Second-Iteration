@@ -8,6 +8,6 @@ export const fetchCars = (sorts?: CarSort, page?: number): ThunkResult => async 
     const { data } = await services.cars.getCars(sorts, page);
     dispatch(requestCarsSuccess(data));
   } catch (error) {
-    dispatch(requestCarsError(error.message));
+    dispatch(requestCarsError(error.response.status));
   }
 };

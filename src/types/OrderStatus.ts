@@ -1,7 +1,7 @@
 export interface OrderStatusState {
   orderStatus: OrderStatus[] | null,
   loading: boolean,
-  error: string | null,
+  error: number | null,
 }
 
 export type OrderStatus = {

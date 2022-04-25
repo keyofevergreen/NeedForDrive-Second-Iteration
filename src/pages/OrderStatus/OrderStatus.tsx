@@ -7,10 +7,11 @@ import TableSorting from '../../components/TableSorting/TableSorting';
 import TableItem from '../../components/TableItem/TableItem';
 import Spin from '../../components/Spin/Spin';
 import { useOrderStatus, useSortedOrderStatus } from './hooks';
+import ErrorProvider from '../../components/ErrorProvider/ErrorProvider';
 
 const OrderStatus = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
-  const [orderStatus, loading, error] = useOrderStatus();
+  const [orderStatus, orderStatusLoading, orderStatusError] = useOrderStatus();
   const sortedOrderStatuses = useSortedOrderStatus(orderStatus);
 
   return (
@@ -20,49 +21,51 @@ const OrderStatus = (): React.ReactElement => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Home page" />
       </Helmet>
-      <ContentContainer title="Статусы заказов">
-        <TableSorting>
-          <Form.Select size="sm">
-            <option>Все статусы</option>
-            <option>Новые</option>
-            <option>Подтвержденные</option>
-          </Form.Select>
-        </TableSorting>
-        <div className="table-container">
-          {orderStatus && !loading && !error && (
-            <Table
-              hover
-              borderless
-              responsive={isResponsive}
-            >
-              <thead>
-                <tr>
-                  <th>Название статуса</th>
-                  <th />
-                </tr>
-              </thead>
-              <tbody>
-                {sortedOrderStatuses.map((status) => (
-                  <TableItem
-                    key={status.id}
-                    columns={[status.name]}
-                  />
-                ))}
-                {sortedOrderStatuses.length === 0 && (
+      <ErrorProvider errorStatus={[orderStatusError]}>
+        <ContentContainer title="Статусы заказов">
+          <TableSorting>
+            <Form.Select size="sm">
+              <option>Все статусы</option>
+              <option>Новые</option>
+              <option>Подтвержденные</option>
+            </Form.Select>
+          </TableSorting>
+          <div className="table-container">
+            {orderStatus && !orderStatusLoading && (
+              <Table
+                hover
+                borderless
+                responsive={isResponsive}
+              >
+                <thead>
                   <tr>
-                    <td>
-                      По вашему запросу ничего не найдено
-                    </td>
+                    <th>Название статуса</th>
+                    <th />
                   </tr>
-                )}
-              </tbody>
-            </Table>
-          )}
-          {loading && (
-            <Spin />
-          )}
-        </div>
-      </ContentContainer>
+                </thead>
+                <tbody>
+                  {sortedOrderStatuses.map((status) => (
+                    <TableItem
+                      key={status.id}
+                      columns={[status.name]}
+                    />
+                  ))}
+                  {sortedOrderStatuses.length === 0 && (
+                    <tr>
+                      <td>
+                        По вашему запросу ничего не найдено
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </Table>
+            )}
+            {orderStatusLoading && (
+              <Spin />
+            )}
+          </div>
+        </ContentContainer>
+      </ErrorProvider>
     </>
   );
 };

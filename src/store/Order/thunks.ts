@@ -8,6 +8,6 @@ export const fetchOrder = (sorts: OrderSort, page: number): ThunkResult => async
     const { data } = await services.order.getOrders(sorts, page);
     dispatch(requestOrderSuccess(data));
   } catch (error) {
-    dispatch(requestOrderError(error.message));
+    dispatch(requestOrderError(error.response.status));
   }
 };

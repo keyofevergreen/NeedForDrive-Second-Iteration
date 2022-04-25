@@ -5,7 +5,7 @@ import { Dispatcher } from '../../types/store';
 import { CitiesState, City } from '../../types/Cities';
 import { SearchState } from '../../types/Search';
 
-export const useCities = (): [City[], boolean, string | null] => {
+export const useCities = (): [City[], boolean, number | null] => {
   const dispatch = useDispatch<Dispatcher>();
   const { cities, loading, error } = useSelector<{
     cities: CitiesState;

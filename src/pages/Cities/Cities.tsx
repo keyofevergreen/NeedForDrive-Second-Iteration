@@ -6,10 +6,11 @@ import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import TableItem from '../../components/TableItem/TableItem';
 import Spin from '../../components/Spin/Spin';
+import ErrorProvider from '../../components/ErrorProvider/ErrorProvider';
 
 const Cities = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
-  const [cities, loading, error] = useCities();
+  const [cities, citiesLoading, citiesError] = useCities();
   const sortedCities = useSearchSortedCities(cities);
 
   return (
@@ -19,42 +20,44 @@ const Cities = (): React.ReactElement => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Home page" />
       </Helmet>
-      <ContentContainer title="Города">
-        <div className="table-container">
-          {cities && !loading && !error && (
-            <Table
-              hover
-              borderless
-              responsive={isResponsive}
-            >
-              <thead>
-                <tr>
-                  <th>Название города</th>
-                  <th />
-                </tr>
-              </thead>
-              <tbody>
-                {sortedCities.map((city) => (
-                  <TableItem
-                    key={city.id}
-                    columns={[city.name]}
-                  />
-                ))}
-                {sortedCities.length === 0 && (
+      <ErrorProvider errorStatus={[citiesError]}>
+        <ContentContainer title="Города">
+          <div className="table-container">
+            {cities && !citiesLoading && (
+              <Table
+                hover
+                borderless
+                responsive={isResponsive}
+              >
+                <thead>
                   <tr>
-                    <td>
-                      По вашему запросу ничего не найдено
-                    </td>
+                    <th>Название города</th>
+                    <th />
                   </tr>
-                )}
-              </tbody>
-            </Table>
-          )}
-          {loading && (
-            <Spin />
-          )}
-        </div>
-      </ContentContainer>
+                </thead>
+                <tbody>
+                  {sortedCities.map((city) => (
+                    <TableItem
+                      key={city.id}
+                      columns={[city.name]}
+                    />
+                  ))}
+                  {sortedCities.length === 0 && (
+                    <tr>
+                      <td>
+                        По вашему запросу ничего не найдено
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </Table>
+            )}
+            {citiesLoading && (
+              <Spin />
+            )}
+          </div>
+        </ContentContainer>
+      </ErrorProvider>
     </>
   );
 };

@@ -7,6 +7,6 @@ export const fetchPoints = (cityId: string | null, page: number): ThunkResult =>
     const { data } = await services.points.getPoints(cityId, page);
     dispatch(requestPointsSuccess(data));
   } catch (error) {
-    dispatch(requestPointsError(error.message));
+    dispatch(requestPointsError(error.response.status));
   }
 };
