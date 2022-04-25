@@ -7,6 +7,6 @@ export const fetchOrder = (config): ThunkResult => async (dispatch, getState, { 
     const { data } = await services.table.getEntities('order', config);
     dispatch(requestOrderSuccess(data));
   } catch (error) {
-    dispatch(requestOrderError(error.response.status));
+    dispatch(requestOrderError(error.response?.status));
   }
 };

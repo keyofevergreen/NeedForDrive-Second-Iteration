@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 interface IErrorProviderProps {
   errorStatus: (number | null)[],
-  children: React.ReactNode,
+  children: React.ReactElement,
 }
 
 const ErrorProvider = ({ errorStatus, children }: IErrorProviderProps): React.ReactElement => {
