@@ -1,7 +1,6 @@
 declare namespace StylesModuleScssNamespace {
   export interface IStylesModuleScss {
     "checkbox-wrap": string;
-    cols: string;
   }
 }
 

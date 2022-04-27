@@ -32,3 +32,34 @@
   color: var(--black);
   font-size: 24px;
 }
+
+.cols {
+  padding: 0 25px;
+
+  &:nth-child(1) {
+    width: 155px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cols {
+    &:nth-child(2) {
+      width: 252px;
+      max-width: 260px;
+      padding-right: 60px;
+    }
+    &:nth-child(3) {
+      width: 150px;
+      text-align: center;
+    }
+    &:nth-child(4) {
+      width: 200px;
+      text-align: center;
+    }
+    &:nth-child(5) {
+      width: 150px;
+      padding-right: 20px;
+    }
+  }
+
+}

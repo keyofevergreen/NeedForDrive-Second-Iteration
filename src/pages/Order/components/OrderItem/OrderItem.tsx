@@ -42,7 +42,7 @@ const OrderItem = ({ order }: IOrderItemProps): React.ReactElement => {
 
   return (
     <tr>
-      <td>
+      <td className={styles['cols']}>
         <img
           className={styles['order-item__img']}
           src={carId?.thumbnail?.path}
@@ -52,7 +52,7 @@ const OrderItem = ({ order }: IOrderItemProps): React.ReactElement => {
           referrerPolicy="origin"
         />
       </td>
-      <td>
+      <td className={styles['cols']}>
         <div className={styles['order-item__details']}>
           <span>
             <strong>
@@ -79,7 +79,7 @@ const OrderItem = ({ order }: IOrderItemProps): React.ReactElement => {
           </span>
         </div>
       </td>
-      <td>
+      <td className={styles['cols']}>
         <div className={styles['order-item__options']}>
           {checkboxes.map((checkbox, index) => (
             <Form.Check
@@ -93,15 +93,15 @@ const OrderItem = ({ order }: IOrderItemProps): React.ReactElement => {
           ))}
         </div>
       </td>
-      <td>
+      <td className={styles['cols']}>
         <span className={styles['order-item__price']}>
           {`${price} ₽`}
         </span>
       </td>
-      <td>
+      <td className={styles['cols']}>
         {orderStatusId?.name}
       </td>
-      <td>
+      <td className={styles['cols']}>
         <SettingButton className={styles['order-item__actions']} />
       </td>
     </tr>

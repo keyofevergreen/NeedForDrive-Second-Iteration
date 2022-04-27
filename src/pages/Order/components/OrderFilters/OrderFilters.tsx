@@ -4,7 +4,7 @@ import { getTime, startOfToday, subDays, subMonths } from 'date-fns';
 import { Checkbox, Filter } from '../../../../types/Filter';
 import { useCities } from '../../../Cities/hooks';
 import { useOrderStatus } from '../../../OrderStatus/hooks';
-import styles from '../../styles.module.scss';
+import styles from './styles.module.scss';
 
 const TODAY = startOfToday();
 const LAST_WEEK = subDays(TODAY, 7);
