@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatcher } from '../../types/store';
-import { PointResponse, PointsState } from '../../types/Points';
+import { PointResponse, PointsAxiosConfig, PointsState } from '../../types/Points';
 import { fetchPoints } from '../../store/Points/thunks';
 
 export const usePoints = (cityId: string | null, page: number): [PointResponse, boolean, string | null] => {
@@ -11,7 +11,16 @@ export const usePoints = (cityId: string | null, page: number): [PointResponse, 
   }, PointsState>((state) => state.points);
 
   useEffect(() => {
-    dispatch(fetchPoints(cityId, page));
+    const config: PointsAxiosConfig = {
+      params: {
+        page,
+        limit: 10,
+      },
+    };
+    if (cityId && cityId !== 'Все города') {
+      config.params['cityId[id]'] = cityId;
+    }
+    dispatch(fetchPoints(config));
   }, [cityId, page]);
 
   return [points, loading, error];

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRateTypes } from '../../store/RateTypes/thunks';
 import { Dispatcher } from '../../types/store';
-import { RateTypeResponse, RateTypesState } from '../../types/RateTypes';
+import { RateTypeResponse, RateTypesAxiosConfig, RateTypesState } from '../../types/RateTypes';
 
 export const useRateTypes = (name?: string | null, page?: number): [RateTypeResponse, boolean, string | null] => {
   const dispatch = useDispatch<Dispatcher>();
@@ -11,7 +11,18 @@ export const useRateTypes = (name?: string | null, page?: number): [RateTypeResp
   }, RateTypesState>((state) => state.rateTypes);
 
   useEffect(() => {
-    dispatch(fetchRateTypes(name, page));
+    const config: RateTypesAxiosConfig = {
+      params: {
+        page,
+        limit: 10,
+      },
+    };
+    config.params['sort[createdAt]'] = -1;
+
+    if (name && name !== 'Все тарифы') {
+      config.params.name = name;
+    }
+    dispatch(fetchRateTypes(config));
   }, [name, page]);
 
   return [rateTypes, loading, error];

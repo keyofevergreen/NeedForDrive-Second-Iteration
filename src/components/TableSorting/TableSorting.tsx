@@ -4,24 +4,24 @@ import styles from './styles.module.scss';
 
 interface ITableSortingProps {
   children: React.ReactNode,
-  onSubmitSort?: React.MouseEventHandler,
-  onResetSort?: React.MouseEventHandler,
-  isSorted?: boolean,
+  onSubmitFilter?: React.MouseEventHandler,
+  onResetFilter?: React.MouseEventHandler,
+  isFiltered?: boolean,
 }
 
-const TableSorting = ({ children, onSubmitSort, onResetSort, isSorted }: ITableSortingProps): React.ReactElement => {
+const TableSorting = ({ children, onSubmitFilter, onResetFilter, isFiltered }: ITableSortingProps): React.ReactElement => {
   return (
     <div className={styles['table-header']}>
       <div className={styles['table-header__sort']}>
         {children}
       </div>
       <div className={styles['table-header__buttons']}>
-        {isSorted && (
+        {isFiltered && (
           <Button
             variant="danger"
             size="sm"
             type="button"
-            onClick={onResetSort}
+            onClick={onResetFilter}
           >
             Сбросить
           </Button>
@@ -30,7 +30,7 @@ const TableSorting = ({ children, onSubmitSort, onResetSort, isSorted }: ITableS
           variant="primary"
           size="sm"
           type="button"
-          onClick={onSubmitSort}
+          onClick={onSubmitFilter}
         >
           Применить
         </Button>

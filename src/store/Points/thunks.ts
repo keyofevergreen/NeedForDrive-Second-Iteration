@@ -1,10 +1,10 @@
 import { ThunkResult } from '../../types/thunk';
 import { requestPoints, requestPointsError, requestPointsSuccess } from './actions';
 
-export const fetchPoints = (cityId: string | null, page: number): ThunkResult => async (dispatch, getState, { services }) => {
+export const fetchPoints = (config): ThunkResult => async (dispatch, getState, { services }) => {
   try {
     dispatch(requestPoints());
-    const { data } = await services.points.getPoints(cityId, page);
+    const { data } = await services.table.getEntities('point', config);
     dispatch(requestPointsSuccess(data));
   } catch (error) {
     dispatch(requestPointsError(error.message));

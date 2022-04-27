@@ -1,10 +1,10 @@
 import { ThunkResult } from '../../types/thunk';
 import { requestRateTypes, requestRateTypesError, requestRateTypesSuccess } from './actions';
 
-export const fetchRateTypes = (name?: string | null, page?: number): ThunkResult => async (dispatch, getState, { services }) => {
+export const fetchRateTypes = (config: object): ThunkResult => async (dispatch, getState, { services }) => {
   try {
     dispatch(requestRateTypes());
-    const { data } = await services.rateTypes.getRateTypes(name, page);
+    const { data } = await services.table.getEntities('rateType', config);
     dispatch(requestRateTypesSuccess(data));
   } catch (error) {
     dispatch(requestRateTypesError(error.message));

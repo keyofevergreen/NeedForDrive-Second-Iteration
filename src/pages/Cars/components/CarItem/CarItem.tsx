@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import SettingButton from '../../../../components/SettingButton/SettingButton';
+import { Category } from '../../../../types/Category';
 
 interface ICarProps {
   name: string,
-  category: string,
+  category: Category,
   colors: string[] | null,
   priceMin: number,
   priceMax: number,
@@ -13,7 +14,7 @@ interface ICarProps {
 }
 
 const CarItem = ({ name, category, colors, priceMin, priceMax, tank, number }: ICarProps): React.ReactElement => {
-  const categoryString = category.charAt(0).toUpperCase() + category.slice(1);
+  const categoryString = category.name.charAt(0).toUpperCase() + category.name.slice(1);
 
   return (
     <tr>

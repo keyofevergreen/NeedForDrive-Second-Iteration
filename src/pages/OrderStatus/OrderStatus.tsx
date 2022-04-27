@@ -38,7 +38,6 @@ const OrderStatus = (): React.ReactElement => {
               <thead>
                 <tr>
                   <th>Название статуса</th>
-                  <th />
                 </tr>
               </thead>
               <tbody>

@@ -30,7 +30,6 @@ const Cities = (): React.ReactElement => {
               <thead>
                 <tr>
                   <th>Название города</th>
-                  <th />
                 </tr>
               </thead>
               <tbody>

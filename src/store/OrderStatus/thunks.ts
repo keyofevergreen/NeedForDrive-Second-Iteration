@@ -4,7 +4,7 @@ import { requestOrderStatus, requestOrderStatusError, requestOrderStatusSuccess 
 export const fetchOrderStatus = (): ThunkResult => async (dispatch, getState, { services }) => {
   try {
     dispatch(requestOrderStatus());
-    const { data } = await services.orderStatus.getOrderStatus();
+    const { data } = await services.table.getEntities('orderStatus', {});
     dispatch(requestOrderStatusSuccess(data.data));
   } catch (error) {
     dispatch(requestOrderStatusError(error.message));

@@ -31,7 +31,6 @@ const Categories = (): React.ReactElement => {
                 <tr>
                   <th>Категория</th>
                   <th>Описание</th>
-                  <th />
                 </tr>
               </thead>
               <tbody>

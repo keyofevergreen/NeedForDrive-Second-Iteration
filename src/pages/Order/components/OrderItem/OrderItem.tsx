@@ -3,33 +3,50 @@ import { Form } from 'react-bootstrap';
 import { format, toDate } from 'date-fns';
 import { imageOnErrorHandler } from '../../../../utils/helpers/imageOnErrorHandler';
 import SettingButton from '../../../../components/SettingButton/SettingButton';
+import { Order } from '../../../../types/Order';
+import { Checkbox } from '../../../../types/Filter';
 import styles from './styles.module.scss';
 
 interface IOrderItemProps {
-  img: string,
-  carName: string,
-  city: string,
-  address: string,
-  dateFrom: number,
-  dateTo: number,
-  orderStatusId: string,
-  color: string,
-  price: number,
-  isFullTank: boolean,
-  isNeedChildChair: boolean,
-  isRightWheel: boolean,
+  order: Order,
 }
 
-const OrderItem = (props: IOrderItemProps): React.ReactElement => {
-  const { img, carName, city, address, dateFrom, dateTo, color, price, isFullTank, isNeedChildChair, isRightWheel, orderStatusId } = props;
+const OrderItem = ({ order }: IOrderItemProps): React.ReactElement => {
+  const {
+    carId,
+    cityId,
+    pointId,
+    dateFrom,
+    dateTo,
+    color,
+    price,
+    isFullTank,
+    isNeedChildChair,
+    isRightWheel,
+    orderStatusId
+  } = order;
+  const checkboxes: Checkbox[] = [
+    {
+      label: 'Полный бак',
+      value: isFullTank,
+    },
+    {
+      label: 'Детское кресло',
+      value: isNeedChildChair,
+    },
+    {
+      label: 'Правый руль',
+      value: isRightWheel,
+    },
+  ];
 
   return (
     <tr>
       <td>
         <img
           className={styles['order-item__img']}
-          src={img}
-          alt={carName}
+          src={carId?.thumbnail?.path}
+          alt={carId?.name}
           onError={imageOnErrorHandler}
           crossOrigin="anonymous"
           referrerPolicy="origin"
@@ -39,13 +56,13 @@ const OrderItem = (props: IOrderItemProps): React.ReactElement => {
         <div className={styles['order-item__details']}>
           <span>
             <strong>
-              {`${carName ? carName.toUpperCase() : 'Машина не указана'} `}
+              {`${carId?.name ? carId?.name.toUpperCase() : 'Машина не указана'} `}
             </strong>
             в
             <strong>
-              {` ${city}`}
+              {` ${cityId?.name}`}
             </strong>,
-            {` ${address}`}
+            {` ${pointId?.address ? pointId?.address : 'улица не указана'}`}
           </span>
           <span>
             {
@@ -64,27 +81,16 @@ const OrderItem = (props: IOrderItemProps): React.ReactElement => {
       </td>
       <td>
         <div className={styles['order-item__options']}>
-          <Form.Check
-            type="checkbox"
-            id="checkbox-1"
-            label="Полный бак"
-            defaultChecked={isFullTank}
-            disabled
-          />
-          <Form.Check
-            type="checkbox"
-            id="checkbox-1"
-            label="Детское кресло"
-            defaultChecked={isNeedChildChair}
-            disabled
-          />
-          <Form.Check
-            type="checkbox"
-            id="checkbox-1"
-            label="Правый руль"
-            defaultChecked={isRightWheel}
-            disabled
-          />
+          {checkboxes.map((checkbox, index) => (
+            <Form.Check
+              type="checkbox"
+              key={checkbox.label}
+              id={`checkbox-${index}`}
+              label={checkbox.label}
+              defaultChecked={checkbox.value}
+              disabled
+            />
+          ))}
         </div>
       </td>
       <td>
@@ -93,7 +99,7 @@ const OrderItem = (props: IOrderItemProps): React.ReactElement => {
         </span>
       </td>
       <td>
-        {orderStatusId}
+        {orderStatusId?.name}
       </td>
       <td>
         <SettingButton className={styles['order-item__actions']} />
