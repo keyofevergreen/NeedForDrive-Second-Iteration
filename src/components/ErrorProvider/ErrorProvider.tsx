@@ -15,12 +15,12 @@ const ErrorProvider = ({ children }: IErrorProviderProps): React.ReactElement =>
   if (errorStatus !== null) {
     return (
       <div className={styles['error']}>
-        <h1 className={styles['error__status-code']}>
+        <span className={styles['error__status-code']}>
           {errorStatus}
-        </h1>
-        <h2>
+        </span>
+        <h3>
           Что-то пошло не так
-        </h2>
+        </h3>
         <p>
           Попробуйте перезагрузить страницу
         </p>
