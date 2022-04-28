@@ -1,0 +1,169 @@
+.cars-edit-container-wrap {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.cars-edit {
+  display: flex;
+  gap: 28px;
+}
+
+.cars-edit__card {
+  background-color: #fff;
+  border-radius: 9px;
+  box-shadow: 0 7px 70px 0 rgb(90 97 105 / 10%), 0 10px 10px 0 rgb(90 97 105 / 6%), 0 4px 8px 0 rgb(90 97 105 / 12%),
+  0 2px 0 0 rgb(90 97 105 / 11%);
+}
+
+.cars-edit__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 34px;
+  padding-bottom: 44px;
+  flex: 0 0;
+  min-width: 334px;
+
+  img {
+    max-width: 244px;
+    margin-bottom: 10px;
+  }
+}
+
+.cars-edit__details {
+  text-align: center;
+  margin-bottom: 10px;
+
+  h2 {
+    margin-bottom: 0;
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  span {
+    color: var(--dark-gray);
+    font-size: 12px;
+  }
+}
+
+.cars-edit__file-input {
+  max-width: 260px;
+  border: 0.5px solid #BECAD6;
+  font-size: 10px;
+  margin-bottom: 22px;
+}
+
+.cars-edit__progress-wrap {
+  width: 100%;
+  padding: 16px 22px;
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.12), 0px -1px 0px 0px rgba(0, 0, 0, 0.12);
+  margin-bottom: 22px;
+}
+
+.cars-edit__progress-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  span {
+    &:first-child {
+      font-size: 13px;
+      color: var(--dark-gray2);
+    }
+
+    &:last-child {
+      color: #5A6169;
+      font-size: 11px;
+    }
+  }
+}
+
+.cars-edit__progress {
+  box-shadow: 0px 0.5px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  height: 10px;
+
+  :global {
+    .progress-bar {
+      border-radius: 4px;
+      color: var(--blue);
+    }
+  }
+}
+
+.cars-edit__description-textarea {
+  width: 100%;
+  padding: 0 21px;
+
+  label {
+    font-family: Roboto, Helvetica, sans-serif;
+    font-size: 13px;
+    color: var(--dark-gray2);
+    font-weight: 500;
+  }
+
+  textarea {
+    font-size: 13px;
+    border: none;
+    padding: 0;
+  }
+}
+
+.form__colors-input-group {
+  gap: 8px;
+
+  .form__colors-add-button {
+    position: relative;
+    font-size: 1px;
+    color: transparent;
+    width: 34.5px;
+    height: 34.5px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease;
+
+    &:before, &:after {
+      transition: border-color 0.3s ease;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: calc(50% - 1px);
+      left: calc(50% - 9px);
+      width: 18px;
+      border-bottom: 2px solid #ced4da;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: calc(50% - 9px);
+      left: calc(50% - 1px);
+      height: 18px;
+      border-right: 2px solid #ced4da;
+    }
+
+    &:hover {
+      border-color: var(--blue);
+
+      &:before, &:after {
+        border-color: #fff;
+      }
+    }
+  }
+}
+
+.form__colors-checkbox {
+  margin-top: 16px;
+}
+
+@media (max-width: 767.98px) {
+  .cars-edit {
+    flex-direction: column;
+  }
+
+  .cars-edit__card {
+    box-shadow: none;
+    min-width: 100%;
+    padding-bottom: 0;
+  }
+}

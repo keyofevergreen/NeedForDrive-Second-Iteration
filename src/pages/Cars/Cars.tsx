@@ -10,6 +10,7 @@ import CarItem from './components/CarItem/CarItem';
 import Spin from '../../components/Spin/Spin';
 import TableSorting from '../../components/TableSorting/TableSorting';
 import CarFilters from './components/CarFilters/CarFilters';
+import AddTableItemLink from '../../components/AddTableItemLink/AddTableItemLink';
 
 const Cars = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
@@ -89,6 +90,7 @@ const Cars = (): React.ReactElement => {
           />
         </TableSorting>
         <div className="table-container">
+          <AddTableItemLink to="/edit/cars" />
           {cars && !carsLoading && !carsError && (
             <Table
               hover

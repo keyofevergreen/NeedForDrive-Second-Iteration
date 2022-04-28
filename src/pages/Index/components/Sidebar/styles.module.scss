@@ -51,7 +51,6 @@
 
     &:hover {
       color: var(--blue);
-
       svg {
         path {
           fill: var(--blue);
@@ -64,7 +63,8 @@
     .active {
       color: var(--blue);
       background-color: var(--gray-light2);
-
+      border-left: 4px solid var(--blue);
+      padding-left: 22.5px;
       svg {
         path {
           fill: var(--blue);
