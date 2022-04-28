@@ -3,10 +3,11 @@ import { Form, Table } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
-import TableSorting from '../../components/TableSorting/TableSorting';
+import TableFilter from '../../components/TableFilter/TableFilter';
 import TableItem from '../../components/TableItem/TableItem';
 import Spin from '../../components/Spin/Spin';
 import { useOrderStatus, useSortedOrderStatus } from './hooks';
+import AddTableItemLink from '../../components/AddTableItemLink/AddTableItemLink';
 
 const OrderStatus = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
@@ -21,14 +22,15 @@ const OrderStatus = (): React.ReactElement => {
         <meta name="description" content="Home page" />
       </Helmet>
       <ContentContainer title="Статусы заказов">
-        <TableSorting>
+        <TableFilter>
           <Form.Select size="sm">
             <option>Все статусы</option>
             <option>Новые</option>
             <option>Подтвержденные</option>
           </Form.Select>
-        </TableSorting>
+        </TableFilter>
         <div className="table-container">
+          <AddTableItemLink to="/edit/order-status" />
           {orderStatus && !orderStatusLoading && (
             <Table
               hover

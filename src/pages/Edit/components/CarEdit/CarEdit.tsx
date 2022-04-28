@@ -6,7 +6,7 @@ import FormContainer from '../FormContainer/FormContainer';
 import Car from '../../../../assets/carsDefaultImage.png';
 import styles from './styles.module.scss';
 
-const CarsEdit = (): React.ReactElement => {
+const CarEdit = (): React.ReactElement => {
   return (
     <>
       <Helmet>
@@ -16,12 +16,12 @@ const CarsEdit = (): React.ReactElement => {
       </Helmet>
       <ContentContainer
         title="Карточка автомобиля"
-        className={styles['cars-edit-container-wrap']}
+        className={styles['car-edit-container-wrap']}
       >
-        <div className={styles['cars-edit']}>
-          <div className={styles['cars-edit__card']}>
+        <div className={styles['car-edit']}>
+          <div className={styles['car-edit__card']}>
             <img src={Car} alt="car-name" />
-            <div className={styles['cars-edit__details']}>
+            <div className={styles['car-edit__details']}>
               <h2>
                 Hyndai, i30N
               </h2>
@@ -32,10 +32,10 @@ const CarsEdit = (): React.ReactElement => {
             <Form.Control
               type="file"
               size="sm"
-              className={styles['cars-edit__file-input']}
+              className={styles['car-edit__file-input']}
             />
-            <div className={styles['cars-edit__progress-wrap']}>
-              <div className={styles['cars-edit__progress-details']}>
+            <div className={styles['car-edit__progress-wrap']}>
+              <div className={styles['car-edit__progress-details']}>
                 <span>
                   Заполнено
                 </span>
@@ -43,18 +43,19 @@ const CarsEdit = (): React.ReactElement => {
                   75%
                 </span>
               </div>
-              <ProgressBar now={75} className={styles['cars-edit__progress']} animated />
+              <ProgressBar now={75} className={styles['car-edit__progress']} animated />
             </div>
-            <Form.Group className={styles['cars-edit__description-textarea']} controlId="description.Textarea">
+            <Form.Group className={styles['car-edit__description-textarea']} controlId="carDescription">
               <Form.Label>Описание</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={4}
+                aria-describedby="carDescription"
                 defaultValue="Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae quod dolorum sint alias, possimus illum assumenda eligendi cumque?"
               />
             </Form.Group>
           </div>
-          <FormContainer title="Настройки автомобиля">
+          <FormContainer title="Настройки автомобиля" className={styles['car-form-container']}>
             <Form.Group controlId="carName">
               <Form.Label>Модель автомобиля</Form.Label>
               <div className="input-wrap">
@@ -83,14 +84,14 @@ const CarsEdit = (): React.ReactElement => {
                 </Form.Text>
               </div>
             </Form.Group>
-            <Form.Group controlId="colors">
+            <Form.Group controlId="CarColors">
               <Form.Label>Доступные цвета</Form.Label>
               <div className="input-wrap">
                 <InputGroup className={styles['form__colors-input-group']}>
                   <Form.Control
                     type="text"
                     placeholder="Введите цвет"
-                    aria-describedby="colors"
+                    aria-describedby="CarColors"
                   />
                   <Button variant="outline-primary" className={styles['form__colors-add-button']}>
                     Add Color
@@ -122,4 +123,4 @@ const CarsEdit = (): React.ReactElement => {
   );
 };
 
-export default CarsEdit;
+export default CarEdit;

@@ -3,10 +3,11 @@ import { Form, Table } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
-import TableSorting from '../../components/TableSorting/TableSorting';
+import TableFilter from '../../components/TableFilter/TableFilter';
 import TableItem from '../../components/TableItem/TableItem';
 import Spin from '../../components/Spin/Spin';
 import { useRateTypes } from './hooks';
+import AddTableItemLink from '../../components/AddTableItemLink/AddTableItemLink';
 
 const filterOptions: string[] = [
   'Все тарифы',
@@ -49,7 +50,7 @@ const RateTypes = (): React.ReactElement => {
         itemCount={rateTypes?.count}
         onSetPage={setPage}
       >
-        <TableSorting
+        <TableFilter
           onSubmitFilter={submitFilter}
           onResetFilter={resetFilter}
           isFiltered={filters !== 'Все тарифы'}
@@ -63,8 +64,9 @@ const RateTypes = (): React.ReactElement => {
               <option value={option} key={option}>{option}</option>
             ))}
           </Form.Select>
-        </TableSorting>
+        </TableFilter>
         <div className="table-container">
+          <AddTableItemLink to="/edit/rate-types" />
           {rateTypes && !loading && (
             <Table
               hover

@@ -69,6 +69,42 @@ const navItems: NavItem[] = [
   },
 ];
 
+type TableLink = {
+  url: string,
+  name: string
+};
+
+const tableEditLinks: TableLink[] = [
+  {
+    url: 'car',
+    name: 'Карточка автомобиля',
+  },
+  {
+    url: 'order-status',
+    name: 'Карточка статуса заказа',
+  },
+  {
+    url: 'point',
+    name: 'Карточка пункта выдачи',
+  },
+  {
+    url: 'city',
+    name: 'Карточка города',
+  },
+  {
+    url: 'category',
+    name: 'Карточка категории',
+  },
+  {
+    url: 'rate',
+    name: 'Карточка тарифа',
+  },
+  {
+    url: 'rate-types',
+    name: 'Карточка типа тарифа',
+  },
+];
+
 interface ISidebarProps {
   className?: string;
   onLinkClick?: React.MouseEventHandler;
@@ -81,10 +117,11 @@ const Sidebar = ({ className, onLinkClick }: ISidebarProps): React.ReactElement 
 
   useEffect(() => {
     setEditLinkName('');
-
-    if (pathname.includes('/edit/cars')) {
-      setEditLinkName('Карточка автомобиля');
-    }
+    tableEditLinks.forEach((link) => {
+      if (pathname.includes(`/edit/${link.url}`)) {
+        setEditLinkName(link.name);
+      }
+    });
   }, [location]);
 
   return (

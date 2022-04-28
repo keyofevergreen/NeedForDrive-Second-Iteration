@@ -76,6 +76,12 @@ h3 {
   color: var(--dark-blue);
 }
 
+textarea.form-control-sm {
+  padding: 8px 11px;
+  color: var(--dark-blue);
+  font-size: 11px;
+}
+
 .input-wrap {
   position: relative;
 

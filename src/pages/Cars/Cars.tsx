@@ -8,7 +8,7 @@ import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import CarItem from './components/CarItem/CarItem';
 import Spin from '../../components/Spin/Spin';
-import TableSorting from '../../components/TableSorting/TableSorting';
+import TableFilter from '../../components/TableFilter/TableFilter';
 import CarFilters from './components/CarFilters/CarFilters';
 import AddTableItemLink from '../../components/AddTableItemLink/AddTableItemLink';
 
@@ -66,7 +66,7 @@ const Cars = (): React.ReactElement => {
         itemCount={cars?.count}
         onSetPage={setPage}
       >
-        <TableSorting
+        <TableFilter
           onSubmitFilter={submitFilter}
           onResetFilter={resetFilter}
           isFiltered={
@@ -88,9 +88,9 @@ const Cars = (): React.ReactElement => {
             higherPriceFilter={higherPriceFilter}
             setHigherPriceFilter={setHigherPriceFilter}
           />
-        </TableSorting>
+        </TableFilter>
         <div className="table-container">
-          <AddTableItemLink to="/edit/cars" />
+          <AddTableItemLink to="/edit/car" />
           {cars && !carsLoading && !carsError && (
             <Table
               hover

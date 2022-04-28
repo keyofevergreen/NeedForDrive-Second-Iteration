@@ -5,9 +5,10 @@ import { usePoints } from './hooks';
 import { useCities } from '../Cities/hooks';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
-import TableSorting from '../../components/TableSorting/TableSorting';
+import TableFilter from '../../components/TableFilter/TableFilter';
 import TableItem from '../../components/TableItem/TableItem';
 import Spin from '../../components/Spin/Spin';
+import AddTableItemLink from '../../components/AddTableItemLink/AddTableItemLink';
 
 const Points = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
@@ -41,7 +42,7 @@ const Points = (): React.ReactElement => {
         itemCount={points?.count}
         onSetPage={setPage}
       >
-        <TableSorting
+        <TableFilter
           onSubmitFilter={submitFilter}
           onResetFilter={resetFilter}
           isFiltered={filters && filters !== 'Все города'}
@@ -57,8 +58,9 @@ const Points = (): React.ReactElement => {
               <option key={city.id} value={city.id}>{city.name}</option>
             ))}
           </Form.Select>
-        </TableSorting>
+        </TableFilter>
         <div className="table-container">
+          <AddTableItemLink to="/edit/point" />
           {points && !pointsLoading && (
             <Table
               hover

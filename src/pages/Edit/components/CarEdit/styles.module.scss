@@ -1,21 +1,21 @@
-.cars-edit-container-wrap {
+.car-edit-container-wrap {
   box-shadow: none;
   background-color: transparent;
 }
 
-.cars-edit {
+.car-edit {
   display: flex;
   gap: 28px;
 }
 
-.cars-edit__card {
+.car-edit__card {
   background-color: #fff;
   border-radius: 9px;
   box-shadow: 0 7px 70px 0 rgb(90 97 105 / 10%), 0 10px 10px 0 rgb(90 97 105 / 6%), 0 4px 8px 0 rgb(90 97 105 / 12%),
   0 2px 0 0 rgb(90 97 105 / 11%);
 }
 
-.cars-edit__card {
+.car-edit__card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +30,7 @@
   }
 }
 
-.cars-edit__details {
+.car-edit__details {
   text-align: center;
   margin-bottom: 10px;
 
@@ -46,21 +46,21 @@
   }
 }
 
-.cars-edit__file-input {
+.car-edit__file-input {
   max-width: 260px;
   border: 0.5px solid #BECAD6;
   font-size: 10px;
   margin-bottom: 22px;
 }
 
-.cars-edit__progress-wrap {
+.car-edit__progress-wrap {
   width: 100%;
   padding: 16px 22px;
   box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.12), 0px -1px 0px 0px rgba(0, 0, 0, 0.12);
   margin-bottom: 22px;
 }
 
-.cars-edit__progress-details {
+.car-edit__progress-details {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -78,7 +78,7 @@
   }
 }
 
-.cars-edit__progress {
+.car-edit__progress {
   box-shadow: 0px 0.5px 4px 0px rgba(0, 0, 0, 0.25) inset;
   height: 10px;
 
@@ -90,7 +90,7 @@
   }
 }
 
-.cars-edit__description-textarea {
+.car-edit__description-textarea {
   width: 100%;
   padding: 0 21px;
 
@@ -106,6 +106,13 @@
     border: none;
     padding: 0;
   }
+}
+
+.car-form-container {
+  background-color: #fff;
+  border-radius: 9px;
+  box-shadow: 0 7px 70px 0 rgb(90 97 105 / 10%), 0 10px 10px 0 rgb(90 97 105 / 6%), 0 4px 8px 0 rgb(90 97 105 / 12%),
+  0 2px 0 0 rgb(90 97 105 / 11%);
 }
 
 .form__colors-input-group {
@@ -157,13 +164,17 @@
 }
 
 @media (max-width: 767.98px) {
-  .cars-edit {
+  .car-edit {
     flex-direction: column;
   }
 
-  .cars-edit__card {
+  .car-edit__card {
     box-shadow: none;
     min-width: 100%;
     padding-bottom: 0;
+  }
+
+  .car-form-container {
+    box-shadow: none;
   }
 }
