@@ -1,30 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
+import { useErrorHandler } from './hooks';
 
 interface IErrorProviderProps {
-  errorStatus: (number | null)[],
-  children: React.ReactElement,
+  children: React.ReactNode,
 }
 
-const ErrorProvider = ({ errorStatus, children }: IErrorProviderProps): React.ReactElement => {
+const ErrorProvider = ({ children }: IErrorProviderProps): React.ReactElement => {
   const navigate = useNavigate();
-  const [error, setError] = useState<number | null>(null);
+  const errorStatus = useErrorHandler();
 
-  useEffect(() => {
-    const errors = errorStatus.filter((err) => err !== null);
-
-    if (errors.length > 0) {
-      setError(errors[0]);
-    }
-  }, [errorStatus]);
-
-  if (error) {
+  if (errorStatus !== null) {
     return (
       <div className={styles['error']}>
         <h1 className={styles['error__status-code']}>
-          {error}
+          {errorStatus}
         </h1>
         <h2>
           Что-то пошло не так
@@ -42,7 +34,11 @@ const ErrorProvider = ({ errorStatus, children }: IErrorProviderProps): React.Re
       </div>
     );
   }
-  return children;
+  return (
+    <div>
+      {children}
+    </div>
+  );
 };
 
 export default ErrorProvider;

@@ -1,3 +1,3 @@
-export interface TableErrorState {
-  errors: (number | null)[],
+export interface ErrorHandlerState {
+  errors: (number)[],
 }

@@ -2,20 +2,19 @@ import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { useCars } from './hooks';
+import { useCategory } from '../Categories/hooks';
+import { CarSort } from '../../types/Cars';
 import useResize from '../../hooks/useResize';
-import ErrorProvider from '../../components/ErrorProvider/ErrorProvider';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import CarItem from './components/CarItem/CarItem';
 import Spin from '../../components/Spin/Spin';
 import TableSorting from '../../components/TableSorting/TableSorting';
-import { useCategory } from '../Categories/hooks';
-import { CarSort } from '../../types/Cars';
 import CarFilters from './components/CarFilters/CarFilters';
 
 const Cars = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
 
-  const [categories, categoriesLoading, categoriesError] = useCategory();
+  const [categories, categoriesLoading] = useCategory();
   const [categoryFilter, setCategoryFilter] = useState<string>('Все категории');
   const [tankFilter, setTankFilter] = useState<string>('Любой запас топлива');
   const [lowerPriceFilter, setLowerPriceFilter] = useState<number | null>(0);
@@ -60,66 +59,65 @@ const Cars = (): React.ReactElement => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Home page" />
       </Helmet>
-      <ErrorProvider errorStatus={[carsError, categoriesError]}>
-        <ContentContainer
-          title="Список авто"
-          page={page}
-          itemCount={cars?.count}
-          onSetPage={setPage}
+      <ContentContainer
+        title="Список авто"
+        page={page}
+        itemCount={cars?.count}
+        onSetPage={setPage}
+      >
+        <TableSorting
+          onSubmitFilter={submitFilter}
+          onResetFilter={resetFilter}
+          isFiltered={
+            filters.categoryId !== 'Все категории' ||
+            filters.tank !== 'Любой запас топлива' ||
+            filters.lowerPrice !== 0 ||
+            filters.higherPrice !== 999999
+          }
         >
-          <TableSorting
-            onSubmitFilter={submitFilter}
-            onResetFilter={resetFilter}
-            isFiltered={
-              filters.categoryId !== 'Все категории' ||
-              filters.tank !== 'Любой запас топлива' ||
-              filters.lowerPrice !== 0 ||
-              filters.higherPrice !== 999999
-            }
-          >
-            <CarFilters
-              categories={categories}
-              categoriesFilter={categoryFilter}
-              setCategoriesFilter={setCategoryFilter}
-              categoriesLoading={categoriesLoading}
-              tankFilter={tankFilter}
-              setTankFilter={setTankFilter}
-              lowerPriceFilter={lowerPriceFilter}
-              setLowerPriceFilter={setLowerPriceFilter}
-              higherPriceFilter={higherPriceFilter}
-              setHigherPriceFilter={setHigherPriceFilter}
-            />
-          </TableSorting>
-          <div className="table-container">
-            {cars && !carsLoading && !carsError && (
-              <Table
-                hover
-                borderless
-                responsive={isResponsive}
-              >
-                <thead>
-                  <tr>
-                    <th>Модель</th>
-                    <th>Категория</th>
-                    <th>Цвета</th>
-                    <th>Стоимость аренды, ₽</th>
-                    <th>Топливо</th>
-                    <th>Номер</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cars.data.map((car) => (
-                    <CarItem
-                      key={car.id}
-                      name={car.name}
-                      category={car.categoryId}
-                      colors={car.colors}
-                      priceMin={car.priceMin}
-                      priceMax={car.priceMax}
-                      tank={car.tank}
-                      number={car.number}
-                    />
-                  ))}
+          <CarFilters
+            categories={categories}
+            categoriesFilter={categoryFilter}
+            setCategoriesFilter={setCategoryFilter}
+            categoriesLoading={categoriesLoading}
+            tankFilter={tankFilter}
+            setTankFilter={setTankFilter}
+            lowerPriceFilter={lowerPriceFilter}
+            setLowerPriceFilter={setLowerPriceFilter}
+            higherPriceFilter={higherPriceFilter}
+            setHigherPriceFilter={setHigherPriceFilter}
+          />
+        </TableSorting>
+        <div className="table-container">
+          {cars && !carsLoading && !carsError && (
+            <Table
+              hover
+              borderless
+              responsive={isResponsive}
+            >
+              <thead>
+                <tr>
+                  <th>Модель</th>
+                  <th>Категория</th>
+                  <th>Цвета</th>
+                  <th>Стоимость аренды, ₽</th>
+                  <th>Топливо</th>
+                  <th>Номер</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cars.data.map((car) => (
+                  <CarItem
+                    key={car.id}
+                    name={car.name}
+                    category={car.categoryId}
+                    colors={car.colors}
+                    priceMin={car.priceMin}
+                    priceMax={car.priceMax}
+                    tank={car.tank}
+                    number={car.number}
+                  />
+                ))}
                 {cars.data.length === 0 && (
                   <tr>
                     <td>
@@ -127,15 +125,14 @@ const Cars = (): React.ReactElement => {
                     </td>
                   </tr>
                 )}
-                </tbody>
-              </Table>
-            )}
-            {carsLoading && (
-              <Spin />
-            )}
-          </div>
-        </ContentContainer>
-      </ErrorProvider>
+              </tbody>
+            </Table>
+          )}
+          {carsLoading && (
+            <Spin />
+          )}
+        </div>
+      </ContentContainer>
     </>
   );
 };

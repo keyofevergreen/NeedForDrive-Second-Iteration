@@ -8,15 +8,14 @@ import ContentContainer from '../../components/ContentContainer/ContentContainer
 import TableSorting from '../../components/TableSorting/TableSorting';
 import TableItem from '../../components/TableItem/TableItem';
 import Spin from '../../components/Spin/Spin';
-import ErrorProvider from '../../components/ErrorProvider/ErrorProvider';
 
 const Points = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
-  const [cities, citiesLoading, citiesError] = useCities();
+  const [cities, citiesLoading] = useCities();
   const [page, setPage] = useState<number>(0);
   const [cityFilter, setCityFilter] = useState<string | null>('Все города');
   const [filters, setFilters] = useState<string | null>('Все города');
-  const [points, pointsLoading, pointsError] = usePoints(filters, page);
+  const [points, pointsLoading] = usePoints(filters, page);
 
   const submitFilter = (): void => {
     setFilters(cityFilter);
@@ -36,7 +35,6 @@ const Points = (): React.ReactElement => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Home page" />
       </Helmet>
-      <ErrorProvider errorStatus={[pointsError, citiesError]}>
       <ContentContainer
         title="Пункты выдачи"
         page={page}
@@ -100,7 +98,6 @@ const Points = (): React.ReactElement => {
           )}
         </div>
       </ContentContainer>
-      </ErrorProvider>
     </>
   );
 };

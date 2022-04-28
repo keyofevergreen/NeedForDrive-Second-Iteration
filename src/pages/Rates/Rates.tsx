@@ -7,7 +7,6 @@ import ContentContainer from '../../components/ContentContainer/ContentContainer
 import TableSorting from '../../components/TableSorting/TableSorting';
 import TableItem from '../../components/TableItem/TableItem';
 import FilterByPriceRange from '../../components/FilterByPriceRange/FilterByPriceRange';
-import ErrorProvider from '../../components/ErrorProvider/ErrorProvider';
 import Spin from '../../components/Spin/Spin';
 
 const Rates = (): React.ReactElement => {
@@ -37,7 +36,6 @@ const Rates = (): React.ReactElement => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Home page" />
       </Helmet>
-      <ErrorProvider errorStatus={[ratesError]}>
       <ContentContainer title="Тарифы">
         <TableSorting
           onSubmitFilter={submitFilter}
@@ -87,7 +85,6 @@ const Rates = (): React.ReactElement => {
           )}
         </div>
       </ContentContainer>
-      </ErrorProvider>
     </>
   );
 };

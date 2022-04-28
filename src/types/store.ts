@@ -12,6 +12,7 @@ import { PointsState } from './Points';
 import { CategoryState } from './Category';
 import { RateState } from './Rates';
 import { SearchState } from './Search';
+import { ErrorHandlerState } from './Error';
 
 export type Dispatcher = ThunkDispatch<RootState, ThunkExtras, Action>;
 
@@ -38,4 +39,5 @@ export interface RootState {
   orderStatus: OrderStatusState,
   category: CategoryState,
   search: SearchState,
+  errorHandler: ErrorHandlerState,
 }
