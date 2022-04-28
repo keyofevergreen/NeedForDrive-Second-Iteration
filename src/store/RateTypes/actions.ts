@@ -4,4 +4,4 @@ export const requestRateTypes = createAction('Rates types is fetching...');
 
 export const requestRateTypesSuccess = createAction<object>('Rates types has already fetched');
 
-export const requestRateTypesError = createAction<string>('Rates types fetched with error');
+export const requestRateTypesError = createAction<number>('Rates types fetched with error');

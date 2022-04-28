@@ -1,7 +1,7 @@
 export interface CitiesState {
   cities: City[] | null,
   loading: boolean,
-  error: string | null,
+  error: number | null,
 }
 
 export type City = {

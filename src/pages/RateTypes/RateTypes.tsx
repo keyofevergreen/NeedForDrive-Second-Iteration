@@ -24,7 +24,7 @@ const RateTypes = (): React.ReactElement => {
   const [nameFilter, setNameFilter] = useState<string | null>('Все тарифы');
   const [page, setPage] = useState<number>(0);
   const [filters, setFilters] = useState<string | null>(nameFilter);
-  const [rateTypes, loading, error] = useRateTypes(filters, page);
+  const [rateTypes, loading] = useRateTypes(filters, page);
 
   const submitFilter = (): void => {
     setFilters(nameFilter);
@@ -65,7 +65,7 @@ const RateTypes = (): React.ReactElement => {
           </Form.Select>
         </TableSorting>
         <div className="table-container">
-          {rateTypes && !loading && !error && (
+          {rateTypes && !loading && (
             <Table
               hover
               borderless

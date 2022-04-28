@@ -5,7 +5,7 @@ import { Dispatcher } from '../../types/store';
 import { OrderStatus, OrderStatusState } from '../../types/OrderStatus';
 import { SearchState } from '../../types/Search';
 
-export const useOrderStatus = (): [OrderStatus[], boolean, string | null] => {
+export const useOrderStatus = (): [OrderStatus[], boolean, number | null] => {
   const dispatch = useDispatch<Dispatcher>();
   const { orderStatus, loading, error } = useSelector<{
     orderStatus: OrderStatusState;

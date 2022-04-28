@@ -7,6 +7,7 @@ import { Router } from './components/Router';
 import App from './App';
 import createStore from './store/store';
 import createServices from './utils/services/services';
+import setupInterceptors from './utils/services/SetupInterceptors/service';
 
 const history = createBrowserHistory();
 
@@ -31,6 +32,7 @@ render(
   </Provider>,
   document.getElementById('root'),
 );
+setupInterceptors(store);
 
 if (module.hot) {
   module.hot.accept();

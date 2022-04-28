@@ -1,15 +1,15 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
+import { useCategory, useSearchSortedCategory } from './hooks';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import TableItem from '../../components/TableItem/TableItem';
-import { useCategory, useSearchSortedCategory } from './hooks';
 import Spin from '../../components/Spin/Spin';
 
 const Categories = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
-  const [categories, loading, error] = useCategory();
+  const [categories, categoriesLoading] = useCategory();
   const sortedCategory = useSearchSortedCategory(categories);
 
   return (
@@ -21,7 +21,7 @@ const Categories = (): React.ReactElement => {
       </Helmet>
       <ContentContainer title="Категории">
         <div className="table-container">
-          {categories && !loading && !error && (
+          {categories && !categoriesLoading && (
             <Table
               hover
               borderless
@@ -50,7 +50,7 @@ const Categories = (): React.ReactElement => {
               </tbody>
             </Table>
           )}
-          {loading && (
+          {categoriesLoading && (
             <Spin />
           )}
         </div>

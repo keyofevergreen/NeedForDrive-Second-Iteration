@@ -15,7 +15,7 @@ const Rates = (): React.ReactElement => {
   const [higherPriceFilter, setHigherPriceFilter] = useState<number | null>(999999);
   const [filters, setFilters] = useState<number[] | null>(null);
   const [page, setPage] = useState<number>(0);
-  const [rates, loading, error] = useRates(filters, page);
+  const [rates, loading, ratesError] = useRates(filters, page);
 
   const submitFilter = (): void => {
     setFilters([lowerPriceFilter, higherPriceFilter]);
@@ -50,7 +50,7 @@ const Rates = (): React.ReactElement => {
           />
         </TableSorting>
         <div className="table-container">
-          {rates && !loading && !error && (
+          {rates && !loading && !ratesError && (
             <Table
               hover
               borderless

@@ -5,7 +5,7 @@ import { Dispatcher } from '../../types/store';
 import { OrderResponse, OrderSort, OrderState } from '../../types/Order';
 import { RateTypesAxiosConfig } from '../../types/RateTypes';
 
-export const useOrder = (sorts: OrderSort, page: number): [OrderResponse, boolean, string | null] => {
+export const useOrder = (sorts: OrderSort, page: number): [OrderResponse, boolean, number | null] => {
   const dispatch = useDispatch<Dispatcher>();
   const { orders, error, loading } = useSelector<{
     order: OrderState;

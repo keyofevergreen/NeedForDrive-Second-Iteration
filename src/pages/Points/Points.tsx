@@ -15,7 +15,7 @@ const Points = (): React.ReactElement => {
   const [page, setPage] = useState<number>(0);
   const [cityFilter, setCityFilter] = useState<string | null>('Все города');
   const [filters, setFilters] = useState<string | null>('Все города');
-  const [points, loading, error] = usePoints(filters, page);
+  const [points, pointsLoading] = usePoints(filters, page);
 
   const submitFilter = (): void => {
     setFilters(cityFilter);
@@ -59,7 +59,7 @@ const Points = (): React.ReactElement => {
           </Form.Select>
         </TableSorting>
         <div className="table-container">
-          {points && !loading && !error && (
+          {points && !pointsLoading && (
             <Table
               hover
               borderless
@@ -93,7 +93,7 @@ const Points = (): React.ReactElement => {
               </tbody>
             </Table>
           )}
-          {loading && (
+          {pointsLoading && (
             <Spin />
           )}
         </div>

@@ -3,12 +3,12 @@ import { Table } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { useOrder } from './hooks';
 import { OrderSort } from '../../types/Order';
+import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import OrderItem from './components/OrderItem/OrderItem';
 import TableSorting from '../../components/TableSorting/TableSorting';
-import useResize from '../../hooks/useResize';
-import Spin from '../../components/Spin/Spin';
 import OrderFilters from './components/OrderFilters/OrderFilters';
+import Spin from '../../components/Spin/Spin';
 
 const Order: React.FC = () => {
   const isResponsive = useResize(1, 1440);
@@ -27,7 +27,7 @@ const Order: React.FC = () => {
     isNeedChildChair: isNeedChildChairFilter,
     isRightWheel: isRightWheelFilter,
   });
-  const [orders, loading, error] = useOrder(filters, page);
+  const [orders, ordersLoading] = useOrder(filters, page);
 
   const submitFilter = (): void => {
     setFilters({
@@ -100,7 +100,7 @@ const Order: React.FC = () => {
           />
         </TableSorting>
         <div className="table-container">
-          {orders && !loading && !error && (
+          {orders && !ordersLoading && (
             <Table
               hover
               borderless
@@ -124,7 +124,7 @@ const Order: React.FC = () => {
               </tbody>
             </Table>
           )}
-          {loading && (
+          {ordersLoading && (
             <Spin />
           )}
         </div>

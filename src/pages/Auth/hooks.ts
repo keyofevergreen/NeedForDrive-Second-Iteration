@@ -18,7 +18,8 @@ export const useAuth = (form: AuthForm | null): [boolean, string | null] => {
   }, [form]);
 
   useEffect(() => {
-    if (token) {
+    const currentToken = localStorage.getItem('token');
+    if (currentToken) {
       dispatch(setAuth(true));
     }
   }, [token]);

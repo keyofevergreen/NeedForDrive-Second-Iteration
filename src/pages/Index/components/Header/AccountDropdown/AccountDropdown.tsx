@@ -10,10 +10,10 @@ const AccountDropdown: React.FC = () => {
   const dispatch = useDispatch<Dispatcher>();
 
   const logout = (): void => {
-    dispatch(setAuth(false));
     localStorage.removeItem('token');
     localStorage.removeItem('refresh');
     localStorage.removeItem('basicToken');
+    dispatch(setAuth(false));
   };
 
   return (

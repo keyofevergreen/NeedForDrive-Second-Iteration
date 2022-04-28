@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { useCars } from './hooks';
+import { useCategory } from '../Categories/hooks';
+import { CarSort } from '../../types/Cars';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import CarItem from './components/CarItem/CarItem';
 import Spin from '../../components/Spin/Spin';
 import TableSorting from '../../components/TableSorting/TableSorting';
-import { useCategory } from '../Categories/hooks';
-import { CarSort } from '../../types/Cars';
 import CarFilters from './components/CarFilters/CarFilters';
 
 const Cars = (): React.ReactElement => {

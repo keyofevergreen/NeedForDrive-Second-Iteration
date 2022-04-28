@@ -3,7 +3,7 @@ import { Category } from './Category';
 export interface CarsState {
   cars: CarResponse | null,
   loading: boolean,
-  error: string | null,
+  error: number | null,
 }
 
 export type Car = {

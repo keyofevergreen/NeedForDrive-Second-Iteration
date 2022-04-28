@@ -4,7 +4,7 @@ import { fetchCars } from '../../store/Cars/thunks';
 import { Dispatcher } from '../../types/store';
 import { CarResponse, CarsAxiosConfig, CarSort, CarsState } from '../../types/Cars';
 
-export const useCars = (sorts?: CarSort, page?: number): [CarResponse, boolean, string | null] => {
+export const useCars = (sorts?: CarSort, page?: number): [CarResponse, boolean, number | null] => {
   const dispatch = useDispatch<Dispatcher>();
   const { cars, loading, error } = useSelector<{
     cars: CarsState;

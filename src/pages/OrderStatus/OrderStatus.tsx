@@ -10,7 +10,7 @@ import { useOrderStatus, useSortedOrderStatus } from './hooks';
 
 const OrderStatus = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
-  const [orderStatus, loading, error] = useOrderStatus();
+  const [orderStatus, orderStatusLoading] = useOrderStatus();
   const sortedOrderStatuses = useSortedOrderStatus(orderStatus);
 
   return (
@@ -29,7 +29,7 @@ const OrderStatus = (): React.ReactElement => {
           </Form.Select>
         </TableSorting>
         <div className="table-container">
-          {orderStatus && !loading && !error && (
+          {orderStatus && !orderStatusLoading && (
             <Table
               hover
               borderless
@@ -57,7 +57,7 @@ const OrderStatus = (): React.ReactElement => {
               </tbody>
             </Table>
           )}
-          {loading && (
+          {orderStatusLoading && (
             <Spin />
           )}
         </div>

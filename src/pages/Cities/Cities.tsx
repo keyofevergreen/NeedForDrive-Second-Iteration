@@ -9,7 +9,7 @@ import Spin from '../../components/Spin/Spin';
 
 const Cities = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
-  const [cities, loading, error] = useCities();
+  const [cities, citiesLoading] = useCities();
   const sortedCities = useSearchSortedCities(cities);
 
   return (
@@ -21,7 +21,7 @@ const Cities = (): React.ReactElement => {
       </Helmet>
       <ContentContainer title="Города">
         <div className="table-container">
-          {cities && !loading && !error && (
+          {cities && !citiesLoading && (
             <Table
               hover
               borderless
@@ -49,7 +49,7 @@ const Cities = (): React.ReactElement => {
               </tbody>
             </Table>
           )}
-          {loading && (
+          {citiesLoading && (
             <Spin />
           )}
         </div>
