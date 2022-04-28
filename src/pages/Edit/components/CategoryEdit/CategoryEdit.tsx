@@ -1,8 +1,8 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import FormContainer from '../FormContainer/FormContainer';
 import ContentContainer from '../../../../components/ContentContainer/ContentContainer';
+import FormContainer from '../../../../components/FormContainer/FormContainer';
 
 const CategoryEdit = (): React.ReactElement => {
   return (

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import FormContainer from '../FormContainer/FormContainer';
 import ContentContainer from '../../../../components/ContentContainer/ContentContainer';
 import { useCities } from '../../../Cities/hooks';
+import FormContainer from '../../../../components/FormContainer/FormContainer';
 
 const PointEdit = (): React.ReactElement => {
   const [cities, citiesLoading] = useCities();

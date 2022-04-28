@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import FormContainer from '../FormContainer/FormContainer';
 import ContentContainer from '../../../../components/ContentContainer/ContentContainer';
 import { useRateTypes } from '../../../RateTypes/hooks';
 import checkPriceValue from '../../../../utils/helpers/OnlyNumberCheck';
+import FormContainer from '../../../../components/FormContainer/FormContainer';
 
 const RateEdit = (): React.ReactElement => {
   const [rateTypes, loading] = useRateTypes();

@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, Form, InputGroup, ProgressBar } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import ContentContainer from '../../../../components/ContentContainer/ContentContainer';
-import FormContainer from '../FormContainer/FormContainer';
 import Car from '../../../../assets/carsDefaultImage.png';
 import styles from './styles.module.scss';
+import FormContainer from '../../../../components/FormContainer/FormContainer';
 
 const CarEdit = (): React.ReactElement => {
   return (
