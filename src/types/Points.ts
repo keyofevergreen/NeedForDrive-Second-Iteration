@@ -1,6 +1,30 @@
+import { City } from './Cities';
+
+export interface PointsState {
+  points: PointResponse | null,
+  loading: boolean,
+  error: string | null,
+}
+
 export type Point = {
   name: string,
   address: string,
-  city: string,
+  cityId?: City | null,
   id?: number,
+};
+
+export type PointResponse = {
+  fields: object,
+  count: number,
+  data: Point[],
+};
+
+export type PointsAxiosConfig = {
+  params?: PointsParams,
+};
+
+export type PointsParams = {
+  tank?:string,
+  page?: number,
+  limit?: number,
 };

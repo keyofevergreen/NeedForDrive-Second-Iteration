@@ -107,6 +107,18 @@ h3 {
   background-size: 5px 6.5px;
 }
 
+.range-select {
+  &:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  &:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none;
+  }
+}
+
 .btn-sm {
   min-width: 95px;
   padding: 6px 16px;
@@ -146,7 +158,6 @@ h3 {
 
 .table {
   margin-bottom: 22px;
-  min-width: 768px;
   max-width: 1600px;
 }
 
@@ -203,6 +214,14 @@ h3 {
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
   }
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 @media (max-width: 767.98px) {

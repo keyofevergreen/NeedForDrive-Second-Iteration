@@ -25,7 +25,7 @@
 
 .navigation__menu {
   overflow: auto;
-  max-height: 100%;
+  max-height: calc(100% - 69px);
   .nav-item {
     display: flex;
     gap: 11px;

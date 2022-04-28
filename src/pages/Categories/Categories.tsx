@@ -1,25 +1,16 @@
 import React from 'react';
-import { Form, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
-import TableSorting from '../../components/TableSorting/TableSorting';
 import TableItem from '../../components/TableItem/TableItem';
-import { Category } from '../../types/Category';
-
-const categories: Category[] = [
-  {
-    name: 'Эконом',
-    description: 'Экономные машины',
-  },
-  {
-    name: 'Эконом+',
-    description: 'Комфортные машины среднего класса',
-  }
-];
+import { useCategory, useSearchSortedCategory } from './hooks';
+import Spin from '../../components/Spin/Spin';
 
 const Categories = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
+  const [categories, loading, error] = useCategory();
+  const sortedCategory = useSearchSortedCategory(categories);
 
   return (
     <>
@@ -29,35 +20,39 @@ const Categories = (): React.ReactElement => {
         <meta name="description" content="Home page" />
       </Helmet>
       <ContentContainer title="Категории">
-        <TableSorting>
-          <Form.Select size="sm">
-            <option>Все категории</option>
-            <option>Эконом</option>
-            <option>Эконом+</option>
-          </Form.Select>
-        </TableSorting>
         <div className="table-container">
-          <Table
-            hover
-            borderless
-            responsive={isResponsive}
-          >
-            <thead>
-              <tr>
-                <th>Категория</th>
-                <th>Описание</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              {categories.map((category) => (
-                <TableItem
-                  key={category.id}
-                  columns={[category.name, category.description]}
-                />
-              ))}
-            </tbody>
-          </Table>
+          {categories && !loading && !error && (
+            <Table
+              hover
+              borderless
+              responsive={isResponsive}
+            >
+              <thead>
+                <tr>
+                  <th>Категория</th>
+                  <th>Описание</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sortedCategory.map((category) => (
+                  <TableItem
+                    key={category.description}
+                    columns={[category.name, category.description]}
+                  />
+                ))}
+                {sortedCategory.length === 0 && (
+                  <tr>
+                    <td>
+                      По вашему запросу ничего не найдено
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
+          )}
+          {loading && (
+            <Spin />
+          )}
         </div>
       </ContentContainer>
     </>

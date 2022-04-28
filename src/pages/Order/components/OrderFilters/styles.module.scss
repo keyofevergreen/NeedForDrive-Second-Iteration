@@ -1,0 +1,11 @@
+.checkbox-wrap {
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .checkbox-wrap {
+    display: flex;
+    gap: 6px;
+  }
+}

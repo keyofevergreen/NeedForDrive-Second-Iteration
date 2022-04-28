@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { useAuth } from '../../store/Auth/hooks';
+import { useAuth } from './hooks';
 import { AuthForm } from '../../types/Auth';
 import Logo from '../../assets/logo.component.svg';
 import styles from './styles.module.scss';
@@ -50,6 +50,7 @@ const Auth = (): React.ReactElement => {
                   type="email"
                   placeholder="Введите почту"
                   aria-describedby="username"
+                  disabled={loading}
                 />
                 {(errors.username?.message || serverError) && (
                   <Form.Text
@@ -73,6 +74,7 @@ const Auth = (): React.ReactElement => {
                   type="password"
                   placeholder="Введите пароль"
                   aria-describedby="password"
+                  disabled={loading}
                 />
                 {(errors.password?.message) && (
                   <Form.Text

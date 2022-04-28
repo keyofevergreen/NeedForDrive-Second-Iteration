@@ -3,6 +3,15 @@ import { Action } from 'redux';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { ServicesInterface } from '../utils/services/services';
 import { AuthState } from './Auth';
+import { OrderState } from './Order';
+import { CitiesState } from './Cities';
+import { CarsState } from './Cars';
+import { OrderStatusState } from './OrderStatus';
+import { RateTypesState } from './RateTypes';
+import { PointsState } from './Points';
+import { CategoryState } from './Category';
+import { RateState } from './Rates';
+import { SearchState } from './Search';
 
 export type Dispatcher = ThunkDispatch<RootState, ThunkExtras, Action>;
 
@@ -19,5 +28,14 @@ export interface StoreProps extends ThunkExtras {
 }
 
 export interface RootState {
-  auth: AuthState;
+  auth: AuthState,
+  order: OrderState,
+  cars: CarsState,
+  cities: CitiesState,
+  points: PointsState,
+  rates: RateState,
+  rateTypes: RateTypesState,
+  orderStatus: OrderStatusState,
+  category: CategoryState,
+  search: SearchState,
 }

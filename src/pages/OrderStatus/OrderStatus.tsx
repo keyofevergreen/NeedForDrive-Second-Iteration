@@ -5,16 +5,13 @@ import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import TableSorting from '../../components/TableSorting/TableSorting';
 import TableItem from '../../components/TableItem/TableItem';
-
-const statusList: string[] = [
-  'Новые',
-  'Подтвержденные',
-  'Отмененные',
-  'Временные'
-];
+import Spin from '../../components/Spin/Spin';
+import { useOrderStatus, useSortedOrderStatus } from './hooks';
 
 const OrderStatus = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
+  const [orderStatus, loading, error] = useOrderStatus();
+  const sortedOrderStatuses = useSortedOrderStatus(orderStatus);
 
   return (
     <>
@@ -32,26 +29,37 @@ const OrderStatus = (): React.ReactElement => {
           </Form.Select>
         </TableSorting>
         <div className="table-container">
-          <Table
-            hover
-            borderless
-            responsive={isResponsive}
-          >
-            <thead>
-              <tr>
-                <th>Название статуса</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              {statusList.map((status) => (
-                <TableItem
-                  key={status}
-                  columns={[status]}
-                />
-              ))}
-            </tbody>
-          </Table>
+          {orderStatus && !loading && !error && (
+            <Table
+              hover
+              borderless
+              responsive={isResponsive}
+            >
+              <thead>
+                <tr>
+                  <th>Название статуса</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sortedOrderStatuses.map((status) => (
+                  <TableItem
+                    key={status.id}
+                    columns={[status.name]}
+                  />
+                ))}
+                {sortedOrderStatuses.length === 0 && (
+                  <tr>
+                    <td>
+                      По вашему запросу ничего не найдено
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
+          )}
+          {loading && (
+            <Spin />
+          )}
         </div>
       </ContentContainer>
     </>

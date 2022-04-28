@@ -40,6 +40,29 @@
   }
 }
 
+.close-btn {
+  background-color: transparent;
+  border: none;
+
+  svg {
+    width: 20px;
+    height: 20px;
+
+    path {
+      transition: 0.4s fill ease;
+      fill: var(--gray-blue);
+    }
+  }
+
+  &:hover {
+    svg {
+      path {
+        fill: var(--blue);
+      }
+    }
+  }
+}
+
 .header__notifications-btn {
   display: flex;
   align-items: center;
@@ -124,7 +147,7 @@
       .dropdown-menu {
         border: none;
         box-shadow: 0 3.5px 35px 0 rgb(90 97 105 / 10%), 0 5px 5px 0 rgb(90 97 105 / 6%),
-          0 2px 4px 0 rgb(90 97 105 / 12%), 0 1px 0 0 rgb(90 97 105 / 11%);
+        0 2px 4px 0 rgb(90 97 105 / 12%), 0 1px 0 0 rgb(90 97 105 / 11%);
 
         .dropdown-item {
           color: var(--dark-blue);
