@@ -6,6 +6,7 @@ import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import TableItem from '../../components/TableItem/TableItem';
 import Spin from '../../components/Spin/Spin';
+import AddTableItemLink from '../../components/AddTableItemLink/AddTableItemLink';
 
 const Cities = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
@@ -21,6 +22,7 @@ const Cities = (): React.ReactElement => {
       </Helmet>
       <ContentContainer title="Города">
         <div className="table-container">
+          <AddTableItemLink to="/edit/city" />
           {cities && !citiesLoading && (
             <Table
               hover

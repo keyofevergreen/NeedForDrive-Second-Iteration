@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import Logo from '../../../../assets/logo.component.svg';
@@ -18,12 +19,6 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  {
-    name: 'Карточка автомобиля',
-    href: '/fuck',
-    id: 1,
-    icon: <NavIcon1 />,
-  },
   {
     name: 'Заказы',
     href: '/',
@@ -74,36 +69,98 @@ const navItems: NavItem[] = [
   },
 ];
 
+type TableLink = {
+  url: string,
+  name: string
+};
+
+const tableEditLinks: TableLink[] = [
+  {
+    url: 'car',
+    name: 'Карточка автомобиля',
+  },
+  {
+    url: 'order-status',
+    name: 'Карточка статуса заказа',
+  },
+  {
+    url: 'point',
+    name: 'Карточка пункта выдачи',
+  },
+  {
+    url: 'city',
+    name: 'Карточка города',
+  },
+  {
+    url: 'category',
+    name: 'Карточка категории',
+  },
+  {
+    url: 'rate',
+    name: 'Карточка тарифа',
+  },
+  {
+    url: 'rate-types',
+    name: 'Карточка типа тарифа',
+  },
+];
+
 interface ISidebarProps {
   className?: string;
   onLinkClick?: React.MouseEventHandler;
 }
 
-const Sidebar = ({ className, onLinkClick }: ISidebarProps): React.ReactElement => (
-  <div
-    className={cx(
-      'navigation',
-      className,
-    )}
-  >
-    <div className={styles['navigation__logo']}>
-      <Logo />
-      Need for car
+const Sidebar = ({ className, onLinkClick }: ISidebarProps): React.ReactElement => {
+  const location = useLocation();
+  const { pathname } = location;
+  const [editLinkName, setEditLinkName] = useState<string>('');
+
+  useEffect(() => {
+    setEditLinkName('');
+    tableEditLinks.forEach((link) => {
+      if (pathname.includes(`/edit/${link.url}`)) {
+        setEditLinkName(link.name);
+      }
+    });
+  }, [location]);
+
+  return (
+    <div
+      className={cx(
+        'navigation',
+        className,
+      )}
+    >
+      <div className={styles['navigation__logo']}>
+        <Logo />
+        Need for car
+      </div>
+      <nav className={styles['navigation__menu']}>
+        {pathname.includes('/edit/') && (
+          <NavLink
+            className={cx('nav-item')}
+            id="edit-page"
+            to="/edit"
+            onClick={onLinkClick}
+          >
+            <NavIcon1 />
+            <p>{editLinkName}</p>
+          </NavLink>
+        )}
+        {navItems.map((item) => (
+          <NavLink
+            className={cx('nav-item')}
+            key={item.id}
+            to={item.href}
+            onClick={onLinkClick}
+          >
+            {item.icon}
+            <p>{item.name}</p>
+          </NavLink>
+        ))}
+      </nav>
     </div>
-    <nav className={styles['navigation__menu']}>
-      {navItems.map((item) => (
-        <NavLink
-          className={cx('nav-item')}
-          key={item.id}
-          to={item.href}
-          onClick={onLinkClick}
-        >
-          {item.icon}
-          <p>{item.name}</p>
-        </NavLink>
-      ))}
-    </nav>
-  </div>
-);
+  );
+};
 
 export default Sidebar;

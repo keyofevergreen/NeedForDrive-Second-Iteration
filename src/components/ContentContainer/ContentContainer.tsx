@@ -1,6 +1,9 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import styles from './styles.module.scss';
+import classNames from 'classnames/bind';
 import MyPagination from './components/MyPagination/MyPagination';
+import styles from './styles.module.scss';
+
+const cx = classNames.bind(styles);
 
 interface IContentContainerProps {
   children: React.ReactNode,
@@ -8,16 +11,17 @@ interface IContentContainerProps {
   page?: number,
   itemCount?: number,
   onSetPage?: Dispatch<SetStateAction<number>>,
+  className?: string,
 }
 
-const ContentContainer = ({ children, title, page, itemCount, onSetPage }: IContentContainerProps): React.ReactElement => (
+const ContentContainer = ({ children, title, page, itemCount, onSetPage, className }: IContentContainerProps): React.ReactElement => (
   <div className={styles['container']}>
     {title && (
       <h1 className={styles['content-title']}>
         {title}
       </h1>
     )}
-    <div className={styles['content-wrap']}>
+    <div className={cx('content-wrap', className)}>
       <div className={styles['content']}>
         {children}
       </div>

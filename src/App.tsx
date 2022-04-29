@@ -12,6 +12,7 @@ import Categories from './pages/Categories/Categories';
 import OrderStatus from './pages/OrderStatus/OrderStatus';
 import Rates from './pages/Rates/Rates';
 import RateTypes from './pages/RateTypes/RateTypes';
+import Edit from './pages/Edit/Edit';
 import './assets/styles/global.scss';
 
 const App: React.FC = (): React.ReactElement => {
@@ -24,6 +25,7 @@ const App: React.FC = (): React.ReactElement => {
       <Index>
         <Routes>
           <Route index element={<Order />} />
+          <Route path="edit/*" element={<Edit />} />
           <Route path="cars" element={<Cars />} />
           <Route path="order-status" element={<OrderStatus />} />
           <Route path="categories" element={<Categories />} />

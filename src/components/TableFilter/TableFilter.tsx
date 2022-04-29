@@ -9,7 +9,7 @@ interface ITableSortingProps {
   isFiltered?: boolean,
 }
 
-const TableSorting = ({ children, onSubmitFilter, onResetFilter, isFiltered }: ITableSortingProps): React.ReactElement => {
+const TableFilter = ({ children, onSubmitFilter, onResetFilter, isFiltered }: ITableSortingProps): React.ReactElement => {
   return (
     <div className={styles['table-header']}>
       <div className={styles['table-header__sort']}>
@@ -39,4 +39,4 @@ const TableSorting = ({ children, onSubmitFilter, onResetFilter, isFiltered }: I
   );
 };
 
-export default TableSorting;
+export default TableFilter;

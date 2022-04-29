@@ -6,7 +6,7 @@ import { OrderSort } from '../../types/Order';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import OrderItem from './components/OrderItem/OrderItem';
-import TableSorting from '../../components/TableSorting/TableSorting';
+import TableFilter from '../../components/TableFilter/TableFilter';
 import OrderFilters from './components/OrderFilters/OrderFilters';
 import Spin from '../../components/Spin/Spin';
 
@@ -72,7 +72,7 @@ const Order: React.FC = () => {
         itemCount={orders?.count}
         onSetPage={setPage}
       >
-        <TableSorting
+        <TableFilter
           onSubmitFilter={submitFilter}
           onResetFilter={resetFilter}
           isFiltered={
@@ -98,7 +98,7 @@ const Order: React.FC = () => {
             setRightWheelFilter={setRightWheelFilter}
             isRightWheelFilter={isRightWheelFilter}
           />
-        </TableSorting>
+        </TableFilter>
         <div className="table-container">
           {orders && !ordersLoading && (
             <Table
