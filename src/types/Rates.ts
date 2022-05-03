@@ -4,6 +4,9 @@ export interface RateState {
   rates: RateResponse | null,
   loading: boolean,
   error: number | null,
+  rateById: Rate | null,
+  rateByIdLoading: boolean,
+  rateByIdError: number | null,
 }
 
 export type Rate = {

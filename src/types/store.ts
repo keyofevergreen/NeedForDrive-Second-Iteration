@@ -13,6 +13,7 @@ import { CategoryState } from './Category';
 import { RateState } from './Rates';
 import { SearchState } from './Search';
 import { ErrorHandlerState } from './Error';
+import { UploadedEntityState } from './Edit';
 
 export type Dispatcher = ThunkDispatch<RootState, ThunkExtras, Action>;
 
@@ -40,4 +41,5 @@ export interface RootState {
   category: CategoryState,
   search: SearchState,
   errorHandler: ErrorHandlerState,
+  uploadedEntity: UploadedEntityState,
 }

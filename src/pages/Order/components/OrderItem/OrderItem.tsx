@@ -2,16 +2,18 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import { format, toDate } from 'date-fns';
 import { imageOnErrorHandler } from '../../../../utils/helpers/imageOnErrorHandler';
-import SettingButton from '../../../../components/SettingButton/SettingButton';
-import { Order } from '../../../../types/Order';
+import { Order, OrderSort } from '../../../../types/Order';
 import { Checkbox } from '../../../../types/Filter';
 import styles from './styles.module.scss';
+import OrderItemStatusButtons from '../OrderItemStatusButtons/OrderItemStatusButtons';
 
 interface IOrderItemProps {
   order: Order,
+  filters: OrderSort,
+  page: number,
 }
 
-const OrderItem = ({ order }: IOrderItemProps): React.ReactElement => {
+const OrderItem = ({ order, filters, page }: IOrderItemProps): React.ReactElement => {
   const {
     carId,
     cityId,
@@ -102,7 +104,12 @@ const OrderItem = ({ order }: IOrderItemProps): React.ReactElement => {
         {orderStatusId?.name}
       </td>
       <td className={styles['cols']}>
-        <SettingButton className={styles['order-item__actions']} />
+        <OrderItemStatusButtons
+          currentOrderStatus={orderStatusId}
+          filters={filters}
+          page={page}
+          order={order}
+        />
       </td>
     </tr>
   );

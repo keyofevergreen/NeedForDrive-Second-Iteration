@@ -1,3 +1,3 @@
 export interface ErrorHandlerState {
-  errors: (number)[],
+  errors: number[],
 }

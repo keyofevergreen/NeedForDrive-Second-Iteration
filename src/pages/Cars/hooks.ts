@@ -3,12 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars } from '../../store/Cars/thunks';
 import { Dispatcher } from '../../types/store';
 import { CarResponse, CarsAxiosConfig, CarSort, CarsState } from '../../types/Cars';
+import { UploadedEntityState } from '../../types/Edit';
 
 export const useCars = (sorts?: CarSort, page?: number): [CarResponse, boolean, number | null] => {
   const dispatch = useDispatch<Dispatcher>();
   const { cars, loading, error } = useSelector<{
     cars: CarsState;
   }, CarsState>((state) => state.cars);
+
+  const { uploadedEntity } = useSelector<{
+    uploadedEntity: UploadedEntityState;
+  }, UploadedEntityState>((state) => state.uploadedEntity);
 
   useEffect(() => {
     const { categoryId, tank, lowerPrice, higherPrice } = sorts;
@@ -32,7 +37,7 @@ export const useCars = (sorts?: CarSort, page?: number): [CarResponse, boolean, 
       }
     }
     dispatch(fetchCars(config));
-  }, [sorts, page]);
+  }, [sorts, page, uploadedEntity]);
 
   return [cars, loading, error];
 };

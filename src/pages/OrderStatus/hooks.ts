@@ -1,18 +1,35 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchOrderStatus } from '../../store/OrderStatus/thunks';
+import { fetchOrderStatuses } from '../../store/OrderStatus/thunks';
 import { Dispatcher } from '../../types/store';
 import { OrderStatus, OrderStatusState } from '../../types/OrderStatus';
 import { SearchState } from '../../types/Search';
+import { UploadedEntityState } from '../../types/Edit';
 
-export const useOrderStatus = (): [OrderStatus[], boolean, number | null] => {
+const statusOrderAlerts: string[] = [
+  'Статус заказа сохранен',
+  'Статус заказа создан',
+  'Статус заказа удален',
+];
+
+export const useOrderStatuses = (): [OrderStatus[], boolean, number | null] => {
   const dispatch = useDispatch<Dispatcher>();
   const { orderStatus, loading, error } = useSelector<{
     orderStatus: OrderStatusState;
   }, OrderStatusState>((state) => state.orderStatus);
 
+  const { successAlertMessage } = useSelector<{
+    uploadedEntity: UploadedEntityState;
+  }, UploadedEntityState>((state) => state.uploadedEntity);
+
   useEffect(() => {
-    dispatch(fetchOrderStatus());
+    if (statusOrderAlerts.includes(successAlertMessage)) {
+      dispatch(fetchOrderStatuses());
+    }
+  }, [successAlertMessage]);
+
+  useEffect(() => {
+    dispatch(fetchOrderStatuses());
   }, []);
 
   return [orderStatus, loading, error];

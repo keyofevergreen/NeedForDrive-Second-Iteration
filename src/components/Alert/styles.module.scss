@@ -1,0 +1,56 @@
+.success-alert-message {
+  position: absolute;
+  top: 0;
+  border-radius: 0;
+  border: none;
+  z-index: 1;
+  min-width: 100%;
+
+  :global {
+    .toast-body {
+      background-color: var(--green);
+      color: #fff;
+      font-size: 13px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 27px;
+
+      & > div > svg {
+        height: 10px;
+
+        path {
+          fill: #fff;
+        }
+      }
+
+      span {
+        margin-left: 10px;
+      }
+
+      button {
+        width: 19.5px;
+        height: 19.5px;
+        border: none;
+        background-color: transparent;
+
+        svg path {
+          width: 19.5px;
+          height: 19.5px;
+          fill: #fff;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .success-alert-message {
+    :global {
+      .toast-body {
+        padding: 10px 16px;
+      }
+    }
+  }
+}

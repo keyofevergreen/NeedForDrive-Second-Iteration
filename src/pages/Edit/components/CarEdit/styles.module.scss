@@ -46,11 +46,24 @@
   }
 }
 
-.car-edit__file-input {
-  max-width: 260px;
-  border: 0.5px solid #BECAD6;
-  font-size: 10px;
+.car-edit__file-input-container {
   margin-bottom: 22px;
+  position: relative;
+  input {
+    max-width: 260px;
+    border: 0.5px solid #BECAD6;
+    font-size: 10px;
+  }
+
+  :global {
+    .input-message {
+      position: absolute;
+      bottom: -18px;
+      left: 12px;
+      color: var(--red);
+      font-size: 10px;
+    }
+  }
 }
 
 .car-edit__progress-wrap {
@@ -93,6 +106,7 @@
 .car-edit__description-textarea {
   width: 100%;
   padding: 0 21px;
+  position: relative;
 
   label {
     font-family: Roboto, Helvetica, sans-serif;
@@ -101,10 +115,14 @@
     font-weight: 500;
   }
 
-  textarea {
-    font-size: 13px;
-    border: none;
-    padding: 0;
+  :global {
+    .input-message {
+      position: absolute;
+      bottom: -18px;
+      left: 21px;
+      color: var(--red);
+      font-size: 10px;
+    }
   }
 }
 
@@ -122,8 +140,8 @@
     position: relative;
     font-size: 1px;
     color: transparent;
-    width: 34.5px;
-    height: 34.5px;
+    width: 30.5px;
+    height: 30.5px;
     border: 1px solid #ced4da;
     transition: all 0.3s ease;
 

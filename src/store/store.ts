@@ -12,6 +12,7 @@ import categoryReducer from './Category/reducer';
 import rateReducer from './Rates/reducer';
 import searchReducer from './Search/reducer';
 import errorHandlerReducer from './ErrorProvider/reducer';
+import uploadedEntityReducer from './Edit/reducer';
 
 const createStore = ({
   services,
@@ -31,6 +32,7 @@ const createStore = ({
       category: categoryReducer,
       search: searchReducer,
       errorHandler: errorHandlerReducer,
+      uploadedEntity: uploadedEntityReducer,
     },
     devTools: isDevelopment(),
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({

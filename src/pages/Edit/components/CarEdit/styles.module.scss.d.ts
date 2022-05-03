@@ -5,7 +5,7 @@ declare namespace StylesModuleScssNamespace {
     "car-edit__card": string;
     "car-edit__description-textarea": string;
     "car-edit__details": string;
-    "car-edit__file-input": string;
+    "car-edit__file-input-container": string;
     "car-edit__progress": string;
     "car-edit__progress-details": string;
     "car-edit__progress-wrap": string;

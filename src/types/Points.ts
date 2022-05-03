@@ -4,13 +4,16 @@ export interface PointsState {
   points: PointResponse | null,
   loading: boolean,
   error: number | null,
+  pointById: Point | null,
+  pointByIdLoading: boolean,
+  pointByIdError: number | null,
 }
 
 export type Point = {
   name: string,
   address: string,
   cityId?: City | null,
-  id?: number,
+  id: string,
 };
 
 export type PointResponse = {

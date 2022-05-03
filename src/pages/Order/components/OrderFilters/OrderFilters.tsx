@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 import { getTime, startOfToday, subDays, subMonths } from 'date-fns';
 import { Checkbox, Filter } from '../../../../types/Filter';
 import { useCities } from '../../../Cities/hooks';
-import { useOrderStatus } from '../../../OrderStatus/hooks';
+import { useOrderStatuses } from '../../../OrderStatus/hooks';
 import styles from './styles.module.scss';
 
 const TODAY = startOfToday();
@@ -57,7 +57,7 @@ const OrderFilters = (
   }: IOrderFilters
 ): React.ReactElement => {
   const [cities, citiesLoading] = useCities();
-  const [orderStatus, orderStatusLoading] = useOrderStatus();
+  const [orderStatus, orderStatusLoading] = useOrderStatuses();
   const filters: Filter[] = [
     {
       id: 1,

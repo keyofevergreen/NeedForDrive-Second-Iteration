@@ -70,6 +70,8 @@ const Rates = (): React.ReactElement => {
                   <TableItem
                     key={rate.id}
                     columns={[rate.rateTypeId?.name, rate.rateTypeId?.unit, rate.price]}
+                    id={rate.id}
+                    editPageLink="rate"
                   />
                 ))}
                 {rates.data.length === 0 && (

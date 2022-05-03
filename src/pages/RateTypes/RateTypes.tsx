@@ -66,7 +66,7 @@ const RateTypes = (): React.ReactElement => {
           </Form.Select>
         </TableFilter>
         <div className="table-container">
-          <AddTableItemLink to="/edit/rate-types" />
+          <AddTableItemLink to="/edit/rate-type" />
           {rateTypes && !loading && (
             <Table
               hover
@@ -79,10 +79,12 @@ const RateTypes = (): React.ReactElement => {
                 </tr>
               </thead>
               <tbody>
-                {rateTypes && rateTypes.data.map((rate) => (
+                {rateTypes && rateTypes.data.map((rateType) => (
                   <TableItem
-                    key={rate.id}
-                    columns={[rate.name, rate.unit]}
+                    key={rateType.id}
+                    columns={[rateType.name, rateType.unit]}
+                    id={rateType.id}
+                    editPageLink="rate-type"
                   />
                 ))}
                 {rateTypes && rateTypes.data.length === 0 && (

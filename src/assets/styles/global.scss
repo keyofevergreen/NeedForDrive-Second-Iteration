@@ -76,10 +76,14 @@ h3 {
   color: var(--dark-blue);
 }
 
-textarea.form-control-sm {
+textarea.form-control {
   padding: 8px 11px;
   color: var(--dark-blue);
-  font-size: 11px;
+  font-size: 13px;
+}
+
+textarea.form-control:not(.is-invalid) {
+  border: none;
 }
 
 .input-wrap {
@@ -113,11 +117,12 @@ textarea.form-control-sm {
   background-size: 5px 6.5px;
 }
 
-.range-select {
+.input-range {
   &:first-child {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
+
   &:last-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -189,6 +194,54 @@ textarea.form-control-sm {
     svg {
       path {
         fill: #fff;
+      }
+    }
+  }
+}
+
+.order-item-status-edit-btn {
+  input, button {
+    color: #5a6169;
+    line-height: 1;
+    border-color: #becad6;
+    border-radius: 4px;
+    background-color: #fff;
+  }
+
+  &.edit-mode {
+    .status-edit-select {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      width: auto;
+    }
+
+
+    .submit-btn, .cancel-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      max-width: 36px;
+      min-width: 36px;
+      svg {
+          height: 12px;
+        path {
+          transition: fill 0.3s ease;
+        }
+      }
+
+      &:hover {
+        svg {
+          path {
+            fill: #fff;
+          }
+        }
+      }
+    }
+
+    .cancel-btn {
+      svg {
+        height: 16px;
       }
     }
   }

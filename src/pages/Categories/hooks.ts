@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategory } from '../../store/Category/thunks';
+import { fetchCategories } from '../../store/Category/thunks';
 import { Dispatcher } from '../../types/store';
 import { Category, CategoryState } from '../../types/Category';
 import { SearchState } from '../../types/Search';
+import { UploadedEntityState } from '../../types/Edit';
 
 export const useCategory = (): [Category[], boolean, number | null] => {
   const dispatch = useDispatch<Dispatcher>();
@@ -11,9 +12,13 @@ export const useCategory = (): [Category[], boolean, number | null] => {
     category: CategoryState;
   }, CategoryState>((state) => state.category);
 
+  const { uploadedEntity } = useSelector<{
+    uploadedEntity: UploadedEntityState;
+  }, UploadedEntityState>((state) => state.uploadedEntity);
+
   useEffect(() => {
-    dispatch(fetchCategory());
-  }, []);
+    dispatch(fetchCategories());
+  }, [uploadedEntity]);
 
   return [category, loading, error];
 };

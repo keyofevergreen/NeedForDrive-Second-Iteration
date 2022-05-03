@@ -1,5 +1,5 @@
 /* eslint-disable */
-const checkPriceValue = (event): void => {
+const onlyNumberValidate = (event): void => {
   if (event.keyCode === 46 || event.keyCode === 8 || event.keyCode === 9 || event.keyCode === 27 ||
     // Разрешаем: Ctrl+A
     (event.keyCode === 65 && event.ctrlKey === true) ||
@@ -16,4 +16,4 @@ const checkPriceValue = (event): void => {
 };
 /* eslint-enable */
 
-export default checkPriceValue;
+export default onlyNumberValidate;

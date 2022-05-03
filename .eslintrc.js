@@ -14,4 +14,6 @@ module.exports = rockConfig({
   'arrow-body-style': 'off',
   'no-confusing-arrow': 'off',
   '@typescript-eslint/no-explicit-any': 'off',
+  'no-unneeded-ternary': 'off',
+  'promise/always-return': 'off',
 });

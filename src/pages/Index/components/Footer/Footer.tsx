@@ -6,9 +6,9 @@ const Footer: React.FC = () => {
   return (
     <footer className={styles['footer']}>
       <nav className={styles['footer__menu']}>
-        <Link to="/">
+        <a href="https://keyofevergreen.github.io/NeedForDrive-First-Iteration/">
           Главная страница
-        </Link>
+        </a>
         <Link to="/">
           Ссылка
         </Link>

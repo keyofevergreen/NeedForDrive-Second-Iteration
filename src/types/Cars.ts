@@ -4,6 +4,9 @@ export interface CarsState {
   cars: CarResponse | null,
   loading: boolean,
   error: number | null,
+  carById: Car | null,
+  carByIdLoading: boolean,
+  carByIdError: number | null,
 }
 
 export type Car = {
@@ -14,7 +17,7 @@ export type Car = {
   number: string,
   categoryId: Category | null,
   thumbnail: Thumbnail,
-  tank: number | null,
+  tank?: number | null,
   colors: string[],
   id: string,
   updatedAt?: number,
@@ -49,4 +52,16 @@ export type CarSort = {
   tank: string,
   lowerPrice: number,
   higherPrice: number,
+};
+
+export type CarObject = {
+  description: string,
+  priceMin: string,
+  priceMax: string,
+  name: string,
+  number: string,
+  categoryId: string,
+  thumbnail: Thumbnail,
+  tank?: string | number,
+  colors: string[],
 };

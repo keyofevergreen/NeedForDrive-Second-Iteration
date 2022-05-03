@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SettingButton from '../SettingButton/SettingButton';
 
 interface ITableItem {
   columns: (string | number)[],
+  id?: string,
+  editPageLink?: string,
 }
 
-const TableItem = ({ columns }: ITableItem): React.ReactElement => {
+const TableItem = ({ columns, id, editPageLink }: ITableItem): React.ReactElement => {
   return (
     <tr>
       {columns.map(((columnData, index) => (
@@ -14,7 +17,9 @@ const TableItem = ({ columns }: ITableItem): React.ReactElement => {
         </td>
       )))}
       <td>
-        <SettingButton />
+        <Link to={`/edit/${editPageLink}/${id}`}>
+          <SettingButton />
+        </Link>
       </td>
     </tr>
   );

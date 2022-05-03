@@ -82,6 +82,8 @@ const Points = (): React.ReactElement => {
                       point.address,
                       point.cityId?.name || 'Не указан',
                     ]}
+                    id={point.id}
+                    editPageLink="point"
                     key={point.id}
                   />
                 ))}

@@ -1,6 +1,6 @@
 declare namespace StylesModuleScssNamespace {
   export interface IStylesModuleScss {
-    "order-list": string;
+    "input-wrap": string;
   }
 }
 
