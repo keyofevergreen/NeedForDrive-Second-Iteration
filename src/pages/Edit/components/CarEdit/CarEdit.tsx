@@ -148,7 +148,7 @@ const CarEdit = (): React.ReactElement => {
                   </span>
                 </div>
                 <div className={styles['car-edit__file-input-container']}>
-                  <InputErrorMessageProvider errorMessage={errors.thumbnail?.message}>
+                  <InputErrorMessageProvider error={errors.thumbnail}>
                     <Form.Control
                       type="file"
                       accept="image/png, image/jpeg"
@@ -171,7 +171,7 @@ const CarEdit = (): React.ReactElement => {
                 />
                 <Form.Group className={styles['car-edit__description-textarea']} controlId="carDescription">
                   <Form.Label>Описание</Form.Label>
-                  <InputErrorMessageProvider errorMessage={errors.description?.message}>
+                  <InputErrorMessageProvider error={errors.description}>
                     <Form.Control
                       as="textarea"
                       rows={4}
@@ -196,7 +196,7 @@ const CarEdit = (): React.ReactElement => {
             >
               <Form.Group controlId="carName">
                 <Form.Label>Модель автомобиля</Form.Label>
-                <InputErrorMessageProvider errorMessage={errors.name?.message}>
+                <InputErrorMessageProvider error={errors.name}>
                   <Form.Control
                     type="text"
                     placeholder="Введите модель"
@@ -210,7 +210,7 @@ const CarEdit = (): React.ReactElement => {
               </Form.Group>
               <Form.Group controlId="categoryName">
                 <Form.Label>Тип автомобиля</Form.Label>
-                <InputErrorMessageProvider errorMessage={errors.categoryId?.message}>
+                <InputErrorMessageProvider error={errors.categoryId}>
                   <Form.Select
                     size="sm"
                     disabled={categoriesLoading}
@@ -230,8 +230,7 @@ const CarEdit = (): React.ReactElement => {
               </Form.Group>
               <Form.Group controlId="CarColors">
                 <Form.Label>Доступные цвета</Form.Label>
-                {/*@ts-ignore*/}
-                <InputErrorMessageProvider errorMessage={errors.colors?.message}>
+                <InputErrorMessageProvider error={errors.colors}>
                   <InputGroup className={styles['form__colors-input-group']}>
                     <Form.Control
                       type="text"
@@ -265,7 +264,7 @@ const CarEdit = (): React.ReactElement => {
               </Form.Group>
               <Form.Group controlId="carNumber">
                 <Form.Label>Номер машины</Form.Label>
-                <InputErrorMessageProvider errorMessage={errors.number?.message}>
+                <InputErrorMessageProvider error={errors.number}>
                   <Form.Control
                     type="text"
                     placeholder="Введите номер"
@@ -288,7 +287,7 @@ const CarEdit = (): React.ReactElement => {
               </Form.Group>
               <Form.Group controlId="priceRange">
                 <Form.Label>Стоимость аренды, ₽</Form.Label>
-                <InputErrorMessageProvider errorMessage={errors.priceMin?.message || errors.priceMax?.message}>
+                <InputErrorMessageProvider error={errors.priceMin || errors.priceMax}>
                   <ButtonGroup>
                     <Form.Control
                       type="text"
@@ -321,7 +320,7 @@ const CarEdit = (): React.ReactElement => {
               </Form.Group>
               <Form.Group controlId="carTank">
                 <Form.Label>Уровень топлива, %</Form.Label>
-                <InputErrorMessageProvider errorMessage={errors.tank?.message}>
+                <InputErrorMessageProvider error={errors.tank}>
                   <Form.Control
                     type="text"
                     placeholder="Введите номер"

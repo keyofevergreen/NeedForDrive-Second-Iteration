@@ -70,7 +70,7 @@ const CategoryEdit = (): React.ReactElement => {
           >
             <Form.Group controlId="categoryName">
               <Form.Label>Название категории</Form.Label>
-              <InputErrorMessageProvider errorMessage={errors.name?.message}>
+              <InputErrorMessageProvider error={errors.name}>
                 <Form.Control
                   type="text"
                   placeholder="Введите название"
@@ -85,7 +85,7 @@ const CategoryEdit = (): React.ReactElement => {
             </Form.Group>
             <Form.Group controlId="categoryDescription">
               <Form.Label>Описание</Form.Label>
-              <InputErrorMessageProvider errorMessage={errors.description?.message}>
+              <InputErrorMessageProvider error={errors.description}>
                 <Form.Control
                   size="sm"
                   as="textarea"

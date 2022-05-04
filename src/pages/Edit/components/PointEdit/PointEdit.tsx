@@ -69,7 +69,7 @@ const PointEdit = (): React.ReactElement => {
             isLoading={fetchPointLoading}
             onDelete={onDeletePoint}
           >
-            <InputErrorMessageProvider errorMessage={errors.name?.message}>
+            <InputErrorMessageProvider error={errors.name}>
               <Form.Group controlId="pointName">
                 <Form.Label>Название</Form.Label>
                 <Form.Control
@@ -83,7 +83,7 @@ const PointEdit = (): React.ReactElement => {
                 />
               </Form.Group>
             </InputErrorMessageProvider>
-            <InputErrorMessageProvider errorMessage={errors.address?.message}>
+            <InputErrorMessageProvider error={errors.address}>
               <Form.Group controlId="pointAddress">
                 <Form.Label>Адрес</Form.Label>
                 <Form.Control
@@ -97,7 +97,7 @@ const PointEdit = (): React.ReactElement => {
                 />
               </Form.Group>
             </InputErrorMessageProvider>
-            <InputErrorMessageProvider errorMessage={errors.cityId?.message}>
+            <InputErrorMessageProvider error={errors.cityId}>
               <Form.Group controlId="pointsCity">
                 <Form.Label>Город</Form.Label>
                 <Form.Select

@@ -71,7 +71,7 @@ const RateEdit = (): React.ReactElement => {
           >
             <Form.Group controlId="rateType">
               <Form.Label>Тип тарифа</Form.Label>
-              <InputErrorMessageProvider errorMessage={errors.rateTypeId?.message}>
+              <InputErrorMessageProvider error={errors.rateTypeId}>
                 <Form.Select
                   size="sm"
                   disabled={rateTypesLoading}
@@ -91,7 +91,7 @@ const RateEdit = (): React.ReactElement => {
             </Form.Group>
             <Form.Group controlId="ratePrice">
               <Form.Label>Цена, ₽</Form.Label>
-              <InputErrorMessageProvider errorMessage={errors.price?.message}>
+              <InputErrorMessageProvider error={errors.price}>
                 <Form.Control
                   type="text"
                   placeholder="Введите цену"

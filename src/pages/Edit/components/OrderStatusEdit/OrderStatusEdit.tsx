@@ -69,7 +69,7 @@ const OrderStatusEdit = (): React.ReactElement => {
           >
             <Form.Group controlId="carName">
               <Form.Label>Название статуса</Form.Label>
-              <InputErrorMessageProvider errorMessage={errors.name?.message}>
+              <InputErrorMessageProvider error={errors.name}>
                 <Form.Control
                   type="text"
                   placeholder="Введите название"

@@ -76,7 +76,7 @@ const OrderItem = ({ order, filters, page }: IOrderItemProps): React.ReactElemen
           <span className={styles['order-item__colors']}>
             Цвет:
             <strong>
-              {` ${color}`}
+              {color ? color : 'Не указано'}
             </strong>
           </span>
         </div>
@@ -97,7 +97,7 @@ const OrderItem = ({ order, filters, page }: IOrderItemProps): React.ReactElemen
       </td>
       <td className={styles['cols']}>
         <span className={styles['order-item__price']}>
-          {`${price} ₽`}
+          {price ? `${price} ₽` : 'Не указано'}
         </span>
       </td>
       <td className={styles['cols']}>

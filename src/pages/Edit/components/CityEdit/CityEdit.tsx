@@ -69,7 +69,7 @@ const CityEdit = (): React.ReactElement => {
           >
             <Form.Group controlId="cityName">
               <Form.Label>Название города</Form.Label>
-              <InputErrorMessageProvider errorMessage={errors.name?.message}>
+              <InputErrorMessageProvider error={errors.name}>
                 <Form.Control
                   type="text"
                   placeholder="Введите название"

@@ -4,19 +4,19 @@ import styles from './styles.module.scss';
 
 interface IInputErrorMessageProps {
   children: React.ReactElement,
-  errorMessage: string | null,
+  error: any,
 }
 
-const InputErrorMessageProvider = ({ children, errorMessage }: IInputErrorMessageProps): React.ReactElement => {
+const InputErrorMessageProvider = ({ children, error }: IInputErrorMessageProps): React.ReactElement => {
   return (
     <div className={styles['input-wrap']}>
       {children}
-      {(errorMessage) && (
+      {(error?.message) && (
         <Form.Text
           id="username"
           bsPrefix="input-message"
         >
-          {errorMessage}
+          {error.message}
         </Form.Text>
       )}
     </div>

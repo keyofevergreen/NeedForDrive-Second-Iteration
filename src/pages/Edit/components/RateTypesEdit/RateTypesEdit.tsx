@@ -70,7 +70,7 @@ const RateTypesEdit = (): React.ReactElement => {
           >
             <Form.Group controlId="rateTypeName">
               <Form.Label>Название типа тарифа</Form.Label>
-              <InputErrorMessageProvider errorMessage={errors.name?.message}>
+              <InputErrorMessageProvider error={errors.name}>
                 <Form.Control
                   type="text"
                   placeholder="Введите название"
@@ -85,7 +85,7 @@ const RateTypesEdit = (): React.ReactElement => {
             </Form.Group>
             <Form.Group controlId="rateTypeName">
               <Form.Label>Единица измерения. Например, <strong>7 дней</strong></Form.Label>
-              <InputErrorMessageProvider errorMessage={errors.unit?.message}>
+              <InputErrorMessageProvider error={errors.unit}>
                 <Form.Control
                   type="text"
                   placeholder="Введите единицу измерения"

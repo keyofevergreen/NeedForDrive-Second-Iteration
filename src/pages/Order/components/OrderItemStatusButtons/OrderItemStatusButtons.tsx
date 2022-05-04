@@ -40,7 +40,7 @@ const OrderItemStatusButtons = ({ currentOrderStatus, filters, page, order }: IO
       { orderStatusId: submitStatusId },
       'order',
       id,
-      `Заказ №${id.substr(0, 6)}, ${carId.name} в ${cityId.name} на ${pointId.address} сохранен`
+      `Заказ №${id?.substr(0, 6)}, ${carId?.name} в ${cityId?.name} на ${pointId?.address} сохранен`
     ));
   };
 
@@ -49,7 +49,7 @@ const OrderItemStatusButtons = ({ currentOrderStatus, filters, page, order }: IO
       { orderStatusId: cancelStatusId },
       'order',
       id,
-      `Заказ №${id.substr(0, 6)}, ${carId.name} в ${cityId.name} на ${pointId.address} отменен`
+      `Заказ №${id?.substr(0, 6)}, ${carId?.name} в ${cityId?.name} на ${pointId?.address} отменен`
     ));
   };
 
@@ -58,7 +58,7 @@ const OrderItemStatusButtons = ({ currentOrderStatus, filters, page, order }: IO
       { orderStatusId: orderStatusValue },
       'order',
       id,
-      `Статус заказа №${id.substr(0, 6)}, ${carId.name} в ${cityId.name} на ${pointId.address} изменен`
+      `Статус заказа №${id?.substr(0, 6)}, ${carId?.name} в ${cityId?.name} на ${pointId?.address} изменен`
     ));
   };
 
@@ -71,21 +71,21 @@ const OrderItemStatusButtons = ({ currentOrderStatus, filters, page, order }: IO
 
   return (
     <ButtonGroup className={cx('order-item-status-edit-btn', { 'edit-mode': editMode })}>
-      {!editMode && currentOrderStatus.name === 'Новые' && (
+      {!editMode && currentOrderStatus?.name === 'Новые' && (
         <>
           <Button size="sm" variant="outline-primary" onClick={() => onSubmitStatus()}>Подтвердить</Button>
           <Button size="sm" variant="outline-danger" onClick={() => onCancelStatus()}>Отменить</Button>
         </>
       )}
-      {!editMode && currentOrderStatus.name !== 'Новые' && (
+      {!editMode && currentOrderStatus?.name !== 'Новые' && (
         <>
-          {currentOrderStatus.name !== 'Отмененные' && (
+          {currentOrderStatus?.name !== 'Отмененные' && (
             <Button size="sm" variant="outline-danger" onClick={() => onCancelStatus()}>Отменить</Button>
           )}
           <Button size="sm" variant="outline-primary" onClick={() => setEditMode(true)}>Изменить</Button>
         </>
       )}
-      {editMode && currentOrderStatus.name !== 'Новые' && (
+      {editMode && currentOrderStatus?.name !== 'Новые' && (
         <>
           <Form.Select
             size="sm"
