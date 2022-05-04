@@ -152,7 +152,7 @@ const CarEdit = (): React.ReactElement => {
                     <Form.Control
                       type="file"
                       accept="image/png, image/jpeg"
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => setValue('thumbnail', e.target.files, { shouldDirty: true })}
+                      onChange={(e: ChangeEvent<HTMLInputElement>) => setValue('thumbnail', e.target.files, { shouldDirty: true, shouldValidate: true })}
                       isInvalid={!!(errors.thumbnail)}
                     />
                   </InputErrorMessageProvider>
