@@ -33,7 +33,7 @@ const OrderItemStatusButtons = ({ currentOrderStatus, filters, page, order }: IO
   }, UploadedEntityState>((state) => state.uploadedEntity);
 
   const [editMode, setEditMode] = useState<boolean>(false);
-  const [orderStatusValue, setOrderStatus] = useState<string>(orderStatusId.id);
+  const [orderStatusValue, setOrderStatus] = useState<string | null>(orderStatusId?.id || 'Выберите статус заказа');
 
   const onSubmitStatus = (): void => {
     dispatch(editEntity(
@@ -54,12 +54,14 @@ const OrderItemStatusButtons = ({ currentOrderStatus, filters, page, order }: IO
   };
 
   const onEditStatus = (): void => {
-    dispatch(editEntity(
-      { orderStatusId: orderStatusValue },
-      'order',
-      id,
-      `Статус заказа №${id?.substr(0, 6)}, ${carId?.name} в ${cityId?.name} на ${pointId?.address} изменен`
-    ));
+    if (orderStatusValue !== 'Выберите статус заказа') {
+      dispatch(editEntity(
+        { orderStatusId: orderStatusValue },
+        'order',
+        id,
+        `Статус заказа №${id?.substr(0, 6)}, ${carId?.name} в ${cityId?.name} на ${pointId?.address} изменен`
+      ));
+    }
   };
 
   useEffect(() => {
@@ -94,6 +96,9 @@ const OrderItemStatusButtons = ({ currentOrderStatus, filters, page, order }: IO
             disabled={loading}
             className="status-edit-select"
           >
+            {orderStatusValue === 'Выберите статус заказа' && (
+              <option value="Выберите статус заказа" disabled>Выберите статус</option>
+            )}
             {orderStatus && orderStatus.map((status) => (
               <option key={status.id} value={status.id}>{status.name}</option>
             ))}
@@ -102,7 +107,7 @@ const OrderItemStatusButtons = ({ currentOrderStatus, filters, page, order }: IO
             size="sm"
             variant="outline-primary"
             className="submit-btn"
-            disabled={orderStatusValue === orderStatusId.id}
+            disabled={orderStatusValue === orderStatusId?.id}
             onClick={() => onEditStatus()}
           >
             <CheckMark />
