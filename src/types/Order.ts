@@ -25,7 +25,7 @@ export type Order = {
   isFullTank: boolean,
   isNeedChildChair: boolean,
   isRightWheel: boolean,
-  id: number,
+  id: string,
 };
 
 export type OrderResponse = {
@@ -42,6 +42,12 @@ export type OrderParams = {
   page?: number,
   limit?: number,
   tank?: string,
+  cityId?: string,
+  date?: string | number,
+  isFullTank?: boolean,
+  isNeedChildChair?: boolean,
+  isRightWheel?: boolean,
+  orderStatusId?: string | null,
 };
 
 export type OrderSort = {

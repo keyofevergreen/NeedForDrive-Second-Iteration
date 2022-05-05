@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import styles from './styles.module.scss';
+import Alert from '../../components/Alert/Alert';
 
 const Index: React.FC = ({ children }) => {
   return (
@@ -12,6 +13,7 @@ const Index: React.FC = ({ children }) => {
       <div className={styles['index']}>
         <Header />
         <main className={styles['index__content']}>
+          <Alert />
           <ErrorProvider>
             {children}
           </ErrorProvider>

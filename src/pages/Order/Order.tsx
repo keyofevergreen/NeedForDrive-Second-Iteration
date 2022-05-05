@@ -112,6 +112,8 @@ const Order: React.FC = () => {
                   <OrderItem
                     key={order.id}
                     order={order}
+                    filters={filters}
+                    page={page}
                   />
                 ))}
                 {orders && orders.data.length === 0 && (

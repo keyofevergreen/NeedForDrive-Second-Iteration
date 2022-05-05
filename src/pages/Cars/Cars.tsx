@@ -111,6 +111,7 @@ const Cars = (): React.ReactElement => {
                 {cars.data.map((car) => (
                   <CarItem
                     key={car.id}
+                    id={car.id}
                     name={car.name}
                     category={car.categoryId}
                     colors={car.colors}

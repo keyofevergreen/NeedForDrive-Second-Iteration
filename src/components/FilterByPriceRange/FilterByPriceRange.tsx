@@ -23,28 +23,28 @@ const FilterByPriceRange = (
     <ButtonGroup>
       <Form.Select
         size="sm"
-        className="range-select"
+        className="input-range"
         onChange={(e) => setLowerPriceFilter(Number(e.target.value))}
         value={lowerPriceFilter}
       >
         <option value="0">От 0 ₽</option>
-        {lowerPriceOptions.map((lowerPrice) => {
+        {lowerPriceOptions.map((lowerPrice, index) => {
           if (higherPriceFilter > lowerPrice) {
-            return <option value={lowerPrice}>{`От ${lowerPrice} ₽`}</option>;
+            return <option value={lowerPrice} key={index}>{`От ${lowerPrice} ₽`}</option>;
           }
           return null;
         })}
       </Form.Select>
       <Form.Select
         size="sm"
-        className="range-select"
+        className="input-range"
         onChange={(e) => setHigherPriceFilter(Number(e.target.value))}
         value={higherPriceFilter}
       >
         <option value="99999999">До ∞</option>
-        {higherPriceOptions.map((highPrice) => {
+        {higherPriceOptions.map((highPrice, index) => {
           if (lowerPriceFilter < highPrice) {
-            return <option value={highPrice}>{`До ${highPrice} ₽`}</option>;
+            return <option value={highPrice} key={index}>{`До ${highPrice} ₽`}</option>;
           }
           return null;
         })}

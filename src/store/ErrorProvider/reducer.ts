@@ -6,9 +6,11 @@ const errorHandlerReducer = createReducer<ErrorHandlerState>({
   errors: [],
 }, {
   [addToErrorHandler.type]: (state, { payload }) => ({
+    ...state,
     errors: [...state.errors, payload],
   }),
-  [resetErrorHandler.type]: () => ({
+  [resetErrorHandler.type]: (state) => ({
+    ...state,
     errors: [],
   }),
 });

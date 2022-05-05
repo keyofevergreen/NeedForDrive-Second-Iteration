@@ -1,29 +1,57 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { requestRate, requestRateError, requestRateSuccess } from './actions';
+import {
+  requestRate,
+  requestRateError,
+  requestRates,
+  requestRatesError,
+  requestRatesSuccess,
+  requestRateSuccess
+} from './actions';
 import { RateState } from '../../types/Rates';
 
 const rateReducer = createReducer<RateState>({
   rates: null,
   loading: false,
   error: null,
+  rateById: null,
+  rateByIdLoading: false,
+  rateByIdError: null,
 }, {
-  [requestRate.type]: (state) => ({
+  [requestRates.type]: (state) => ({
     ...state,
     rates: null,
     loading: true,
     error: null,
   }),
-  [requestRateSuccess.type]: (state, { payload }) => ({
+  [requestRatesSuccess.type]: (state, { payload }) => ({
     ...state,
     rates: payload,
     loading: false,
     error: null,
   }),
-  [requestRateError.type]: (state, { payload }) => ({
+  [requestRatesError.type]: (state, { payload }) => ({
     ...state,
     rates: null,
     loading: false,
     error: payload,
+  }),
+  [requestRate.type]: (state) => ({
+    ...state,
+    rateById: null,
+    rateByIdLoading: true,
+    rateByIdError: null,
+  }),
+  [requestRateSuccess.type]: (state, { payload }) => ({
+    ...state,
+    rateById: payload,
+    rateByIdLoading: false,
+    rateByIdError: null,
+  }),
+  [requestRateError.type]: (state, { payload }) => ({
+    ...state,
+    rateById: null,
+    rateByIdLoading: false,
+    rateByIdError: payload,
   }),
 });
 

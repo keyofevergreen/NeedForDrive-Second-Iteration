@@ -1,14 +1,51 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
 import { Form } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
+import { useNavigate, useParams } from 'react-router-dom';
 import ContentContainer from '../../../../components/ContentContainer/ContentContainer';
 import { useRateTypes } from '../../../RateTypes/hooks';
-import checkPriceValue from '../../../../utils/helpers/OnlyNumberCheck';
-import FormContainer from '../../../../components/FormContainer/FormContainer';
+import onlyNumberValidate from '../../../../utils/helpers/OnlyNumberValidate';
+import FormBody from '../../../../components/FormBody/FormBody';
+import { useRateById } from './hooks';
+import { Dispatcher } from '../../../../types/store';
+import { RateForm } from '../../../../types/Edit';
+import { useUploadedEntity } from '../../../../utils/helpers/hooks';
+import InputErrorMessageProvider from '../../../../components/InputErrorMessageProvider/InputErrorMessageProvider';
+import { createEntity, deleteEntity, editEntity } from '../../../../store/Edit/thunks';
 
 const RateEdit = (): React.ReactElement => {
-  const [rateTypes, loading] = useRateTypes();
-  const [selectedRateType, setSelectedRateType] = useState<string>('Выберите тип тарифа');
+  const navigate = useNavigate();
+  const dispatch = useDispatch<Dispatcher>();
+  const { rateId } = useParams();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<RateForm>({
+    defaultValues: {
+      price: '',
+      rateTypeId: 'Выберите тип тарифа',
+    }
+  });
+  const [rateTypes, rateTypesLoading] = useRateTypes();
+  const rateUploading = useUploadedEntity(rateId, 'rate');
+  const fetchRateLoading = useRateById(rateId, setValue);
+
+  const onSubmit = async (data: RateForm): Promise<void> => {
+    if (rateId) {
+      dispatch(editEntity(data, 'rate', rateId, 'Тариф сохранен'));
+    } else dispatch(createEntity(data, 'rate', 'Тариф создан'));
+  };
+
+  const onDeleteRate = (): void => {
+    if (rateId) {
+      dispatch(deleteEntity('rate', rateId, 'Тариф удален'));
+      navigate('/rates');
+    }
+  };
 
   return (
     <>
@@ -18,33 +55,57 @@ const RateEdit = (): React.ReactElement => {
         <meta name="description" content="Home page" />
       </Helmet>
       <ContentContainer title="Карточка тарифа">
-        <FormContainer title="Настройки тарифа">
-          <Form.Group controlId="carName">
-            <Form.Label>Тип тарифа</Form.Label>
-            <Form.Select
-              size="sm"
-              value={selectedRateType}
-              onChange={(e) => setSelectedRateType(e.target.value)}
-              disabled={loading}
-            >
-              <option value="Выберите тип тарифа">Выберите тип</option>
-              {rateTypes && rateTypes.data.map((rateType) => (
-                <option key={rateType.id} value={rateType.id}>{`${rateType.name} - ${rateType.unit}`}</option>
-              ))}
-            </Form.Select>
-          </Form.Group>
-          <Form.Group controlId="ratePrice">
-            <Form.Label>Цена, ₽</Form.Label>
-            <div className="input-wrap">
-              <Form.Control
-                type="text"
-                placeholder="Введите цену"
-                aria-describedby="ratePrice"
-                onKeyDown={(e) => checkPriceValue(e)}
-              />
-            </div>
-          </Form.Group>
-        </FormContainer>
+        <Form
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit((data) => {
+            onSubmit(data);
+          })}
+        >
+          <FormBody
+            title="Настройки тарифа"
+            isCreateTable={!rateId}
+            isSubmitting={rateUploading}
+            isLoading={fetchRateLoading}
+            onDelete={onDeleteRate}
+          >
+            <Form.Group controlId="rateType">
+              <Form.Label>Тип тарифа</Form.Label>
+              <InputErrorMessageProvider error={errors.rateTypeId}>
+                <Form.Select
+                  size="sm"
+                  disabled={rateTypesLoading}
+                  aria-describedby="rateType"
+                  {...register('rateTypeId', {
+                    required: 'Это поле не должно быть пустым',
+                    validate: (value) => value !== 'Выберите тип тарифа' || 'Вы не выбрали тип тарифа'
+                  })}
+                  isInvalid={!!(errors.rateTypeId)}
+                >
+                  <option value="Выберите тип тарифа">Выберите тип тарифа</option>
+                  {rateTypes && rateTypes.data.map((rateType) => (
+                    <option key={rateType.id} value={rateType.id}>{`${rateType.name} - ${rateType.unit}`}</option>
+                  ))}
+                </Form.Select>
+              </InputErrorMessageProvider>
+            </Form.Group>
+            <Form.Group controlId="ratePrice">
+              <Form.Label>Цена, ₽</Form.Label>
+              <InputErrorMessageProvider error={errors.price}>
+                <Form.Control
+                  type="text"
+                  placeholder="Введите цену"
+                  aria-describedby="ratePrice"
+                  onKeyDown={(e) => onlyNumberValidate(e)}
+                  {...register('price', {
+                    required: 'Это поле не должно быть пустым',
+                  })}
+                  isInvalid={!!(errors.price)}
+                />
+              </InputErrorMessageProvider>
+            </Form.Group>
+          </FormBody>
+        </Form>
       </ContentContainer>
     </>
   );

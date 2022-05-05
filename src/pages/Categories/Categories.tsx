@@ -38,8 +38,10 @@ const Categories = (): React.ReactElement => {
               <tbody>
                 {sortedCategory.map((category) => (
                   <TableItem
-                    key={category.description}
+                    key={category.id}
                     columns={[category.name, category.description]}
+                    id={category.id}
+                    editPageLink="category"
                   />
                 ))}
                 {sortedCategory.length === 0 && (

@@ -1,11 +1,19 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { CarsState } from '../../types/Cars';
-import { requestCars, requestCarsError, requestCarsSuccess } from './actions';
+import {
+  requestCar, requestCarError,
+  requestCars,
+  requestCarsError,
+  requestCarsSuccess, requestCarSuccess,
+} from './actions';
 
 const carsReducer = createReducer<CarsState>({
   cars: null,
   loading: false,
   error: null,
+  carById: null,
+  carByIdLoading: false,
+  carByIdError: null,
 }, {
   [requestCars.type]: (state) => ({
     ...state,
@@ -25,6 +33,24 @@ const carsReducer = createReducer<CarsState>({
     loading: false,
     error: payload,
   }),
+  [requestCar.type]: (state) => ({
+    ...state,
+    carById: null,
+    carByIdLoading: true,
+    carByIdError: null,
+  }),
+  [requestCarSuccess.type]: (state, { payload }) => ({
+    ...state,
+    carById: payload,
+    carByIdLoading: false,
+    carByIdError: null,
+  }),
+  [requestCarError.type]: (state, { payload }) => ({
+    ...state,
+    carById: null,
+    carByIdLoading: false,
+    carByIdError: payload,
+  })
 });
 
 export default carsReducer;

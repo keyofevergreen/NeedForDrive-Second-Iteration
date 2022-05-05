@@ -39,6 +39,8 @@ const Cities = (): React.ReactElement => {
                   <TableItem
                     key={city.id}
                     columns={[city.name]}
+                    id={city.id}
+                    editPageLink="city"
                   />
                 ))}
                 {sortedCities.length === 0 && (

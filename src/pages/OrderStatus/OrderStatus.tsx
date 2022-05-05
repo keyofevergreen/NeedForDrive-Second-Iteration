@@ -1,17 +1,16 @@
 import React from 'react';
-import { Form, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import useResize from '../../hooks/useResize';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
-import TableFilter from '../../components/TableFilter/TableFilter';
 import TableItem from '../../components/TableItem/TableItem';
 import Spin from '../../components/Spin/Spin';
-import { useOrderStatus, useSortedOrderStatus } from './hooks';
+import { useOrderStatuses, useSortedOrderStatus } from './hooks';
 import AddTableItemLink from '../../components/AddTableItemLink/AddTableItemLink';
 
 const OrderStatus = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
-  const [orderStatus, orderStatusLoading] = useOrderStatus();
+  const [orderStatus, orderStatusLoading] = useOrderStatuses();
   const sortedOrderStatuses = useSortedOrderStatus(orderStatus);
 
   return (
@@ -22,13 +21,6 @@ const OrderStatus = (): React.ReactElement => {
         <meta name="description" content="Home page" />
       </Helmet>
       <ContentContainer title="Статусы заказов">
-        <TableFilter>
-          <Form.Select size="sm">
-            <option>Все статусы</option>
-            <option>Новые</option>
-            <option>Подтвержденные</option>
-          </Form.Select>
-        </TableFilter>
         <div className="table-container">
           <AddTableItemLink to="/edit/order-status" />
           {orderStatus && !orderStatusLoading && (
@@ -46,7 +38,9 @@ const OrderStatus = (): React.ReactElement => {
                 {sortedOrderStatuses.map((status) => (
                   <TableItem
                     key={status.id}
+                    id={status.id}
                     columns={[status.name]}
+                    editPageLink="order-status"
                   />
                 ))}
                 {sortedOrderStatuses.length === 0 && (

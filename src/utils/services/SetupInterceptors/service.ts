@@ -9,6 +9,9 @@ const setupInterceptors = (store): void => {
     if (localStorage.getItem('token') && config.url !== '/auth/refresh' && config.url !== '/auth/login') {
       config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
     }
+    if (config.url === '/db/car' && config.method === 'post') {
+      delete config.headers['Content-Type'];
+    }
     return config;
   });
 

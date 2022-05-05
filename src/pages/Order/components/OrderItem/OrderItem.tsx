@@ -2,16 +2,18 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import { format, toDate } from 'date-fns';
 import { imageOnErrorHandler } from '../../../../utils/helpers/imageOnErrorHandler';
-import SettingButton from '../../../../components/SettingButton/SettingButton';
-import { Order } from '../../../../types/Order';
+import { Order, OrderSort } from '../../../../types/Order';
 import { Checkbox } from '../../../../types/Filter';
 import styles from './styles.module.scss';
+import OrderItemStatusButtons from '../OrderItemStatusButtons/OrderItemStatusButtons';
 
 interface IOrderItemProps {
   order: Order,
+  filters: OrderSort,
+  page: number,
 }
 
-const OrderItem = ({ order }: IOrderItemProps): React.ReactElement => {
+const OrderItem = ({ order, filters, page }: IOrderItemProps): React.ReactElement => {
   const {
     carId,
     cityId,
@@ -74,7 +76,7 @@ const OrderItem = ({ order }: IOrderItemProps): React.ReactElement => {
           <span className={styles['order-item__colors']}>
             Цвет:
             <strong>
-              {` ${color}`}
+              {color ? color : 'Не указано'}
             </strong>
           </span>
         </div>
@@ -95,14 +97,19 @@ const OrderItem = ({ order }: IOrderItemProps): React.ReactElement => {
       </td>
       <td className={styles['cols']}>
         <span className={styles['order-item__price']}>
-          {`${price} ₽`}
+          {price ? `${price} ₽` : 'Не указано'}
         </span>
       </td>
       <td className={styles['cols']}>
         {orderStatusId?.name}
       </td>
       <td className={styles['cols']}>
-        <SettingButton className={styles['order-item__actions']} />
+        <OrderItemStatusButtons
+          currentOrderStatus={orderStatusId}
+          filters={filters}
+          page={page}
+          order={order}
+        />
       </td>
     </tr>
   );

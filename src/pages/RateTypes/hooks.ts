@@ -14,7 +14,7 @@ export const useRateTypes = (name?: string | null, page?: number): [RateTypeResp
     const config: RateTypesAxiosConfig = {
       params: {
         page,
-        limit: 10,
+        limit: page ? 10 : 1000,
       },
     };
     config.params['sort[createdAt]'] = -1;
