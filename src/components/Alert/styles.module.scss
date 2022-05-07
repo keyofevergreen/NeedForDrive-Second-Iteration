@@ -13,8 +13,8 @@
       font-size: 13px;
       border: none;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      gap: 16px;
       padding: 14px 27px;
 
       & > div > svg {
@@ -50,6 +50,15 @@
     :global {
       .toast-body {
         padding: 10px 16px;
+
+        & > div {
+          display: grid;
+          grid-template-columns: 10px 1fr;
+
+          & > svg {
+            margin-top: 4px;
+          }
+        }
       }
     }
   }

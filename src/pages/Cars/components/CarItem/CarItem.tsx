@@ -16,12 +16,13 @@ interface ICarProps {
 }
 
 const CarItem = ({ name, category, colors, priceMin, priceMax, tank, number, id }: ICarProps): React.ReactElement => {
-  const categoryString = category.name.charAt(0).toUpperCase() + category.name.slice(1);
+  // eslint-disable-next-line no-unsafe-optional-chaining
+  const categoryString = category?.name?.charAt(0)?.toUpperCase() + category?.name?.slice(1);
 
   return (
     <tr>
       <td className="capitalize">{name}</td>
-      <td>{category ? categoryString : 'Не указана'}</td>
+      <td>{category?.name ? categoryString : 'Не указана'}</td>
       <td className="capitalize" style={{ maxWidth: '200px' }}>{colors.join(', ')}</td>
       <td>
         <div>

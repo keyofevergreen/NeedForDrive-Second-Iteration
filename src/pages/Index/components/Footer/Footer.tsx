@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
         </Link>
       </nav>
       <span className={styles['footer__copyright']}>
-        Copyright © 2022 Simbirsoft
+        Copyright © 2022 Daniil Zverev
       </span>
     </footer>
   );

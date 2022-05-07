@@ -323,7 +323,7 @@ const CarEdit = (): React.ReactElement => {
                 <InputErrorMessageProvider error={errors.tank}>
                   <Form.Control
                     type="text"
-                    placeholder="Введите номер"
+                    placeholder="Введите уровень топлива"
                     aria-describedby="carTank"
                     {...register('tank', {
                       required: 'Это поле не должно быть пустым',

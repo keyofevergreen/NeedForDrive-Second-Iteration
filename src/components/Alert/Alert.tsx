@@ -29,10 +29,10 @@ const Alert = (): React.ReactElement => {
     <Toast
       show={show}
       className={styles['success-alert-message']}
-      delay={5000}
-      onClose={() => setShow(false)}
-      autohide
-      animation
+      // delay={5000}
+      // onClose={() => setShow(false)}
+      // autohide
+      // animation
     >
       <Toast.Body>
         <div>
