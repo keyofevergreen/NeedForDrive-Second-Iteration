@@ -1,6 +1,6 @@
 import { OrderAxiosConfig } from '../../types/Order';
 
-const getAxiosConfig = (sorts, page): OrderAxiosConfig => {
+const createOrderAxiosConfig = (sorts, page): OrderAxiosConfig => {
   const { cityId, orderStatusId, date, isFullTank, isNeedChildChair, isRightWheel } = sorts;
   const config: OrderAxiosConfig = {
     params: {
@@ -37,4 +37,4 @@ const getAxiosConfig = (sorts, page): OrderAxiosConfig => {
   return config;
 };
 
-export default getAxiosConfig;
+export default createOrderAxiosConfig;

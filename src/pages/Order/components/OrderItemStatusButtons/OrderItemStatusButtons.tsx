@@ -9,7 +9,7 @@ import { Order, OrderSort } from '../../../../types/Order';
 import { Dispatcher } from '../../../../types/store';
 import { editEntity } from '../../../../store/Edit/thunks';
 import { fetchOrder } from '../../../../store/Order/thunks';
-import getAxiosConfig from '../../getAxiosConfig';
+import createOrderAxiosConfig from '../../createOrderAxiosConfig';
 import { UploadedEntityState } from '../../../../types/Edit';
 
 const cx = classNames;
@@ -66,7 +66,7 @@ const OrderItemStatusButtons = ({ currentOrderStatus, filters, page, order }: IO
 
   useEffect(() => {
     if (successAlertMessage) {
-      const config = getAxiosConfig(filters, page);
+      const config = createOrderAxiosConfig(filters, page);
       dispatch(fetchOrder(config));
     }
   }, [successAlertMessage]);

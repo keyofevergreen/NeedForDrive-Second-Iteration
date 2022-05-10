@@ -14,7 +14,7 @@ const Rates = (): React.ReactElement => {
   const isResponsive = useResize(1, 1024);
   const [lowerPriceFilter, setLowerPriceFilter] = useState<number | null>(0);
   const [higherPriceFilter, setHigherPriceFilter] = useState<number | null>(999999);
-  const [filters, setFilters] = useState<number[] | null>(null);
+  const [filters, setFilters] = useState<number[] | null>([lowerPriceFilter, higherPriceFilter]);
   const [page, setPage] = useState<number>(0);
   const [rates, loading, ratesError] = useRates(filters, page);
 
@@ -26,7 +26,7 @@ const Rates = (): React.ReactElement => {
   const resetFilter = (): void => {
     setLowerPriceFilter(0);
     setHigherPriceFilter(999999);
-    setFilters(null);
+    setFilters([0, 999999]);
     setPage(0);
   };
 
@@ -41,7 +41,7 @@ const Rates = (): React.ReactElement => {
         <TableFilter
           onSubmitFilter={submitFilter}
           onResetFilter={resetFilter}
-          isFiltered={filters !== null && !(lowerPriceFilter === 0 && higherPriceFilter === 999999)}
+          isFiltered={filters[0] !== 0 || filters[1] !== 999999}
         >
           <FilterByPriceRange
             lowerPriceFilter={lowerPriceFilter}
