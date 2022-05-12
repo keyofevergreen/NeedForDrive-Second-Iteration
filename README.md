@@ -8,6 +8,7 @@
 - @reduxjs/toolkit
 - react-router 6+
 - react-helmet
+- useForm for validation
 - classnames
 - gh-pages
 
