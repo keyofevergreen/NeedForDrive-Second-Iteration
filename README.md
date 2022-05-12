@@ -8,6 +8,7 @@
 - @reduxjs/toolkit
 - react-router 6+
 - react-helmet
+- axios(with interceptor)
 - react-hook-form
 - classnames
 - gh-pages
