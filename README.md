@@ -8,9 +8,10 @@
 - @reduxjs/toolkit
 - react-router 6+
 - react-helmet
-- useForm for validation
+- react-hook-form
 - classnames
 - gh-pages
+- nanoid
 
 ## Commands
 
