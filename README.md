@@ -1,4 +1,4 @@
-# Car Sharing SPA (Second Iteration)
+# Car Sharing SPA (Admin Panel)
 
 ## Used libraries:
 
@@ -24,3 +24,5 @@ Build production bundle:
 ```shell
 npm run build
 ```
+
+**For security reasons, the login and password for authorization in the admin panel can only be obtained upon request.**
