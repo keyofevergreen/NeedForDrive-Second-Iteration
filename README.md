@@ -1,5 +1,7 @@
 # Car Sharing SPA (Admin Panel)
 
+**For security reasons, the login and password for authorization in the admin panel can only be obtained upon request.**
+
 ## Used libraries:
 
 - Typescript 4.5+
@@ -27,5 +29,3 @@ Build production bundle:
 ```shell
 npm run build
 ```
-
-**For security reasons, the login and password for authorization in the admin panel can only be obtained upon request.**
